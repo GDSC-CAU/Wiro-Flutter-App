@@ -1,4 +1,7 @@
 import "package:flutter/material.dart";
+import "pages/Chat.dart";
+import "pages/Home.dart";
+import "pages/Mission.dart";
 
 void main() {
   runApp(const SCApp());
@@ -31,20 +34,10 @@ class AppBase extends StatefulWidget {
 class _AppBaseState extends State<AppBase> {
   int _curIndex = 1;
 
-  static const TextStyle optionStyle = TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
-  static const List<Widget> _widgetOptions = <Widget>[
-    Text(
-      "Mission Page",
-      style: optionStyle,
-    ),
-    Text(
-      "Home Page",
-      style: optionStyle,
-    ),
-    Text(
-      "Chat Page",
-      style: optionStyle,
-    ),
+  static const List<Widget> _pageOptions = <Widget>[
+    MissionPage(),
+    HomePage(),
+    ChatPage(),
   ];
 
   void _onNavItemTapped(int index) {
@@ -60,7 +53,7 @@ class _AppBaseState extends State<AppBase> {
         title: Text(widget.title),
       ),
       body: Center(
-        child: _widgetOptions.elementAt(_curIndex),
+        child: _pageOptions.elementAt(_curIndex),
       ),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
