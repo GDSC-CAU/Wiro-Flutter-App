@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const SCApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class SCApp extends StatelessWidget {
+  const SCApp({super.key});
 
   @override
   Widget build(BuildContext context) {
