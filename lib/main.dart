@@ -14,21 +14,21 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const AppBase(title: 'Flutter Demo Home Page'),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
+class AppBase extends StatefulWidget {
+  const AppBase({super.key, required this.title});
 
   final String title;
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<AppBase> createState() => _AppBaseState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _AppBaseState extends State<AppBase> {
   int _counter = 0;
 
   void _incrementCounter() {
