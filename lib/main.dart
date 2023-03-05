@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import "package:flutter/material.dart";
 
 void main() {
   runApp(const SCApp());
@@ -10,11 +10,11 @@ class SCApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: "Solution Challenge Team2",
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const AppBase(title: 'Flutter Demo Home Page'),
+      home: const AppBase(title: "Solution Challenge Team2"),
     );
   }
 }
@@ -34,15 +34,15 @@ class _AppBaseState extends State<AppBase> {
   static const TextStyle optionStyle = TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   static const List<Widget> _widgetOptions = <Widget>[
     Text(
-      'Mission Page',
+      "Mission Page",
       style: optionStyle,
     ),
     Text(
-      'Home Page',
+      "Home Page",
       style: optionStyle,
     ),
     Text(
-      'Chat Page',
+      "Chat Page",
       style: optionStyle,
     ),
   ];
@@ -66,15 +66,15 @@ class _AppBaseState extends State<AppBase> {
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.list),
-            label: 'Missions',
+            label: "Missions",
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
-            label: 'Home',
+            label: "Home",
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.chat),
-            label: 'Chat',
+            label: "Chat",
           ),
         ],
         currentIndex: _curIndex,
