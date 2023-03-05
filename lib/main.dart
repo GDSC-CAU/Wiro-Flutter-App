@@ -29,11 +29,27 @@ class AppBase extends StatefulWidget {
 }
 
 class _AppBaseState extends State<AppBase> {
-  int _counter = 0;
+  int _curIndex = 1;
 
-  void _incrementCounter() {
+  static const TextStyle optionStyle = TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
+  static const List<Widget> _widgetOptions = <Widget>[
+    Text(
+      'Mission Page',
+      style: optionStyle,
+    ),
+    Text(
+      'Home Page',
+      style: optionStyle,
+    ),
+    Text(
+      'Chat Page',
+      style: optionStyle,
+    ),
+  ];
+
+  void _onNavItemTapped(int index) {
     setState(() {
-      _counter++;
+      _curIndex = index;
     });
   }
 
@@ -44,23 +60,26 @@ class _AppBaseState extends State<AppBase> {
         title: Text(widget.title),
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
-        ),
+        child: _widgetOptions.elementAt(_curIndex),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.list),
+            label: 'Missions',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.chat),
+            label: 'Chat',
+          ),
+        ],
+        currentIndex: _curIndex,
+        selectedItemColor: Colors.blue,
+        onTap: _onNavItemTapped,
       ),
     );
   }
