@@ -67,7 +67,18 @@ class _PrivacyState extends State<HomePrivacy> {
   Widget build(BuildContext context) {
     return Column(
       children: const [
-        Text("Privacy View")
+        Padding(
+            padding: EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
+            child: Card(
+                child: Padding(
+                    padding: EdgeInsets.all(10.0),
+                    child: SizedBox(
+                      width: double.infinity,
+                      child: Text("Privacy View"),
+                    )
+                )
+            )
+        )
       ],
     );
   }
