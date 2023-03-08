@@ -27,7 +27,30 @@ class _TimeState extends State<HomeTimeSetting> {
   Widget build(BuildContext context) {
     return Column(
       children: const [
-        Text("Time Setting")
+        Padding(
+          padding: EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
+          child: Card(
+            child: Padding(
+              padding: EdgeInsets.all(10.0),
+              child: SizedBox(
+                width: double.infinity,
+                child: Text("Morning Time Setting"),
+              )
+            )
+          )
+        ),
+        Padding(
+            padding: EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
+            child: Card(
+                child: Padding(
+                    padding: EdgeInsets.all(10.0),
+                    child: SizedBox(
+                      width: double.infinity,
+                      child: Text("Afternoon Time Setting"),
+                    )
+                )
+            )
+        ),
       ],
     );
   }
