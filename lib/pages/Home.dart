@@ -71,18 +71,35 @@ class _PrivacyState extends State<HomePrivacy> {
     return Column(
       mainAxisSize: MainAxisSize.max,
       children: const [
-        Flexible(flex: 1, child: PrivacyCard())
+        Flexible(flex: 1, child: PrivacyCard(
+          privacyName: "이름",
+          privacyID: "000000-1234567",
+          privacyBlood: "A형",
+          privacyDisease: "없음",
+          privacyMedicine: "없음"
+        ))
       ],
     );
   }
 }
 
 class PrivacyCard extends StatelessWidget {
-  const PrivacyCard({Key? key}): super(key: key);
+  const PrivacyCard({Key? key,
+    required this.privacyName,
+    required this.privacyID,
+    required this.privacyBlood,
+    required this.privacyDisease,
+    required this.privacyMedicine}): super(key: key);
+
+  final String privacyBlood;
+  final String privacyDisease;
+  final String privacyID;
+  final String privacyName;
+  final String privacyMedicine;
 
   @override
   Widget build(BuildContext context) {
-    return const Padding(
+    return Padding(
         padding: EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
         child: Card(
             child: Padding(
@@ -90,7 +107,16 @@ class PrivacyCard extends StatelessWidget {
                 child: SizedBox(
                   height: double.infinity,
                   width: double.infinity,
-                  child: Text("Privacy View"),
+                  child: Column(
+                    children: [
+                      Text("Privacy View"),
+                      Text(privacyName),
+                      Text(privacyID),
+                      Text(privacyBlood),
+                      Text(privacyDisease),
+                      Text(privacyMedicine),
+                    ]
+                  ),
                 )
             )
         )
