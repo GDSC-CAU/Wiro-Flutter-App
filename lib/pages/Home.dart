@@ -41,7 +41,7 @@ class TimeCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Padding(
+    return Padding(
         padding: EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
         child: Card(
             child: Padding(
@@ -49,7 +49,7 @@ class TimeCard extends StatelessWidget {
                 child: SizedBox(
                   height: double.infinity,
                   width: double.infinity,
-                  child: Text(" Time Setting"),
+                  child: Text("$timeType Time Setting"),
                 )
             )
         )
@@ -70,22 +70,29 @@ class _PrivacyState extends State<HomePrivacy> {
     return Column(
       mainAxisSize: MainAxisSize.max,
       children: const [
-        Flexible(flex: 1, child:
-          Padding(
-              padding: EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
-              child: Card(
-                  child: Padding(
-                      padding: EdgeInsets.all(10.0),
-                      child: SizedBox(
-                        height: double.infinity,
-                        width: double.infinity,
-                        child: Text("Privacy View"),
-                      )
-                  )
-              )
-          )
-        )
+        Flexible(flex: 1, child: PrivacyCard())
       ],
+    );
+  }
+}
+
+class PrivacyCard extends StatelessWidget {
+  const PrivacyCard({Key? key}): super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return const Padding(
+        padding: EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
+        child: Card(
+            child: Padding(
+                padding: EdgeInsets.all(10.0),
+                child: SizedBox(
+                  height: double.infinity,
+                  width: double.infinity,
+                  child: Text("Privacy View"),
+                )
+            )
+        )
     );
   }
 }
