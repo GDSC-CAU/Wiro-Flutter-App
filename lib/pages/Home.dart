@@ -28,15 +28,16 @@ class _TimeState extends State<HomeTimeSetting> {
     return Column(
       mainAxisSize: MainAxisSize.max,
       children: const [
-        Flexible(flex: 1, child: TimeCard(timeType: "Morning")),
-        Flexible(flex: 1, child: TimeCard(timeType: "Afternoon")),
+        Flexible(flex: 1, child: TimeCard(timeData: "오전 10:00", timeType: "M")),
+        Flexible(flex: 1, child: TimeCard(timeData: "오후 18:00", timeType: "A")),
       ],
     );
   }
 }
 
 class TimeCard extends StatelessWidget {
-  const TimeCard({Key? key, required this.timeType}): super(key: key);
+  const TimeCard({Key? key, required this.timeData, required this.timeType}): super(key: key);
+  final String timeData;
   final String timeType;
 
   @override
@@ -49,7 +50,7 @@ class TimeCard extends StatelessWidget {
                 child: SizedBox(
                   height: double.infinity,
                   width: double.infinity,
-                  child: Text("$timeType Time Setting"),
+                  child: Text(timeData),
                 )
             )
         )
