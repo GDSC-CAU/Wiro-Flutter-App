@@ -26,6 +26,7 @@ class TimeCard extends StatelessWidget {
             child: Padding(
                 padding: EdgeInsets.all(10.0),
                 child: SizedBox(
+                  height: double.infinity,
                   width: double.infinity,
                   child: Text(" Time Setting"),
                 )
@@ -46,9 +47,11 @@ class _TimeState extends State<HomeTimeSetting> {
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisSize: MainAxisSize.max,
+
       children: const [
-        TimeCard(timeType: "Morning"),
-        TimeCard(timeType: "Afternoon"),
+        Flexible(flex: 1, child: TimeCard(timeType: "Morning")),
+        Flexible(flex: 1, child: TimeCard(timeType: "Afternoon")),
       ],
     );
   }
