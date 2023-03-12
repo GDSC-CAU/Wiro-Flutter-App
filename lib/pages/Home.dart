@@ -108,12 +108,17 @@ class PrivacyCard extends StatelessWidget {
                   height: double.infinity,
                   width: double.infinity,
                   child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Row(
-                        children: [
-                          Text("Privacy View"),
-                          IconButton(onPressed: (){}, icon: Icon(Icons.settings))
-                        ]
+                      SizedBox(
+                        child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Text("Privacy View"),
+                              IconButton(onPressed: (){}, icon: Icon(Icons.settings))
+                            ]
+                        )
                       ),
                       Text(privacyName),
                       Text(privacyID),
