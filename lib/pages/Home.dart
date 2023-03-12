@@ -109,7 +109,12 @@ class PrivacyCard extends StatelessWidget {
                   width: double.infinity,
                   child: Column(
                     children: [
-                      Text("Privacy View"),
+                      Row(
+                        children: [
+                          Text("Privacy View"),
+                          IconButton(onPressed: (){}, icon: Icon(Icons.settings))
+                        ]
+                      ),
                       Text(privacyName),
                       Text(privacyID),
                       Text(privacyBlood),
