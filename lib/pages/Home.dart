@@ -7,8 +7,8 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: const [
-        HomeTimeSetting(),
-        HomePrivacy()
+        Flexible(flex: 1, child: HomeTimeSetting()),
+        Flexible(flex: 1, child: HomePrivacy())
       ]
     );
   }
