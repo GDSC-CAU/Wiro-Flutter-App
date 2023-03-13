@@ -6,8 +6,20 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Center(
-            child: Text("Login Page")
+        body: Padding(
+            padding: EdgeInsets.all(8.0),
+            child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                    ElevatedButton(
+                      onPressed: () => {
+                        // TODO : Google Login with Firebase Auth
+                      },
+                      child: Text("Login with Google")
+                  )
+                ]
+            )
         )
     );
   }
