@@ -127,11 +127,11 @@ class PrivacyCard extends StatelessWidget {
                             ]
                         )
                       ),
-                      Text(privacyName),
-                      Text(privacyID),
-                      Text(privacyBlood),
-                      Text(privacyDisease),
-                      Text(privacyMedicine),
+                      Text("성함 : $privacyName"),
+                      Text("주민등록번호 : $privacyID"),
+                      Text("혈액형 : $privacyBlood"),
+                      Text("지병 : $privacyDisease"),
+                      Text("복용약 : $privacyMedicine"),
                     ]
                   ),
                 )
