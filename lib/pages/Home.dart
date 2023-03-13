@@ -51,8 +51,10 @@ class TimeCard extends StatelessWidget {
                   height: double.infinity,
                   width: double.infinity,
                   child: Text(timeData,
+                      textAlign: TextAlign.center,
                       style: const TextStyle(
-                          fontSize: 50
+                          fontSize: 50,
+                          height: 2.25
                       )),
                 )
             )
