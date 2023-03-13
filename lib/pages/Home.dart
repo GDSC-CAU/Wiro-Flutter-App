@@ -129,16 +129,41 @@ class PrivacyCard extends StatelessWidget {
                             ]
                         )
                       ),
-                      Text("성함 : $privacyName"),
-                      Text("주민등록번호 : $privacyID"),
-                      Text("혈액형 : $privacyBlood"),
-                      Text("지병 : $privacyDisease"),
-                      Text("복용약 : $privacyMedicine"),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          PrivacyCardText(textStr: "성함 : $privacyName"),
+                          PrivacyCardText(textStr: "주민등록번호 : $privacyID"),
+                          PrivacyCardText(textStr: "혈액형 : $privacyBlood"),
+                          PrivacyCardText(textStr: "지병 : $privacyDisease"),
+                          PrivacyCardText(textStr: "복용약 : $privacyMedicine")
+                        ],
+                      )
                     ]
                   ),
                 )
             )
         )
+    );
+  }
+}
+
+class PrivacyCardText extends StatelessWidget {
+  const PrivacyCardText({
+    Key? key,
+    required this.textStr
+  }): super(key: key);
+
+  final String textStr;
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      textStr,
+      style: const TextStyle(
+        fontSize: 20
+      )
     );
   }
 }
