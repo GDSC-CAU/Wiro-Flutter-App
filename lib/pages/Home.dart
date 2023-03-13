@@ -75,7 +75,7 @@ class _PrivacyState extends State<HomePrivacy> {
       mainAxisSize: MainAxisSize.max,
       children: const [
         Flexible(flex: 1, child: PrivacyCard(
-          privacyName: "이름",
+          privacyName: "김XX",
           privacyID: "000000-1234567",
           privacyBlood: "A형",
           privacyDisease: "없음",
