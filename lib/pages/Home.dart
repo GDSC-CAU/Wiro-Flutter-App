@@ -43,15 +43,15 @@ class TimeCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-        padding: EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
+        padding: const EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
         child: Card(
             child: Padding(
-                padding: EdgeInsets.all(10.0),
+                padding: const EdgeInsets.all(10.0),
                 child: SizedBox(
                   height: double.infinity,
                   width: double.infinity,
                   child: Text(timeData,
-                      style: TextStyle(
+                      style: const TextStyle(
                           fontSize: 50
                       )),
                 )
@@ -103,10 +103,10 @@ class PrivacyCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-        padding: EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
+        padding: const EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
         child: Card(
             child: Padding(
-                padding: EdgeInsets.all(10.0),
+                padding: const EdgeInsets.all(10.0),
                 child: SizedBox(
                   height: double.infinity,
                   width: double.infinity,
@@ -118,12 +118,12 @@ class PrivacyCard extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             mainAxisSize: MainAxisSize.max,
                             children: [
-                              Text("Privacy View",
+                              const Text("Privacy View",
                                   style: TextStyle(
                                       fontSize: 50
                                   )
                               ),
-                              IconButton(onPressed: (){}, icon: Icon(Icons.settings))
+                              IconButton(onPressed: (){}, icon: const Icon(Icons.settings))
                             ]
                         )
                       ),
