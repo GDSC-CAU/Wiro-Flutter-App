@@ -50,7 +50,10 @@ class TimeCard extends StatelessWidget {
                 child: SizedBox(
                   height: double.infinity,
                   width: double.infinity,
-                  child: Text(timeData, style: TextStyle(fontSize: 50)),
+                  child: Text(timeData,
+                      style: TextStyle(
+                          fontSize: 50
+                      )),
                 )
             )
         )
