@@ -29,6 +29,7 @@ class LoginPageState extends State<LoginPage> {
                             .listen((User? user) {
                           if (user == null) {
                             Future<UserCredential> signInWithGoogle() async {
+
                               // Trigger the authentication flow
                               final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
 
@@ -44,6 +45,7 @@ class LoginPageState extends State<LoginPage> {
                               // Once signed in, return the UserCredential
                               return await FirebaseAuth.instance.signInWithCredential(credential);
                             }
+                            signInWithGoogle();
                           } else {
                             Navigator.pop(context);
                           }
