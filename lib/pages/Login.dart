@@ -1,10 +1,17 @@
 import 'package:flutter/material.dart';
 
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
+import '../firebase_options.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
 
+  @override
+  State<StatefulWidget> createState() => LoginPageState();
+}
+
+class LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -14,15 +21,31 @@ class LoginPage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                    ElevatedButton(
+                  ElevatedButton(
                       onPressed: () => {
-                        // TODO : Google Login with Firebase Auth
+                        FirebaseAuth.instance
+                            .authStateChanges()
+                            .listen((User? user) {
+                          if (user == null) {
+                            print('User is Not Logged In!');
+                          } else {
+                            Navigator.pop(context);
+                          }
+                        })
                       },
                       child: Text("Login with Google")
                   )
                 ]
             )
         )
+    );
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform,
     );
   }
 }
