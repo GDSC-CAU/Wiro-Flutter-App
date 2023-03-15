@@ -23,34 +23,7 @@ class LoginPageState extends State<LoginPage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   ElevatedButton(
-                      onPressed: () => {
-                        FirebaseAuth.instance
-                            .authStateChanges()
-                            .listen((User? user) {
-                          if (user == null) {
-                            Future<UserCredential> signInWithGoogle() async {
-
-                              // Trigger the authentication flow
-                              final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
-
-                              // Obtain the auth details from the request
-                              final GoogleSignInAuthentication? googleAuth = await googleUser?.authentication;
-
-                              // Create a new credential
-                              final credential = GoogleAuthProvider.credential(
-                                accessToken: googleAuth?.accessToken,
-                                idToken: googleAuth?.idToken,
-                              );
-
-                              // Once signed in, return the UserCredential
-                              return await FirebaseAuth.instance.signInWithCredential(credential);
-                            }
-                            signInWithGoogle();
-                          } else {
-                            Navigator.pop(context);
-                          }
-                        })
-                      },
+                      onPressed: tryGoogleLogin,
                       child: Text("Login with Google")
                   )
                 ]
@@ -62,8 +35,30 @@ class LoginPageState extends State<LoginPage> {
   @override
   void initState() {
     super.initState();
-    Firebase.initializeApp(
+    checkLastLogin();
+  }
+
+  void checkLastLogin() async {
+    await Firebase.initializeApp(
       options: DefaultFirebaseOptions.currentPlatform,
     );
+    FirebaseAuth.instance
+        .authStateChanges()
+        .listen((User? user) {
+      if(user != null){
+        print(user.uid);
+        Navigator.pop(context);
+      }
+    });
+  }
+
+  void tryGoogleLogin() async {
+    final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+    final GoogleSignInAuthentication? googleAuth = await googleUser?.authentication;
+    final credential = GoogleAuthProvider.credential(
+      accessToken: googleAuth?.accessToken,
+      idToken: googleAuth?.idToken,
+    );
+    await FirebaseAuth.instance.signInWithCredential(credential);
   }
 }
