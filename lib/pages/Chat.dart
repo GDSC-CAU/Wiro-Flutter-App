@@ -53,6 +53,8 @@ class _ChatHistoryState extends State<ChatHistory> {
     chatList.add(chatData);
     chatList.add(chatData);
     return Column(
+      mainAxisSize: MainAxisSize.max,
+      mainAxisAlignment: MainAxisAlignment.end,
       children: () {
         final List<Widget> chatItemList = [];
         for (var chatItem in chatList){
