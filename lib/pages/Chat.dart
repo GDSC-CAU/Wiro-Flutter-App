@@ -5,13 +5,17 @@ class ChatPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-        children: const [
-          Flexible(flex: 1, child: ChatInfo()),
-          Flexible(flex: 4, child: ChatHistory()),
-          Flexible(flex: 1, child: ChatInput()),
-        ]
-    );
+    return
+      Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Column(
+            children: const [
+              Flexible(flex: 1, child: ChatInfo()),
+              Flexible(flex: 4, child: ChatHistory()),
+              Flexible(flex: 1, child: ChatInput()),
+            ]
+          )
+      );
   }
 }
 
