@@ -25,11 +25,34 @@ class ChatInfo extends StatefulWidget {
 class _ChatInfoState extends State<ChatInfo> {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: const [
-        Text("Chat Info")
-      ],
-    );
+    return
+      SizedBox(
+        height: double.infinity,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisSize: MainAxisSize.max,
+          children: [
+            Flexible(
+                flex: 7,
+                child: Text(
+                    "사회복지사",
+                    style: const TextStyle(
+                        fontSize: 20
+                    )
+                )
+            ),
+            Flexible(
+                flex: 3,
+                child: Text(
+                    "Call",
+                    style: const TextStyle(
+                        fontSize: 20
+                    )
+                )
+            )
+          ],
+        )
+      );
   }
 }
 
@@ -90,20 +113,23 @@ class _ChatHistoryState extends State<ChatHistory> {
     chatList.add(chatData);
     chatList.add(chatData);
     chatList.add({'sender': 'qwer', 'datetime': 'qwer', 'message': 'qwre'});
-    return SingleChildScrollView(
-        scrollDirection: Axis.vertical,
-        reverse: true,
-        child: Column(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: () {
-            final List<Widget> chatItemList = [];
-            for (var chatItem in chatList){
-              chatItemList.add(ChatHistoryItem(chatData: chatItem));
-            }
-            return chatItemList;
-          }(),
-        )
+    return SizedBox(
+      height: double.infinity,
+      child: SingleChildScrollView(
+          scrollDirection: Axis.vertical,
+          reverse: true,
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: () {
+              final List<Widget> chatItemList = [];
+              for (var chatItem in chatList){
+                chatItemList.add(ChatHistoryItem(chatData: chatItem));
+              }
+              return chatItemList;
+            }(),
+          )
+      ),
     );
   }
 }
