@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 import "pages/Chat.dart";
 import "pages/Home.dart";
+import "pages/Login.dart";
 import "pages/Mission.dart";
 
 void main() {
@@ -75,5 +76,12 @@ class _AppBaseState extends State<AppBase> {
         onTap: _onNavItemTapped,
       ),
     );
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    Future.delayed(Duration.zero, () =>
+        Navigator.push((context), MaterialPageRoute(builder: (context) => LoginPage())));
   }
 }
