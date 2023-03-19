@@ -31,23 +31,21 @@ class _ChatInfoState extends State<ChatInfo> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           mainAxisSize: MainAxisSize.max,
-          children: const [
-            Flexible(
+          children: [
+            const Flexible(
                 flex: 7,
                 child: Text(
                     "사회복지사",
                     style: TextStyle(
-                        fontSize: 20
+                        fontSize: 30
                     )
                 )
             ),
             Flexible(
                 flex: 3,
-                child: Text(
-                    "Call",
-                    style: TextStyle(
-                        fontSize: 20
-                    )
+                child: IconButton(onPressed: (){
+                  print("");
+                }, icon: const Icon(Icons.call)
                 )
             )
           ],
