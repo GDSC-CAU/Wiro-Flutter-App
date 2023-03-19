@@ -182,7 +182,7 @@ class _ChatInputState extends State<ChatInput> {
           flex: 1,
             child: IconButton(onPressed: (){
               print(inputController.text);
-            }(), icon: Icon(Icons.send)
+            }, icon: Icon(Icons.send)
           )
         )
       ],
