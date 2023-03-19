@@ -51,10 +51,15 @@ class _ChatHistoryState extends State<ChatHistory> {
     List<Map<String, String>> chatList = [];
     chatList.add(chatData);
     chatList.add(chatData);
+    chatList.add(chatData);
     return Column(
-      children: [
-        ChatHistoryItem(chatData: chatList[0])
-      ],
+      children: () {
+        final List<Widget> chatItemList = [];
+        for (var chatItem in chatList){
+          chatItemList.add(ChatHistoryItem(chatData: chatItem));
+        }
+        return chatItemList;
+      }(),
     );
   }
 }
