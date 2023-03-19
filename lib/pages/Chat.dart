@@ -118,12 +118,42 @@ class ChatHistoryItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Text(chatData['message']!),
-        Text(chatData['sender']!),
-        Text(chatData['datetime']!)
-      ],
+    return SizedBox(
+        width: double.infinity,
+        child: Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Column(
+            children: [
+              SizedBox(
+                width: double.infinity,
+                child: Text(
+                    chatData['sender']!,
+                    style: const TextStyle(
+                        fontSize: 20
+                    )
+                ),
+              ),
+              SizedBox(
+                width: double.infinity,
+                child: Text(
+                    chatData['message']!,
+                    style: const TextStyle(
+                        fontSize: 30
+                    )
+                ),
+              ),
+              SizedBox(
+                width: double.infinity,
+                child: Text(
+                    chatData['datetime']!,
+                    style: const TextStyle(
+                        fontSize: 20
+                    )
+                ),
+              )
+            ],
+          )
+        )
     );
   }
 }
