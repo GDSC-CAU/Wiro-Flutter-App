@@ -166,11 +166,25 @@ class ChatInput extends StatefulWidget {
 }
 
 class _ChatInputState extends State<ChatInput> {
+  final inputController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: const [
-        Text("Chat Input")
+    return Row(
+      children: [
+        Flexible(
+            flex: 9,
+            child: TextField(
+              controller: inputController,
+            )
+        ),
+        Flexible(
+          flex: 1,
+            child: IconButton(onPressed: (){
+              print(inputController.text);
+            }(), icon: Icon(Icons.send)
+          )
+        )
       ],
     );
   }
