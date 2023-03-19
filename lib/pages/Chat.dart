@@ -31,12 +31,12 @@ class _ChatInfoState extends State<ChatInfo> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           mainAxisSize: MainAxisSize.max,
-          children: [
+          children: const [
             Flexible(
                 flex: 7,
                 child: Text(
                     "사회복지사",
-                    style: const TextStyle(
+                    style: TextStyle(
                         fontSize: 20
                     )
                 )
@@ -45,7 +45,7 @@ class _ChatInfoState extends State<ChatInfo> {
                 flex: 3,
                 child: Text(
                     "Call",
-                    style: const TextStyle(
+                    style: TextStyle(
                         fontSize: 20
                     )
                 )
@@ -208,7 +208,7 @@ class _ChatInputState extends State<ChatInput> {
           flex: 1,
             child: IconButton(onPressed: (){
               print(inputController.text);
-            }, icon: Icon(Icons.send)
+            }, icon: const Icon(Icons.send)
           )
         )
       ],
