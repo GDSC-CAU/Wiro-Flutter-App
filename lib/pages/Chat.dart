@@ -49,19 +49,61 @@ class _ChatHistoryState extends State<ChatHistory> {
       'message': '테스트메시지'
     };
     List<Map<String, String>> chatList = [];
+    chatList.add({'sender': 'asdf', 'datetime': 'asdf', 'message': 'asdf'});
     chatList.add(chatData);
     chatList.add(chatData);
     chatList.add(chatData);
-    return Column(
-      mainAxisSize: MainAxisSize.max,
-      mainAxisAlignment: MainAxisAlignment.end,
-      children: () {
-        final List<Widget> chatItemList = [];
-        for (var chatItem in chatList){
-          chatItemList.add(ChatHistoryItem(chatData: chatItem));
-        }
-        return chatItemList;
-      }(),
+    chatList.add(chatData);
+    chatList.add(chatData);
+    chatList.add(chatData);
+    chatList.add(chatData);
+    chatList.add(chatData);
+    chatList.add(chatData);
+    chatList.add(chatData);
+    chatList.add(chatData);
+    chatList.add(chatData);
+    chatList.add(chatData);
+    chatList.add(chatData);
+    chatList.add(chatData);
+    chatList.add(chatData);
+    chatList.add(chatData);
+    chatList.add(chatData);
+    chatList.add(chatData);
+    chatList.add(chatData);
+    chatList.add(chatData);
+    chatList.add(chatData);
+    chatList.add(chatData);
+    chatList.add(chatData);
+    chatList.add(chatData);
+    chatList.add(chatData);
+    chatList.add(chatData);
+    chatList.add(chatData);
+    chatList.add(chatData);
+    chatList.add(chatData);
+    chatList.add(chatData);
+    chatList.add(chatData);
+    chatList.add(chatData);
+    chatList.add(chatData);
+    chatList.add(chatData);
+    chatList.add(chatData);
+    chatList.add(chatData);
+    chatList.add(chatData);
+    chatList.add(chatData);
+    chatList.add({'sender': 'qwer', 'datetime': 'qwer', 'message': 'qwre'});
+    return SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+        reverse: true,
+        child: Column(
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: () {
+            final List<Widget> chatItemList = [];
+            for (var chatItem in chatList){
+              chatItemList.add(ChatHistoryItem(chatData: chatItem));
+            }
+            return chatItemList;
+          }(),
+        )
     );
   }
 }
