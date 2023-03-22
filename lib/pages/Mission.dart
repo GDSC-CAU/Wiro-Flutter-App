@@ -96,8 +96,20 @@ class CheckHistoryCard extends StatefulWidget {
 }
 
 class _CheckHistoryCardState extends State<CheckHistoryCard> {
+  List<String> _itemList = [];
+
+  @override
+  void setState(VoidCallback fn) {
+    for(int i = 0; i < 5; i++){
+      _itemList.add("ChkList Item $i");
+    }
+
+    super.setState(fn);
+  }
+
   @override
   Widget build(BuildContext context) {
+    setState((){});
     return Padding(
       padding: EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
       child: Card(
@@ -108,14 +120,28 @@ class _CheckHistoryCardState extends State<CheckHistoryCard> {
             width: double.infinity,
             child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: const [
-                  Text("체크리스트 기록",
+                children: [
+                  const Text("체크리스트 기록",
                       style: TextStyle(
                           fontSize: 40
                       )
                   ),
-                  Text("Check History Card")
-                ]
+                  Column(
+                    children: (){
+                      final List<Widget> itemWidgetList = [];
+                      for(var item in _itemList){
+                        itemWidgetList.add(
+                          Text("ChkList Item $item",
+                            style: const TextStyle(
+                              fontSize: 20
+                            )
+                          )
+                        );
+                      }
+                      return itemWidgetList;
+                  }()
+                )
+              ]
             ),
           )
         )
