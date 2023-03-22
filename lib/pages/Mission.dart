@@ -37,7 +37,14 @@ class _MissionRecommendCardState extends State<MissionRecommendCard> {
           child: SizedBox(
             height: double.infinity,
             width: double.infinity,
-            child: Text("Mission Recommendation Card"),
+            child: Center(
+              child: Text("추천 : 공원 산책",
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                    fontSize: 50
+                )
+              )
+            ),
           )
         )
       )
