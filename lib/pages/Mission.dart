@@ -107,7 +107,13 @@ class _CheckHistoryCardState extends State<CheckHistoryCard> {
             height: double.infinity,
             width: double.infinity,
             child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: const [
+                  Text("체크리스트 기록",
+                      style: TextStyle(
+                          fontSize: 40
+                      )
+                  ),
                   Text("Check History Card")
                 ]
             ),
