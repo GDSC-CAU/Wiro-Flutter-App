@@ -7,9 +7,9 @@ class MissionPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: const [
-        MissionRecommendCard(),
-        MissionHistoryCard(),
-        CheckHistoryCard()
+        Flexible(flex: 1, child: MissionRecommendCard()),
+        Flexible(flex: 2, child: MissionHistoryCard()),
+        Flexible(flex: 2, child: CheckHistoryCard())
       ]
     );
   }
@@ -25,7 +25,13 @@ class MissionRecommendCard extends StatefulWidget {
 class MissionRecommendCardState extends State<MissionRecommendCard> {
   @override
   Widget build(BuildContext context) {
-    return const Text("Mission Recommendation Card");
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      mainAxisSize: MainAxisSize.max,
+      children: const [
+        Text("Mission Recommendation Card")
+      ]
+    );
   }
 }
 
@@ -39,7 +45,13 @@ class MissionHistoryCard extends StatefulWidget {
 class MissionHistoryCardState extends State<MissionHistoryCard> {
   @override
   Widget build(BuildContext context) {
-    return const Text("Mission History Card");
+    return Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        mainAxisSize: MainAxisSize.max,
+        children: const [
+          Text("Mission History Card")
+        ]
+    );
   }
 }
 
@@ -53,6 +65,12 @@ class CheckHistoryCard extends StatefulWidget {
 class CheckHistoryCardState extends State<CheckHistoryCard> {
   @override
   Widget build(BuildContext context) {
-    return const Text("Check History Card");
+    return Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        mainAxisSize: MainAxisSize.max,
+        children: const [
+          Text("Check History Card")
+        ]
+    );
   }
 }
