@@ -23,10 +23,10 @@ class MissionRecommendCard extends StatefulWidget {
   const MissionRecommendCard({super.key});
 
   @override
-  State<StatefulWidget> createState() => MissionRecommendCardState();
+  State<StatefulWidget> createState() => _MissionRecommendCardState();
 }
 
-class MissionRecommendCardState extends State<MissionRecommendCard> {
+class _MissionRecommendCardState extends State<MissionRecommendCard> {
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -43,10 +43,10 @@ class MissionHistoryCard extends StatefulWidget {
   const MissionHistoryCard({super.key});
 
   @override
-  State<StatefulWidget> createState() => MissionHistoryCardState();
+  State<StatefulWidget> createState() => _MissionHistoryCardState();
 }
 
-class MissionHistoryCardState extends State<MissionHistoryCard> {
+class _MissionHistoryCardState extends State<MissionHistoryCard> {
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -63,10 +63,10 @@ class CheckHistoryCard extends StatefulWidget {
   const CheckHistoryCard({super.key});
 
   @override
-  State<StatefulWidget> createState() => CheckHistoryCardState();
+  State<StatefulWidget> createState() => _CheckHistoryCardState();
 }
 
-class CheckHistoryCardState extends State<CheckHistoryCard> {
+class _CheckHistoryCardState extends State<CheckHistoryCard> {
   @override
   Widget build(BuildContext context) {
     return Column(
