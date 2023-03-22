@@ -62,7 +62,7 @@ class MissionHistoryCard extends StatefulWidget {
 class _MissionHistoryCardState extends State<MissionHistoryCard> {
   @override
   Widget build(BuildContext context) {
-    return const Padding(
+    return Padding(
       padding: EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
       child: Card(
         child: Padding(
@@ -70,7 +70,11 @@ class _MissionHistoryCardState extends State<MissionHistoryCard> {
           child: SizedBox(
             height: double.infinity,
             width: double.infinity,
-            child: Text("Mission History Card"),
+            child: Column(
+              children: const [
+                Text("Mission History Card")
+              ]
+            ),
           )
         )
       )
@@ -88,7 +92,7 @@ class CheckHistoryCard extends StatefulWidget {
 class _CheckHistoryCardState extends State<CheckHistoryCard> {
   @override
   Widget build(BuildContext context) {
-    return const Padding(
+    return Padding(
       padding: EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
       child: Card(
         child: Padding(
@@ -96,7 +100,11 @@ class _CheckHistoryCardState extends State<CheckHistoryCard> {
           child: SizedBox(
             height: double.infinity,
             width: double.infinity,
-            child: Text("Check History Card"),
+            child: Column(
+                children: const [
+                  Text("Check History Card")
+                ]
+            ),
           )
         )
       )
