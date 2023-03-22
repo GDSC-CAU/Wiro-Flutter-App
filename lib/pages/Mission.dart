@@ -46,11 +46,11 @@ class MissionHistoryCardState extends State<MissionHistoryCard> {
   @override
   Widget build(BuildContext context) {
     return Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        mainAxisSize: MainAxisSize.max,
-        children: const [
-          Text("Mission History Card")
-        ]
+      mainAxisAlignment: MainAxisAlignment.start,
+      mainAxisSize: MainAxisSize.max,
+      children: const [
+        Text("Mission History Card")
+      ]
     );
   }
 }
@@ -66,11 +66,11 @@ class CheckHistoryCardState extends State<CheckHistoryCard> {
   @override
   Widget build(BuildContext context) {
     return Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        mainAxisSize: MainAxisSize.max,
-        children: const [
-          Text("Check History Card")
-        ]
+      mainAxisAlignment: MainAxisAlignment.start,
+      mainAxisSize: MainAxisSize.max,
+      children: const [
+        Text("Check History Card")
+      ]
     );
   }
 }
