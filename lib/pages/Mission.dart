@@ -96,12 +96,12 @@ class CheckHistoryCard extends StatefulWidget {
 }
 
 class _CheckHistoryCardState extends State<CheckHistoryCard> {
-  List<String> _itemList = [];
+  List<String> _chkItemList = [];
 
   @override
   void setState(VoidCallback fn) {
     for(int i = 0; i < 5; i++){
-      _itemList.add("ChkList Item $i");
+      _chkItemList.add("ChkList Item $i");
     }
 
     super.setState(fn);
@@ -131,7 +131,7 @@ class _CheckHistoryCardState extends State<CheckHistoryCard> {
                     child: Column(
                       children: (){
                         final List<Widget> itemWidgetList = [];
-                        for(var item in _itemList){
+                        for(var item in _chkItemList){
                           itemWidgetList.add(
                             Text("ChkList Item $item",
                               style: const TextStyle(
