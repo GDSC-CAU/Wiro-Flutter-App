@@ -60,8 +60,21 @@ class MissionHistoryCard extends StatefulWidget {
 }
 
 class _MissionHistoryCardState extends State<MissionHistoryCard> {
+  List<String> _missionItemList = [];
+
+  @override
+  void setState(VoidCallback fn) {
+    for(int i = 0; i < 5; i++){
+      _missionItemList.add(i.toString());
+    }
+
+    super.setState(fn);
+  }
+
   @override
   Widget build(BuildContext context) {
+    setState((){});
+
     return Padding(
       padding: EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
       child: Card(
@@ -72,13 +85,31 @@ class _MissionHistoryCardState extends State<MissionHistoryCard> {
             width: double.infinity,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: const [
+              children: [
                 Text("미션 기록",
                   style: TextStyle(
                     fontSize: 40
                   )
                 ),
-                Text("Mission History Card")
+                Expanded(
+                  child: SingleChildScrollView(
+                    child: Column(
+                      children: (){
+                        final List<Widget> itemWidgetList = [];
+                        for(var item in _missionItemList){
+                          itemWidgetList.add(
+                            Text("Mission Item $item",
+                              style: const TextStyle(
+                                fontSize: 20
+                              )
+                            )
+                          );
+                        }
+                        return itemWidgetList;
+                      }()
+                    ),
+                  ),
+                )
               ]
             ),
           )
@@ -101,7 +132,7 @@ class _CheckHistoryCardState extends State<CheckHistoryCard> {
   @override
   void setState(VoidCallback fn) {
     for(int i = 0; i < 5; i++){
-      _chkItemList.add("ChkList Item $i");
+      _chkItemList.add(i.toString());
     }
 
     super.setState(fn);
@@ -110,6 +141,7 @@ class _CheckHistoryCardState extends State<CheckHistoryCard> {
   @override
   Widget build(BuildContext context) {
     setState((){});
+
     return Padding(
       padding: EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
       child: Card(
