@@ -119,27 +119,31 @@ class _CheckHistoryCardState extends State<CheckHistoryCard> {
             height: double.infinity,
             width: double.infinity,
             child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Text("체크리스트 기록",
-                      style: TextStyle(
-                          fontSize: 40
-                      )
-                  ),
-                  Column(
-                    children: (){
-                      final List<Widget> itemWidgetList = [];
-                      for(var item in _itemList){
-                        itemWidgetList.add(
-                          Text("ChkList Item $item",
-                            style: const TextStyle(
-                              fontSize: 20
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text("체크리스트 기록",
+                  style: TextStyle(
+                    fontSize: 40
+                  )
+                ),
+                Expanded(
+                  child: SingleChildScrollView(
+                    child: Column(
+                      children: (){
+                        final List<Widget> itemWidgetList = [];
+                        for(var item in _itemList){
+                          itemWidgetList.add(
+                            Text("ChkList Item $item",
+                              style: const TextStyle(
+                                fontSize: 20
+                              )
                             )
-                          )
-                        );
-                      }
-                      return itemWidgetList;
-                  }()
+                          );
+                        }
+                        return itemWidgetList;
+                      }()
+                    ),
+                  ),
                 )
               ]
             ),
