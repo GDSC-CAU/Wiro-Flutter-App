@@ -5,13 +5,17 @@ class MissionPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: const [
-        Flexible(flex: 1, child: MissionRecommendCard()),
-        Flexible(flex: 2, child: MissionHistoryCard()),
-        Flexible(flex: 2, child: CheckHistoryCard())
-      ]
-    );
+    return
+      Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Column(
+              children: const [
+                Flexible(flex: 1, child: MissionRecommendCard()),
+                Flexible(flex: 2, child: MissionHistoryCard()),
+                Flexible(flex: 2, child: CheckHistoryCard())
+              ]
+          )
+      );
   }
 }
 
