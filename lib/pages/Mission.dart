@@ -71,7 +71,13 @@ class _MissionHistoryCardState extends State<MissionHistoryCard> {
             height: double.infinity,
             width: double.infinity,
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: const [
+                Text("미션 기록",
+                  style: TextStyle(
+                    fontSize: 40
+                  )
+                ),
                 Text("Mission History Card")
               ]
             ),
