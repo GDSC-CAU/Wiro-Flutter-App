@@ -81,7 +81,7 @@ class _AppBaseState extends State<AppBase> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(Duration.zero, () =>
-        Navigator.push((context), MaterialPageRoute(builder: (context) => LoginPage())));
+    // Future.delayed(Duration.zero, () =>
+        // Navigator.push((context), MaterialPageRoute(builder: (context) => LoginPage())));
   }
 }
