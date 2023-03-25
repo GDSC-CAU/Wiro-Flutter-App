@@ -45,6 +45,8 @@ class TimeCard extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
       child: Card(
+        color: const Color(0xFFF5F5F5),
+        elevation: 0.0,
         child: SizedBox(
           height: double.infinity,
           width: double.infinity,
@@ -105,6 +107,8 @@ class PrivacyCard extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
       child: Card(
+        color: const Color(0xFFF5F5F5),
+        elevation: 0.0,
         child: Padding(
           padding: const EdgeInsets.all(10.0),
           child: SizedBox(
