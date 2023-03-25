@@ -24,25 +24,40 @@ class MissionRecommendCard extends StatefulWidget {
 }
 
 class _MissionRecommendCardState extends State<MissionRecommendCard> {
+  String _strRecommendMission = "";
+
+  @override
+  void setState(VoidCallback fn) {
+    super.setState(fn);
+  }
+
   @override
   Widget build(BuildContext context) {
-    return const Padding(
+    setState(() {
+      _strRecommendMission = "공원 산책";
+    });
+
+    return Padding(
       padding: EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
       child: Card(
-        child: Padding(
-          padding: EdgeInsets.all(10.0),
-          child: SizedBox(
-            height: double.infinity,
-            width: double.infinity,
-            child: Center(
-              child: Text("추천 : 공원 산책",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                    fontSize: 50
-                )
+        color: const Color(0xFFF5F5F5),
+        elevation: 0.0,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(30.0)
+        ),
+        child: SizedBox(
+          height: double.infinity,
+          width: double.infinity,
+          child: Center(
+            child: Text("추천 : $_strRecommendMission",
+              textAlign: TextAlign.center,
+              style: const TextStyle(
+                fontSize: 50,
+                fontWeight: FontWeight.bold,
+                height: 1
               )
             ),
-          )
+          ),
         )
       )
     );
