@@ -212,6 +212,30 @@ class PrivacyEditInput extends StatelessWidget {
             )
           )
         ),
+        Card(
+          color: const Color(0xFF001E99),
+          elevation: 0.0,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(30.0)
+          ),
+          child: Padding(
+            padding: const EdgeInsets.only(top: 20, bottom: 20),
+            child: Center(
+              child: TextButton(
+                onPressed: (){
+                  Navigator.pop(context);
+                },
+                child: const Text("완료",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 30,
+                    height: 1
+                  ),
+                )
+              )
+            )
+          )
+        ),
       ],
     );
   }
