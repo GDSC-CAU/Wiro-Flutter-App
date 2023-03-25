@@ -28,10 +28,13 @@ class _BasePageState extends State<BasePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.fromLTRB(10.0, 30.0, 10.0, 10.0),
-        child: Center(
-          child: _pageOptions.elementAt(_curIndex),
+      body: SafeArea(
+        top: true,
+        child: Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Center(
+            child: _pageOptions.elementAt(_curIndex),
+          )
         )
       ),
       bottomNavigationBar: BottomNavigationBar(
