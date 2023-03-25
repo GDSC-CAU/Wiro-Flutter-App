@@ -120,7 +120,7 @@ class _MissionHistoryCardState extends State<MissionHistoryCard> {
                               padding: EdgeInsets.all(5.0),
                               child: Text("Mission Item $item",
                                 style: const TextStyle(
-                                  fontSize: 20
+                                  fontSize: 25
                                 )
                               )
                             )
@@ -196,7 +196,7 @@ class _CheckHistoryCardState extends State<CheckHistoryCard> {
                               padding: EdgeInsets.all(5.0),
                               child: Text("ChkList Item $item",
                                 style: const TextStyle(
-                                  fontSize: 20
+                                  fontSize: 25
                                 )
                               )
                             )
