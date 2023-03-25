@@ -28,9 +28,6 @@ class _BasePageState extends State<BasePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Wiro"),
-      ),
       body: Center(
         child: _pageOptions.elementAt(_curIndex),
       ),
