@@ -133,10 +133,10 @@ class PrivacyCard extends StatelessWidget {
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         const Text("개인정보",
-                            style: TextStyle(
-                              fontSize: 50,
-                              fontWeight: FontWeight.bold
-                            )
+                          style: TextStyle(
+                            fontSize: 50,
+                            fontWeight: FontWeight.bold
+                          )
                         ),
                         IconButton(onPressed: (){}, icon: const Icon(Icons.settings))
                       ]
@@ -200,7 +200,7 @@ class PrivacyCardTextTitle extends StatelessWidget {
     return Text(
         textStr,
         style: const TextStyle(
-            fontSize: 20
+          fontSize: 20
         )
     );
   }
