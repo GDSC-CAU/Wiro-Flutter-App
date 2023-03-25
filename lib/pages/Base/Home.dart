@@ -72,6 +72,7 @@ class TimeCard extends StatelessWidget {
               style: const TextStyle(
                 fontSize: 50,
                 fontWeight: FontWeight.bold,
+                height: 1
               )
             ),
           ),
@@ -167,10 +168,14 @@ class PrivacyCard extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       mainAxisSize: MainAxisSize.max,
                       children: [
-                        const Text("개인정보",
-                          style: TextStyle(
-                            fontSize: 50,
-                            fontWeight: FontWeight.bold
+                        const Padding(
+                          padding: EdgeInsets.only(top: 10.0, bottom: 10.0),
+                          child: Text("개인정보",
+                            style: TextStyle(
+                              fontSize: 50,
+                              fontWeight: FontWeight.bold,
+                              height: 1
+                            )
                           )
                         ),
                         IconButton(onPressed: (){}, icon: const Icon(Icons.settings))
@@ -221,7 +226,8 @@ class PrivacyCardText extends StatelessWidget {
       child: Text(
         textStr,
         style: const TextStyle(
-          fontSize: 30
+          fontSize: 30,
+          height: 1
         )
       )
     );
@@ -242,7 +248,8 @@ class PrivacyCardTextTitle extends StatelessWidget {
       textStr,
       style: const TextStyle(
         fontSize: 20,
-        fontWeight: FontWeight.bold
+        fontWeight: FontWeight.bold,
+        height: 1
       )
     );
   }
