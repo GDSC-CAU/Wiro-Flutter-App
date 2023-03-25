@@ -65,6 +65,7 @@ class _ChatInfoState extends State<ChatInfo> {
                 child: const Text("전화 걸기",
                   textAlign: TextAlign.center,
                   style: TextStyle(
+                    color: Colors.black,
                     fontSize: 20,
                     height: 1
                   )
