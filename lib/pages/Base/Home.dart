@@ -200,7 +200,8 @@ class PrivacyCardTextTitle extends StatelessWidget {
     return Text(
         textStr,
         style: const TextStyle(
-          fontSize: 20
+          fontSize: 20,
+          fontWeight: FontWeight.bold
         )
     );
   }
