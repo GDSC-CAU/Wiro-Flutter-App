@@ -47,6 +47,9 @@ class TimeCard extends StatelessWidget {
       child: Card(
         color: const Color(0xFFF5F5F5),
         elevation: 0.0,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(30.0)
+        ),
         child: SizedBox(
           height: double.infinity,
           width: double.infinity,
@@ -109,6 +112,9 @@ class PrivacyCard extends StatelessWidget {
       child: Card(
         color: const Color(0xFFF5F5F5),
         elevation: 0.0,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(30.0)
+        ),
         child: Padding(
           padding: const EdgeInsets.all(10.0),
           child: SizedBox(
