@@ -11,12 +11,35 @@ class PrivacyEditPage extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(10.0),
           child: Column(
-            children: const [
-              Text("Privacy Edit")
+            children: [
+              PrivacyEditBack()
             ]
           )
         )
       )
+    );
+  }
+}
+
+class PrivacyEditBack extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.end,
+      children: [
+        TextButton(
+          onPressed: (){
+            Navigator.pop(context);
+          },
+          child: const Text("뒤로 가기",
+            style: TextStyle(
+              color: Colors.black,
+              fontSize: 40,
+              fontWeight: FontWeight.bold
+            ),
+          )
+        )
+      ],
     );
   }
 }
