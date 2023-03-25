@@ -6,8 +6,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      mainAxisSize: MainAxisSize.max,
-      children: const [
+      mainAxisSize: MainAxisSize.max, children: const [
         Flexible(flex: 2, child: HomeTimeSetting()),
         Flexible(flex: 3, child: HomePrivacy())
       ]

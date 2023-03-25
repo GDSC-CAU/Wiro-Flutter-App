@@ -25,31 +25,54 @@ class ChatInfo extends StatefulWidget {
 class _ChatInfoState extends State<ChatInfo> {
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: double.infinity,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        mainAxisSize: MainAxisSize.max,
-        children: [
-          const Flexible(
-            flex: 7,
-            child: Text(
-              "사회복지사",
-              style: TextStyle(
-                fontSize: 30
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
+      child: SizedBox(
+        height: double.infinity,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisSize: MainAxisSize.max,
+          children: [
+            const Flexible(
+              flex: 7,
+              child: Text(
+                "사회복지사",
+                style: TextStyle(
+                  fontSize: 30
+                )
+              )
+            ),
+            Flexible(
+              flex: 3,
+              child: ElevatedButton(
+                onPressed: (){
+
+                },
+                style: ButtonStyle(
+                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                    RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20.0)
+                    )
+                  ),
+                  backgroundColor: MaterialStateProperty.resolveWith((states) {
+                      if (states.contains(MaterialState.pressed)) {
+                        return const Color(0xFFD5D5D5);
+                      }
+                      return const Color(0xFFF5F5F5);
+                    }
+                  )
+                ),
+                child: const Text("전화 걸기",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 20,
+                    height: 1
+                  )
+                ),
               )
             )
-          ),
-          Flexible(
-            flex: 3,
-            child: IconButton(
-              onPressed: (){
-                print("");
-              },
-              icon: const Icon(Icons.call)
-            )
-          )
-        ],
+          ]
+        )
       )
     );
   }
