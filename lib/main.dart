@@ -6,8 +6,20 @@ void main() {
   runApp(const SCApp());
 }
 
-class SCApp extends StatelessWidget {
+class SCApp extends StatefulWidget {
   const SCApp({super.key});
+
+  @override
+  State<StatefulWidget> createState() => SCAppState();
+}
+
+class SCAppState extends State<SCApp> {
+  bool isLoggedIn = false;
+
+  @override
+  void setState(VoidCallback fn) {
+    super.setState(fn);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +28,7 @@ class SCApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const BasePage(),
+      home: isLoggedIn ? BasePage() : LoginPage(),
     );
   }
 }
