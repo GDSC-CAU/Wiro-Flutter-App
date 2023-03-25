@@ -5,17 +5,13 @@ class ChatPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return
-      Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: Column(
-            children: const [
-              Flexible(flex: 1, child: ChatInfo()),
-              Flexible(flex: 4, child: ChatHistory()),
-              Flexible(flex: 1, child: ChatInput()),
-            ]
-          )
-      );
+    return Column(
+      children: const [
+        Flexible(flex: 1, child: ChatInfo()),
+        Flexible(flex: 4, child: ChatHistory()),
+        Flexible(flex: 1, child: ChatInput()),
+      ]
+    );
   }
 }
 
@@ -29,32 +25,32 @@ class ChatInfo extends StatefulWidget {
 class _ChatInfoState extends State<ChatInfo> {
   @override
   Widget build(BuildContext context) {
-    return
-      SizedBox(
-        height: double.infinity,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          mainAxisSize: MainAxisSize.max,
-          children: [
-            const Flexible(
-                flex: 7,
-                child: Text(
-                    "사회복지사",
-                    style: TextStyle(
-                        fontSize: 30
-                    )
-                )
-            ),
-            Flexible(
-                flex: 3,
-                child: IconButton(onPressed: (){
-                  print("");
-                }, icon: const Icon(Icons.call)
-                )
+    return SizedBox(
+      height: double.infinity,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisSize: MainAxisSize.max,
+        children: [
+          const Flexible(
+            flex: 7,
+            child: Text(
+              "사회복지사",
+              style: TextStyle(
+                fontSize: 30
+              )
             )
-          ],
-        )
-      );
+          ),
+          Flexible(
+            flex: 3,
+            child: IconButton(onPressed: (){
+                print("");
+              },
+              icon: const Icon(Icons.call)
+            )
+          )
+        ],
+      )
+    );
   }
 }
 
@@ -118,19 +114,19 @@ class _ChatHistoryState extends State<ChatHistory> {
     return SizedBox(
       height: double.infinity,
       child: SingleChildScrollView(
-          scrollDirection: Axis.vertical,
-          reverse: true,
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: () {
-              final List<Widget> chatItemList = [];
-              for (var chatItem in chatList){
-                chatItemList.add(ChatHistoryItem(chatData: chatItem));
-              }
-              return chatItemList;
-            }(),
-          )
+        scrollDirection: Axis.vertical,
+        reverse: true,
+        child: Column(
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: () {
+            final List<Widget> chatItemList = [];
+            for (var chatItem in chatList){
+              chatItemList.add(ChatHistoryItem(chatData: chatItem));
+            }
+            return chatItemList;
+          }(),
+        )
       ),
     );
   }
@@ -147,41 +143,41 @@ class ChatHistoryItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-        width: double.infinity,
-        child: Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: Column(
-            children: [
-              SizedBox(
-                width: double.infinity,
-                child: Text(
-                    chatData['sender']!,
-                    style: const TextStyle(
-                        fontSize: 20
-                    )
-                ),
+      width: double.infinity,
+      child: Padding(
+        padding: const EdgeInsets.all(10.0),
+        child: Column(
+          children: [
+            SizedBox(
+              width: double.infinity,
+              child: Text(
+                chatData['sender']!,
+                style: const TextStyle(
+                  fontSize: 20
+                )
               ),
-              SizedBox(
-                width: double.infinity,
-                child: Text(
-                    chatData['message']!,
-                    style: const TextStyle(
-                        fontSize: 30
-                    )
-                ),
+            ),
+            SizedBox(
+              width: double.infinity,
+              child: Text(
+                chatData['message']!,
+                style: const TextStyle(
+                  fontSize: 30
+                )
               ),
-              SizedBox(
-                width: double.infinity,
-                child: Text(
-                    chatData['datetime']!,
-                    style: const TextStyle(
-                        fontSize: 20
-                    )
-                ),
-              )
-            ],
-          )
+            ),
+            SizedBox(
+              width: double.infinity,
+              child: Text(
+                chatData['datetime']!,
+                style: const TextStyle(
+                  fontSize: 20
+                )
+              ),
+            )
+          ],
         )
+      )
     );
   }
 }
