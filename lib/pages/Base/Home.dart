@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:solutionchallengetem2_app/pages/PrivacyEditPage.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -177,7 +178,12 @@ class PrivacyCard extends StatelessWidget {
                             )
                           )
                         ),
-                        IconButton(onPressed: (){}, icon: const Icon(Icons.settings))
+                        IconButton(
+                          onPressed: (){
+                            Navigator.push((context), MaterialPageRoute(builder: (context) => const PrivacyEditPage()));
+                          },
+                          icon: const Icon(Icons.settings)
+                        )
                       ]
                     )
                   ),
