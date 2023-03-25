@@ -12,7 +12,7 @@ class PrivacyEditPage extends StatelessWidget {
           padding: const EdgeInsets.all(10.0),
           child: Column(
             children: [
-              PrivacyEditBack(),
+              const PrivacyEditBack(),
               PrivacyEditInput()
             ]
           )
@@ -23,6 +23,8 @@ class PrivacyEditPage extends StatelessWidget {
 }
 
 class PrivacyEditBack extends StatelessWidget {
+  const PrivacyEditBack({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -46,6 +48,8 @@ class PrivacyEditBack extends StatelessWidget {
 }
 
 class PrivacyEditInput extends StatelessWidget {
+  PrivacyEditInput({super.key});
+
   final inputBloodController = TextEditingController();
   final inputDiseaseController = TextEditingController();
   final inputIDController = TextEditingController();
