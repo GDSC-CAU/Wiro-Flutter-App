@@ -38,7 +38,7 @@ class _MissionRecommendCardState extends State<MissionRecommendCard> {
     });
 
     return Padding(
-      padding: EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
+      padding: const EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
       child: Card(
         color: const Color(0xFFF5F5F5),
         elevation: 0.0,
@@ -103,11 +103,15 @@ class _MissionHistoryCardState extends State<MissionHistoryCard> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text("미션 기록",
-                  style: TextStyle(
-                    fontSize: 40,
-                    fontWeight: FontWeight.bold,
-                    height: 1
+                const Padding(
+                  padding: EdgeInsets.only(top: 10.0, bottom: 10.0),
+                  child:
+                  Text("미션 기록",
+                    style: TextStyle(
+                      fontSize: 40,
+                      fontWeight: FontWeight.bold,
+                      height: 1
+                    )
                   )
                 ),
                 Expanded(
@@ -118,7 +122,7 @@ class _MissionHistoryCardState extends State<MissionHistoryCard> {
                         for(var item in _missionItemList){
                           itemWidgetList.add(
                             Padding(
-                              padding: EdgeInsets.all(5.0),
+                              padding: const EdgeInsets.all(5.0),
                               child: Text("Mission Item $item",
                                 style: const TextStyle(
                                   fontSize: 25,
@@ -181,11 +185,14 @@ class _CheckHistoryCardState extends State<CheckHistoryCard> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text("체크리스트 기록",
-                  style: TextStyle(
-                    fontSize: 40,
-                    fontWeight: FontWeight.bold,
-                    height: 1
+                const Padding(
+                  padding: EdgeInsets.only(top: 10.0, bottom: 10.0),
+                  child: Text("체크리스트 기록",
+                    style: TextStyle(
+                      fontSize: 40,
+                      fontWeight: FontWeight.bold,
+                      height: 1
+                    )
                   )
                 ),
                 Expanded(
@@ -196,7 +203,7 @@ class _CheckHistoryCardState extends State<CheckHistoryCard> {
                         for(var item in _chkItemList){
                           itemWidgetList.add(
                             Padding(
-                              padding: EdgeInsets.all(5.0),
+                              padding: const EdgeInsets.all(5.0),
                               child: Text("ChkList Item $item",
                                 style: const TextStyle(
                                   fontSize: 25,
