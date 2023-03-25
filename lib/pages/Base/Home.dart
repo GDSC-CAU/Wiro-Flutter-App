@@ -53,12 +53,13 @@ class TimeCard extends StatelessWidget {
         child: SizedBox(
           height: double.infinity,
           width: double.infinity,
-          child: Text("${timeType == "AM" ? "오전" : "오후"} 알림 ${timeData}",
-            textAlign: TextAlign.center,
-            style: const TextStyle(
-              fontSize: 50,
-              height: 2.25
-            )
+          child: Center(
+            child: Text("${timeType == "AM" ? "오전" : "오후"} 알림 ${timeData}",
+              textAlign: TextAlign.center,
+              style: const TextStyle(
+                fontSize: 50,
+              )
+            ),
           ),
         )
       )
