@@ -76,16 +76,16 @@ class _MissionHistoryCardState extends State<MissionHistoryCard> {
 
   @override
   void setState(VoidCallback fn) {
-    for(int i = 0; i < 5; i++){
-      _missionItemList.add(i.toString());
-    }
-
     super.setState(fn);
   }
 
   @override
   Widget build(BuildContext context) {
-    setState((){});
+    setState((){
+      for(int i = 0; i < 10; i++){
+        _missionItemList.add(i.toString());
+      }
+    });
 
     return Padding(
       padding: const EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
@@ -158,16 +158,16 @@ class _CheckHistoryCardState extends State<CheckHistoryCard> {
 
   @override
   void setState(VoidCallback fn) {
-    for(int i = 0; i < 5; i++){
-      _chkItemList.add(i.toString());
-    }
-
     super.setState(fn);
   }
 
   @override
   Widget build(BuildContext context) {
-    setState((){});
+    setState((){
+      for(int i = 0; i < 10; i++){
+        _chkItemList.add(i.toString());
+      }
+    });
 
     return Padding(
       padding: const EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
