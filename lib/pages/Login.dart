@@ -21,19 +21,19 @@ class LoginPageState extends State<LoginPage> {
     scApp = context.findAncestorStateOfType<SCAppState>();
 
     return Scaffold(
-        body: Padding(
-            padding: EdgeInsets.all(8.0),
-            child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  ElevatedButton(
-                      onPressed: tryGoogleLogin,
-                      child: Text("Login with Google")
-                  )
-                ]
+      body: Padding(
+        padding: EdgeInsets.all(8.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ElevatedButton(
+              onPressed: tryGoogleLogin,
+              child: Text("Login with Google")
             )
+          ]
         )
+      )
     );
   }
 
