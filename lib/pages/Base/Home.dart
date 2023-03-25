@@ -23,13 +23,26 @@ class HomeTimeSetting extends StatefulWidget {
 }
 
 class _TimeState extends State<HomeTimeSetting> {
+  String _strNotiTimeAM = "";
+  String _strNotiTimePM = "";
+
+  @override
+  void setState(VoidCallback fn) {
+    super.setState(fn);
+  }
+
   @override
   Widget build(BuildContext context) {
+    setState(() {
+      _strNotiTimeAM = "10:00";
+      _strNotiTimePM = "18:00";
+    });
+
     return Column(
       mainAxisSize: MainAxisSize.max,
-      children: const [
-        Flexible(flex: 1, child: TimeCard(timeData: "10:00", timeType: "AM")),
-        Flexible(flex: 1, child: TimeCard(timeData: "18:00", timeType: "PM")),
+      children: [
+        Flexible(flex: 1, child: TimeCard(timeData: _strNotiTimeAM, timeType: "AM")),
+        Flexible(flex: 1, child: TimeCard(timeData: _strNotiTimePM, timeType: "PM")),
       ],
     );
   }
@@ -76,18 +89,40 @@ class HomePrivacy extends StatefulWidget {
 }
 
 class _PrivacyState extends State<HomePrivacy> {
+  String _strPrivacyName = "";
+  String _strPrivacyID = "";
+  String _strPrivacyBlood = "";
+  String _strPrivacyDisease = "";
+  String _strPrivacyMedicine = "";
+
+  @override
+  void setState(VoidCallback fn) {
+    super.setState(fn);
+  }
+
   @override
   Widget build(BuildContext context) {
+    setState(() {
+      _strPrivacyName = "김XX";
+      _strPrivacyID = "000000-1234567";
+      _strPrivacyBlood = "A형";
+      _strPrivacyDisease = "없음";
+      _strPrivacyMedicine = "없음";
+    });
+
     return Column(
       mainAxisSize: MainAxisSize.max,
-      children: const [
-        Flexible(flex: 1, child: PrivacyCard(
-          privacyName: "김XX",
-          privacyID: "000000-1234567",
-          privacyBlood: "A형",
-          privacyDisease: "없음",
-          privacyMedicine: "없음"
-        ))
+      children: [
+        Flexible(
+          flex: 1,
+          child: PrivacyCard(
+            privacyName: _strPrivacyName,
+            privacyID: _strPrivacyID,
+            privacyBlood: _strPrivacyBlood,
+            privacyDisease: _strPrivacyDisease,
+            privacyMedicine: _strPrivacyMedicine
+          )
+        )
       ],
     );
   }
