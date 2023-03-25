@@ -103,10 +103,11 @@ class _MissionHistoryCardState extends State<MissionHistoryCard> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text("미션 기록",
+                const Text("미션 기록",
                   style: TextStyle(
                     fontSize: 40,
-                    fontWeight: FontWeight.bold
+                    fontWeight: FontWeight.bold,
+                    height: 1
                   )
                 ),
                 Expanded(
@@ -120,7 +121,8 @@ class _MissionHistoryCardState extends State<MissionHistoryCard> {
                               padding: EdgeInsets.all(5.0),
                               child: Text("Mission Item $item",
                                 style: const TextStyle(
-                                  fontSize: 25
+                                  fontSize: 25,
+                                  height: 1
                                 )
                               )
                             )
@@ -182,7 +184,8 @@ class _CheckHistoryCardState extends State<CheckHistoryCard> {
                 const Text("체크리스트 기록",
                   style: TextStyle(
                     fontSize: 40,
-                    fontWeight: FontWeight.bold
+                    fontWeight: FontWeight.bold,
+                    height: 1
                   )
                 ),
                 Expanded(
@@ -196,7 +199,8 @@ class _CheckHistoryCardState extends State<CheckHistoryCard> {
                               padding: EdgeInsets.all(5.0),
                               child: Text("ChkList Item $item",
                                 style: const TextStyle(
-                                  fontSize: 25
+                                  fontSize: 25,
+                                  height: 1
                                 )
                               )
                             )
