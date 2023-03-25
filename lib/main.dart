@@ -24,9 +24,9 @@ class SCAppState extends State<SCApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: "Solution Challenge Team2",
+      title: "Wiro - Solution Challenge Team2",
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.indigo,
       ),
       home: isLoggedIn ? const BasePage() : const LoginPage(),
     );
