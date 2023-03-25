@@ -54,7 +54,7 @@ class TimeCard extends StatelessWidget {
           height: double.infinity,
           width: double.infinity,
           child: Center(
-            child: Text("${timeType == "AM" ? "오전" : "오후"} 알림 ${timeData}",
+            child: Text("${timeType == "AM" ? "오전" : "오후"} 알림 $timeData",
               textAlign: TextAlign.center,
               style: const TextStyle(
                 fontSize: 50,
@@ -144,15 +144,15 @@ class PrivacyCard extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      PrivacyCardTextTitle(textStr: "성함"),
+                      const PrivacyCardTextTitle(textStr: "성함"),
                       PrivacyCardText(textStr: privacyName),
-                      PrivacyCardTextTitle(textStr: "주민등록번호"),
+                      const PrivacyCardTextTitle(textStr: "주민등록번호"),
                       PrivacyCardText(textStr: privacyID),
-                      PrivacyCardTextTitle(textStr: "혈액형"),
+                      const PrivacyCardTextTitle(textStr: "혈액형"),
                       PrivacyCardText(textStr: privacyBlood),
-                      PrivacyCardTextTitle(textStr: "지병"),
+                      const PrivacyCardTextTitle(textStr: "지병"),
                       PrivacyCardText(textStr: privacyDisease),
-                      PrivacyCardTextTitle(textStr: "복용약"),
+                      const PrivacyCardTextTitle(textStr: "복용약"),
                       PrivacyCardText(textStr: privacyMedicine)
                     ],
                   )
