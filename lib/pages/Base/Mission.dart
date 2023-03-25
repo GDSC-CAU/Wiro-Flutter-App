@@ -105,7 +105,8 @@ class _MissionHistoryCardState extends State<MissionHistoryCard> {
               children: [
                 Text("미션 기록",
                   style: TextStyle(
-                    fontSize: 40
+                    fontSize: 40,
+                    fontWeight: FontWeight.bold
                   )
                 ),
                 Expanded(
@@ -115,9 +116,12 @@ class _MissionHistoryCardState extends State<MissionHistoryCard> {
                         final List<Widget> itemWidgetList = [];
                         for(var item in _missionItemList){
                           itemWidgetList.add(
-                            Text("Mission Item $item",
-                              style: const TextStyle(
-                                fontSize: 20
+                            Padding(
+                              padding: EdgeInsets.all(5.0),
+                              child: Text("Mission Item $item",
+                                style: const TextStyle(
+                                  fontSize: 20
+                                )
                               )
                             )
                           );
@@ -177,7 +181,8 @@ class _CheckHistoryCardState extends State<CheckHistoryCard> {
               children: [
                 const Text("체크리스트 기록",
                   style: TextStyle(
-                    fontSize: 40
+                    fontSize: 40,
+                    fontWeight: FontWeight.bold
                   )
                 ),
                 Expanded(
@@ -187,9 +192,12 @@ class _CheckHistoryCardState extends State<CheckHistoryCard> {
                         final List<Widget> itemWidgetList = [];
                         for(var item in _chkItemList){
                           itemWidgetList.add(
-                            Text("ChkList Item $item",
-                              style: const TextStyle(
-                                fontSize: 20
+                            Padding(
+                              padding: EdgeInsets.all(5.0),
+                              child: Text("ChkList Item $item",
+                                style: const TextStyle(
+                                  fontSize: 20
+                                )
                               )
                             )
                           );
