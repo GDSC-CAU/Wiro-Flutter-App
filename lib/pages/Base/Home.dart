@@ -28,8 +28,8 @@ class _TimeState extends State<HomeTimeSetting> {
     return Column(
       mainAxisSize: MainAxisSize.max,
       children: const [
-        Flexible(flex: 1, child: TimeCard(timeData: "오전 10:00", timeType: "M")),
-        Flexible(flex: 1, child: TimeCard(timeData: "오후 18:00", timeType: "A")),
+        Flexible(flex: 1, child: TimeCard(timeData: "10:00", timeType: "AM")),
+        Flexible(flex: 1, child: TimeCard(timeData: "18:00", timeType: "PM")),
       ],
     );
   }
@@ -48,7 +48,7 @@ class TimeCard extends StatelessWidget {
         child: SizedBox(
           height: double.infinity,
           width: double.infinity,
-          child: Text(timeData,
+          child: Text("${timeType == "AM" ? "오전" : "오후"} 알림 ${timeData}",
             textAlign: TextAlign.center,
             style: const TextStyle(
               fontSize: 50,
