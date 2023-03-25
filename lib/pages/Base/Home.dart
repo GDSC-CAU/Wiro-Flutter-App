@@ -118,7 +118,7 @@ class PrivacyCard extends StatelessWidget {
           borderRadius: BorderRadius.circular(30.0)
         ),
         child: Padding(
-          padding: const EdgeInsets.all(10.0),
+          padding: const EdgeInsets.all(20.0),
           child: SizedBox(
             height: double.infinity,
             width: double.infinity,
@@ -142,21 +142,24 @@ class PrivacyCard extends StatelessWidget {
                       ]
                     )
                   ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      const PrivacyCardTextTitle(textStr: "성함"),
-                      PrivacyCardText(textStr: privacyName),
-                      const PrivacyCardTextTitle(textStr: "주민등록번호"),
-                      PrivacyCardText(textStr: privacyID),
-                      const PrivacyCardTextTitle(textStr: "혈액형"),
-                      PrivacyCardText(textStr: privacyBlood),
-                      const PrivacyCardTextTitle(textStr: "지병"),
-                      PrivacyCardText(textStr: privacyDisease),
-                      const PrivacyCardTextTitle(textStr: "복용약"),
-                      PrivacyCardText(textStr: privacyMedicine)
-                    ],
+                  Padding(
+                    padding: EdgeInsets.all(10.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        const PrivacyCardTextTitle(textStr: "성함"),
+                        PrivacyCardText(textStr: privacyName),
+                        const PrivacyCardTextTitle(textStr: "주민등록번호"),
+                        PrivacyCardText(textStr: privacyID),
+                        const PrivacyCardTextTitle(textStr: "혈액형"),
+                        PrivacyCardText(textStr: privacyBlood),
+                        const PrivacyCardTextTitle(textStr: "지병"),
+                        PrivacyCardText(textStr: privacyDisease),
+                        const PrivacyCardTextTitle(textStr: "복용약"),
+                        PrivacyCardText(textStr: privacyMedicine)
+                      ],
+                    )
                   )
                 ]
               ),
@@ -178,10 +181,13 @@ class PrivacyCardText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      textStr,
-      style: const TextStyle(
-        fontSize: 30
+    return Padding(
+      padding: const EdgeInsets.all(10.0),
+      child: Text(
+        textStr,
+        style: const TextStyle(
+          fontSize: 30
+        )
       )
     );
   }
@@ -198,11 +204,11 @@ class PrivacyCardTextTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-        textStr,
-        style: const TextStyle(
-          fontSize: 20,
-          fontWeight: FontWeight.bold
-        )
+      textStr,
+      style: const TextStyle(
+        fontSize: 20,
+        fontWeight: FontWeight.bold
+      )
     );
   }
 }
