@@ -79,7 +79,7 @@ class PrivacyEditInput extends StatelessWidget {
                     TextField(
                       controller: inputNameController,
                       style: const TextStyle(
-                          fontSize: 20
+                        fontSize: 20
                       ),
                     )
                   ]
@@ -88,124 +88,124 @@ class PrivacyEditInput extends StatelessWidget {
             )
           ),
           Card(
-              color: const Color(0xFFF5F5F5),
-              elevation: 0.0,
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(30.0)
-              ),
-              child: Padding(
-                  padding: const EdgeInsets.all(20.0),
-                  child: SizedBox(
-                    width: double.infinity,
-                    child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const Text("주민등록번호",
-                            style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold
-                            )
-                          ),
-                          TextField(
-                            controller: inputIDController,
-                            style: const TextStyle(
-                                fontSize: 20
-                            ),
-                          )
-                        ]
+            color: const Color(0xFFF5F5F5),
+            elevation: 0.0,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(30.0)
+            ),
+            child: Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: SizedBox(
+                width: double.infinity,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Text("주민등록번호",
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold
+                      )
                     ),
-                  )
+                    TextField(
+                      controller: inputIDController,
+                      style: const TextStyle(
+                        fontSize: 20
+                      ),
+                    )
+                  ]
+                ),
               )
+            )
           ),
           Card(
-              color: const Color(0xFFF5F5F5),
-              elevation: 0.0,
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(30.0)
-              ),
-              child: Padding(
-                  padding: const EdgeInsets.all(20.0),
-                  child: SizedBox(
-                    width: double.infinity,
-                    child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const Text("혈액형",
-                            style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold
-                            )
-                          ),
-                          TextField(
-                            controller: inputBloodController,
-                            style: const TextStyle(
-                                fontSize: 20
-                            ),
-                          )
-                        ]
+            color: const Color(0xFFF5F5F5),
+            elevation: 0.0,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(30.0)
+            ),
+            child: Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: SizedBox(
+                width: double.infinity,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Text("혈액형",
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold
+                      )
                     ),
-                  )
+                    TextField(
+                      controller: inputBloodController,
+                      style: const TextStyle(
+                        fontSize: 20
+                      ),
+                    )
+                  ]
+                ),
               )
+            )
           ),
           Card(
-              color: const Color(0xFFF5F5F5),
-              elevation: 0.0,
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(30.0)
-              ),
-              child: Padding(
-                  padding: const EdgeInsets.all(20.0),
-                  child: SizedBox(
-                    width: double.infinity,
-                    child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const Text("지병",
-                            style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold
-                            )
-                          ),
-                          TextField(
-                            controller: inputDiseaseController,
-                            style: const TextStyle(
-                                fontSize: 20
-                            ),
-                          )
-                        ]
+            color: const Color(0xFFF5F5F5),
+            elevation: 0.0,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(30.0)
+            ),
+            child: Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: SizedBox(
+                width: double.infinity,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Text("지병",
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold
+                      )
                     ),
-                  )
+                    TextField(
+                      controller: inputDiseaseController,
+                      style: const TextStyle(
+                        fontSize: 20
+                      ),
+                    )
+                  ]
+                ),
               )
+            )
           ),
           Card(
-              color: const Color(0xFFF5F5F5),
-              elevation: 0.0,
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(30.0)
-              ),
-              child: Padding(
-                  padding: const EdgeInsets.all(20.0),
-                  child: SizedBox(
-                    width: double.infinity,
-                    child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const Text("복용중인 약",
-                            style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold
-                            )
-                          ),
-                          TextField(
-                            controller: inputMedicineController,
-                            style: const TextStyle(
-                                fontSize: 20
-                            ),
-                          )
-                        ]
+            color: const Color(0xFFF5F5F5),
+            elevation: 0.0,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(30.0)
+            ),
+            child: Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: SizedBox(
+                width: double.infinity,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Text("복용중인 약",
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold
+                      )
                     ),
-                  )
+                    TextField(
+                      controller: inputMedicineController,
+                      style: const TextStyle(
+                        fontSize: 20
+                      ),
+                    )
+                  ]
+                ),
               )
+            )
           ),
         ],
       )
