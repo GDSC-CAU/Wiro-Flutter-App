@@ -115,27 +115,30 @@ class _MissionHistoryCardState extends State<MissionHistoryCard> {
                   )
                 ),
                 Expanded(
-                  child: SingleChildScrollView(
-                    child: Column(
-                      children: (){
-                        final List<Widget> itemWidgetList = [];
-                        for(var item in _missionItemList){
-                          itemWidgetList.add(
-                            Padding(
-                              padding: const EdgeInsets.all(5.0),
-                              child: Text("Mission Item $item",
-                                style: const TextStyle(
-                                  fontSize: 25,
-                                  height: 1
+                  child: SizedBox.expand(
+                    child: SingleChildScrollView(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: (){
+                          final List<Widget> itemWidgetList = [];
+                          for(var item in _missionItemList){
+                            itemWidgetList.add(
+                              Padding(
+                                padding: const EdgeInsets.all(5.0),
+                                child: Text("Mission Item $item",
+                                  style: const TextStyle(
+                                    fontSize: 25,
+                                    height: 1
+                                  )
                                 )
                               )
-                            )
-                          );
-                        }
-                        return itemWidgetList;
-                      }()
+                            );
+                          }
+                          return itemWidgetList;
+                        }()
+                      ),
                     ),
-                  ),
+                  )
                 )
               ]
             ),
@@ -196,27 +199,30 @@ class _CheckHistoryCardState extends State<CheckHistoryCard> {
                   )
                 ),
                 Expanded(
-                  child: SingleChildScrollView(
-                    child: Column(
-                      children: (){
-                        final List<Widget> itemWidgetList = [];
-                        for(var item in _chkItemList){
-                          itemWidgetList.add(
-                            Padding(
-                              padding: const EdgeInsets.all(5.0),
-                              child: Text("ChkList Item $item",
-                                style: const TextStyle(
-                                  fontSize: 25,
-                                  height: 1
+                  child: SizedBox.expand(
+                    child: SingleChildScrollView(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: (){
+                          final List<Widget> itemWidgetList = [];
+                          for(var item in _chkItemList){
+                            itemWidgetList.add(
+                              Padding(
+                                padding: const EdgeInsets.all(5.0),
+                                child: Text("ChkList Item $item",
+                                  style: const TextStyle(
+                                    fontSize: 25,
+                                    height: 1
+                                  )
                                 )
                               )
-                            )
-                          );
-                        }
-                        return itemWidgetList;
-                      }()
+                            );
+                          }
+                          return itemWidgetList;
+                        }()
+                      ),
                     ),
-                  ),
+                  )
                 )
               ]
             ),
