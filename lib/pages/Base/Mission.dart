@@ -5,16 +5,13 @@ class MissionPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(10.0),
-      child: Column(
-        mainAxisSize: MainAxisSize.max,
-        children: const [
-          Flexible(flex: 1, child: MissionRecommendCard()),
-          Flexible(flex: 2, child: MissionHistoryCard()),
-          Flexible(flex: 2, child: CheckHistoryCard())
-        ]
-      )
+    return Column(
+      mainAxisSize: MainAxisSize.max,
+      children: const [
+        Flexible(flex: 1, child: MissionRecommendCard()),
+        Flexible(flex: 2, child: MissionHistoryCard()),
+        Flexible(flex: 2, child: CheckHistoryCard())
+      ]
     );
   }
 }
@@ -60,7 +57,7 @@ class MissionHistoryCard extends StatefulWidget {
 }
 
 class _MissionHistoryCardState extends State<MissionHistoryCard> {
-  List<String> _missionItemList = [];
+  final List<String> _missionItemList = [];
 
   @override
   void setState(VoidCallback fn) {
@@ -76,10 +73,10 @@ class _MissionHistoryCardState extends State<MissionHistoryCard> {
     setState((){});
 
     return Padding(
-      padding: EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
+      padding: const EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
       child: Card(
         child: Padding(
-          padding: EdgeInsets.all(10.0),
+          padding: const EdgeInsets.all(10.0),
           child: SizedBox(
             height: double.infinity,
             width: double.infinity,
@@ -127,7 +124,7 @@ class CheckHistoryCard extends StatefulWidget {
 }
 
 class _CheckHistoryCardState extends State<CheckHistoryCard> {
-  List<String> _chkItemList = [];
+  final List<String> _chkItemList = [];
 
   @override
   void setState(VoidCallback fn) {
@@ -143,10 +140,10 @@ class _CheckHistoryCardState extends State<CheckHistoryCard> {
     setState((){});
 
     return Padding(
-      padding: EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
+      padding: const EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
       child: Card(
         child: Padding(
-          padding: EdgeInsets.all(10.0),
+          padding: const EdgeInsets.all(10.0),
           child: SizedBox(
             height: double.infinity,
             width: double.infinity,
