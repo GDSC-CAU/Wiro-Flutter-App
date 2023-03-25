@@ -39,22 +39,28 @@ class _BasePageState extends State<BasePage> {
         )
       ),
       bottomNavigationBar: SizedBox(
-        height: 100,
+        height: 120,
         child: BottomNavigationBar(
           showSelectedLabels: false,
           showUnselectedLabels: false,
           items: <BottomNavigationBarItem>[
             BottomNavigationBarItem(
               icon: SizedBox(
+                height: 75,
+                width: 85,
                 child: DecoratedBox(
                   decoration: BoxDecoration(
-                    color: _curIndex == 0 ? Colors.blue : const Color(0xFFF5F5F5),
+                    color: _curIndex == 0 ? const Color(0xFF001E99) : const Color(0xFFF5F5F5),
                     borderRadius: BorderRadius.circular(15.0)
                   ),
-                  child: Text("목록",
-                    style: TextStyle(
-                      color: _curIndex == 0 ? Colors.white : Colors.black,
-                      fontSize: 35
+                  child: Center(
+                    child: Text("목록",
+                      style: TextStyle(
+                        color: _curIndex == 0 ? Colors.white : Colors.black,
+                        fontSize: 35,
+                        fontWeight: FontWeight.bold,
+                        height: 1
+                      )
                     )
                   )
                 )
@@ -63,15 +69,21 @@ class _BasePageState extends State<BasePage> {
             ),
             BottomNavigationBarItem(
               icon: SizedBox(
+                height: 75,
+                width: 85,
                 child: DecoratedBox(
                   decoration: BoxDecoration(
-                    color: _curIndex == 1 ? Colors.blue : const Color(0xFFF5F5F5),
+                    color: _curIndex == 1 ? const Color(0xFF001E99) : const Color(0xFFF5F5F5),
                     borderRadius: BorderRadius.circular(15.0)
                   ),
-                  child: Text("알림",
-                    style: TextStyle(
-                      color: _curIndex == 1 ? Colors.white : Colors.black,
-                      fontSize: 35
+                  child: Center(
+                    child: Text("알림",
+                      style: TextStyle(
+                        color: _curIndex == 1 ? Colors.white : Colors.black,
+                        fontSize: 35,
+                        fontWeight: FontWeight.bold,
+                        height: 1
+                      )
                     )
                   )
                 )
@@ -80,15 +92,21 @@ class _BasePageState extends State<BasePage> {
             ),
             BottomNavigationBarItem(
               icon: SizedBox(
+                height: 75,
+                width: 85,
                 child: DecoratedBox(
                   decoration: BoxDecoration(
-                    color: _curIndex == 2 ? Colors.blue : const Color(0xFFF5F5F5),
+                    color: _curIndex == 2 ? const Color(0xFF001E99) : const Color(0xFFF5F5F5),
                     borderRadius: BorderRadius.circular(15.0)
                   ),
-                  child: Text("대화",
-                    style: TextStyle(
-                      color: _curIndex == 2 ? Colors.white : Colors.black,
-                      fontSize: 35
+                  child: Center(
+                    child: Text("대화",
+                      style: TextStyle(
+                        color: _curIndex == 2 ? Colors.white : Colors.black,
+                        fontSize: 35,
+                        fontWeight: FontWeight.bold,
+                        height: 1
+                      )
                     )
                   )
                 )
