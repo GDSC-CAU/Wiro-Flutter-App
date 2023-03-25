@@ -42,7 +42,8 @@ class _ChatInfoState extends State<ChatInfo> {
           ),
           Flexible(
             flex: 3,
-            child: IconButton(onPressed: (){
+            child: IconButton(
+              onPressed: (){
                 print("");
               },
               icon: const Icon(Icons.call)
@@ -146,16 +147,16 @@ class ChatHistoryItem extends StatelessWidget {
           SizedBox(
             width: double.infinity,
             child: Padding(
-                padding: const EdgeInsets.fromLTRB(30.0, 20.0, 30.0, 10.0),
-                child: Text(
-                    chatData['sender']!,
-                    textAlign: isFromMe ? TextAlign.end : TextAlign.start,
-                    style: const TextStyle(
-                        color: Color(0xFF000000),
-                        fontSize: 20,
-                        height: 1
-                    )
+              padding: const EdgeInsets.fromLTRB(30.0, 20.0, 30.0, 10.0),
+              child: Text(
+                chatData['sender']!,
+                textAlign: isFromMe ? TextAlign.end : TextAlign.start,
+                style: const TextStyle(
+                  color: Color(0xFF000000),
+                  fontSize: 20,
+                  height: 1
                 )
+              )
             ),
           ),
           DecoratedBox(
@@ -222,10 +223,10 @@ class _ChatInputState extends State<ChatInput> {
     return Row(
       children: [
         Flexible(
-            flex: 9,
-            child: TextField(
-              controller: inputController,
-            )
+          flex: 9,
+          child: TextField(
+            controller: inputController,
+          )
         ),
         Flexible(
           flex: 1,
