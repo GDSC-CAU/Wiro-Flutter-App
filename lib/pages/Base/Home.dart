@@ -58,6 +58,7 @@ class TimeCard extends StatelessWidget {
               textAlign: TextAlign.center,
               style: const TextStyle(
                 fontSize: 50,
+                fontWeight: FontWeight.bold,
               )
             ),
           ),
@@ -133,7 +134,8 @@ class PrivacyCard extends StatelessWidget {
                       children: [
                         const Text("개인정보",
                             style: TextStyle(
-                              fontSize: 50
+                              fontSize: 50,
+                              fontWeight: FontWeight.bold
                             )
                         ),
                         IconButton(onPressed: (){}, icon: const Icon(Icons.settings))
