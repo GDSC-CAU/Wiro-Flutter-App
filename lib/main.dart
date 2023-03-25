@@ -28,7 +28,7 @@ class SCAppState extends State<SCApp> {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: isLoggedIn ? BasePage() : LoginPage(),
+      home: isLoggedIn ? const BasePage() : const LoginPage(),
     );
   }
 }
