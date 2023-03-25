@@ -22,14 +22,14 @@ class LoginPageState extends State<LoginPage> {
 
     return Scaffold(
       body: Padding(
-        padding: EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(8.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             ElevatedButton(
               onPressed: tryGoogleLogin,
-              child: Text("Login with Google")
+              child: const Text("Login with Google")
             )
           ]
         )
