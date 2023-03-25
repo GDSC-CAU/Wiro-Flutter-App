@@ -243,22 +243,37 @@ class _ChatInputState extends State<ChatInput> {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Flexible(
-          flex: 9,
-          child: TextField(
-            controller: inputController,
-          )
-        ),
-        Flexible(
-          flex: 1,
-            child: IconButton(onPressed: (){
-              print(inputController.text);
-            }, icon: const Icon(Icons.send)
-          )
+    return Padding(
+      padding: EdgeInsets.only(left: 20),
+      child: SizedBox(
+        height: double.infinity,
+        width: double.infinity,
+        child: Row(
+          children: [
+            Flexible(
+                flex: 8,
+                child: TextField(
+                  controller: inputController,
+                  style: const TextStyle(
+                      fontSize: 30
+                  ),
+                )
+            ),
+            Flexible(
+                flex: 2,
+                child: SizedBox(
+                  height: double.infinity,
+                  width: double.infinity,
+                  child: IconButton(
+                    onPressed: (){
+                      print(inputController.text);
+                    },
+                    icon: const Icon(Icons.send, size: 40.0),
+                  ),
+                )
+            )
+          ],
         )
-      ],
-    );
+      ));
   }
 }
