@@ -5,13 +5,17 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisSize: MainAxisSize.max,
-      children: const [
-        Flexible(flex: 1, child: HomeTimeSetting()),
-        Flexible(flex: 1, child: HomePrivacy())
-      ]
-    );
+    return
+      Padding(
+        padding: const EdgeInsets.fromLTRB(10.0, 20.0, 10.0, 10.0),
+        child: Column(
+          mainAxisSize: MainAxisSize.max,
+          children: const [
+            Flexible(flex: 1, child: HomeTimeSetting()),
+            Flexible(flex: 1, child: HomePrivacy())
+          ]
+        )
+      );
   }
 }
 
@@ -42,24 +46,22 @@ class TimeCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-        padding: const EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
-        child: Card(
-            child: Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: SizedBox(
-                  height: double.infinity,
-                  width: double.infinity,
-                  child: Text(timeData,
-                      textAlign: TextAlign.center,
-                      style: const TextStyle(
-                          fontSize: 50,
-                          height: 2.25
-                      )),
-                )
-            )
+    return
+      Card(
+        child: Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: SizedBox(
+            height: double.infinity,
+            width: double.infinity,
+            child: Text(timeData,
+              textAlign: TextAlign.center,
+              style: const TextStyle(
+                fontSize: 50,
+                height: 2.25
+              )),
+          )
         )
-    );
+      );
   }
 }
 
@@ -104,48 +106,46 @@ class PrivacyCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-        padding: const EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
-        child: Card(
-            child: Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: SizedBox(
-                  height: double.infinity,
-                  width: double.infinity,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+    return
+      Card(
+        child: Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: SizedBox(
+            height: double.infinity,
+            width: double.infinity,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisSize: MainAxisSize.max,
                     children: [
-                      SizedBox(
-                        child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              const Text("Privacy View",
-                                  style: TextStyle(
-                                      fontSize: 50
-                                  )
-                              ),
-                              IconButton(onPressed: (){}, icon: const Icon(Icons.settings))
-                            ]
+                      const Text("Privacy View",
+                        style: TextStyle(
+                          fontSize: 50
                         )
                       ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          PrivacyCardText(textStr: "성함 : $privacyName"),
-                          PrivacyCardText(textStr: "주민등록번호 : $privacyID"),
-                          PrivacyCardText(textStr: "혈액형 : $privacyBlood"),
-                          PrivacyCardText(textStr: "지병 : $privacyDisease"),
-                          PrivacyCardText(textStr: "복용약 : $privacyMedicine")
-                        ],
-                      )
+                      IconButton(onPressed: (){}, icon: const Icon(Icons.settings))
                     ]
-                  ),
+                  )
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    PrivacyCardText(textStr: "성함 : $privacyName"),
+                    PrivacyCardText(textStr: "주민등록번호 : $privacyID"),
+                    PrivacyCardText(textStr: "혈액형 : $privacyBlood"),
+                    PrivacyCardText(textStr: "지병 : $privacyDisease"),
+                    PrivacyCardText(textStr: "복용약 : $privacyMedicine")
+                  ],
                 )
-            )
+              ]
+            ),
+          )
         )
-    );
+      );
   }
 }
 
