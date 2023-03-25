@@ -90,8 +90,13 @@ class _MissionHistoryCardState extends State<MissionHistoryCard> {
     return Padding(
       padding: const EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
       child: Card(
+        color: const Color(0xFFF5F5F5),
+        elevation: 0.0,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(30.0)
+        ),
         child: Padding(
-          padding: const EdgeInsets.all(10.0),
+          padding: const EdgeInsets.all(20.0),
           child: SizedBox(
             height: double.infinity,
             width: double.infinity,
@@ -157,8 +162,13 @@ class _CheckHistoryCardState extends State<CheckHistoryCard> {
     return Padding(
       padding: const EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
       child: Card(
+        color: const Color(0xFFF5F5F5),
+        elevation: 0.0,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(30.0)
+        ),
         child: Padding(
-          padding: const EdgeInsets.all(10.0),
+          padding: const EdgeInsets.all(20.0),
           child: SizedBox(
             height: double.infinity,
             width: double.infinity,
