@@ -128,6 +128,7 @@ class _ChatHistoryState extends State<ChatHistory> {
               } else {
                 chatItemList.add(ChatHistoryItem(chatData: chatItem, isFromMe: false));
               }
+              i++;
             }
             return chatItemList;
           }(),
@@ -151,38 +152,62 @@ class ChatHistoryItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: double.infinity,
-      child: Padding(
-        padding: const EdgeInsets.all(10.0),
-        child: Column(
-          children: [
-            SizedBox(
-              width: double.infinity,
-              child: Text(
-                chatData['sender']!,
-                style: const TextStyle(
-                  fontSize: 20
-                )
+      child: DecoratedBox(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20),
+          color: isFromMe ? const Color(0xFF001E99) : const Color(0xFFF5F5F5)
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Column(
+            children: [
+              SizedBox(
+                width: double.infinity,
+                child: Padding(
+                  padding: const EdgeInsets.only(bottom: 5.0, top: 5.0),
+                  child: Text(
+                    chatData['sender']!,
+                    textAlign: isFromMe ? TextAlign.end : TextAlign.start,
+                    style: TextStyle(
+                      color: isFromMe ? const Color(0xFFFFFFFF) : const Color(0xFF000000),
+                      fontSize: 20,
+                      height: 1
+                    )
+                  )
+                ),
               ),
-            ),
-            SizedBox(
-              width: double.infinity,
-              child: Text(
-                chatData['message']!,
-                style: const TextStyle(
-                  fontSize: 30
-                )
+              SizedBox(
+                width: double.infinity,
+                child: Padding(
+                  padding: const EdgeInsets.only(bottom: 5.0, top: 5.0),
+                  child: Text(
+                    chatData['message']!,
+                    textAlign: isFromMe ? TextAlign.end : TextAlign.start,
+                    style: TextStyle(
+                      color: isFromMe ? const Color(0xFFFFFFFF) : const Color(0xFF000000),
+                      fontSize: 30,
+                      height: 1
+                    )
+                  )
+                ),
               ),
-            ),
-            SizedBox(
-              width: double.infinity,
-              child: Text(
-                chatData['datetime']!,
-                style: const TextStyle(
-                  fontSize: 20
-                )
-              ),
-            )
-          ],
+              SizedBox(
+                width: double.infinity,
+                child: Padding(
+                  padding: const EdgeInsets.only(bottom: 5.0, top: 5.0),
+                  child: Text(
+                    chatData['datetime']!,
+                    textAlign: isFromMe ? TextAlign.end : TextAlign.start,
+                    style: TextStyle(
+                      color: isFromMe ? const Color(0xFFFFFFFF) : const Color(0xFF000000),
+                      fontSize: 20,
+                      height: 1
+                    )
+                  )
+                ),
+              )
+            ],
+          )
         )
       )
     );
