@@ -14,6 +14,7 @@ class LoginPage extends StatefulWidget {
 }
 
 class LoginPageState extends State<LoginPage> {
+  bool _isBtnEnabled = false;
   SCAppState? scApp;
 
   @override
@@ -26,12 +27,12 @@ class LoginPageState extends State<LoginPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [
+          children: _isBtnEnabled ? [
             ElevatedButton(
               onPressed: tryGoogleLogin,
               child: const Text("Login with Google")
             )
-          ]
+          ] : []
         )
       )
     );
@@ -41,6 +42,11 @@ class LoginPageState extends State<LoginPage> {
   void initState() {
     super.initState();
     checkLastLogin();
+  }
+
+  @override
+  void setState(VoidCallback fn) {
+    super.setState(fn);
   }
 
   void checkLastLogin() async {
@@ -54,6 +60,10 @@ class LoginPageState extends State<LoginPage> {
         print(user.uid);
         scApp!.setState(() {
           scApp!.isLoggedIn = true;
+        });
+      }else{
+        setState(() {
+          _isBtnEnabled = true;
         });
       }
     });
