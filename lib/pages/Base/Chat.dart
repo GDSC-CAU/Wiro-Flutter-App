@@ -120,9 +120,14 @@ class _ChatHistoryState extends State<ChatHistory> {
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.end,
           children: () {
+            int i = 0;
             final List<Widget> chatItemList = [];
-            for (var chatItem in chatList){
-              chatItemList.add(ChatHistoryItem(chatData: chatItem));
+            for (var chatItem in chatList) {
+              if (i % 2 == 0) {
+                chatItemList.add(ChatHistoryItem(chatData: chatItem, isFromMe: true));
+              } else {
+                chatItemList.add(ChatHistoryItem(chatData: chatItem, isFromMe: false));
+              }
             }
             return chatItemList;
           }(),
@@ -135,9 +140,11 @@ class _ChatHistoryState extends State<ChatHistory> {
 class ChatHistoryItem extends StatelessWidget {
   const ChatHistoryItem({
     Key? key,
-    required this.chatData
+    required this.chatData,
+    required this.isFromMe
   }): super(key: key);
 
+  final bool isFromMe;
   final Map<String, String> chatData;
 
   @override
