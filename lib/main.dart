@@ -29,7 +29,7 @@ class SCAppState extends State<SCApp> {
       theme: ThemeData(
         primarySwatch: Colors.indigo,
       ),
-      home: isLoggedIn ? const BasePage() : const LoginPage(),
+      home: isLoggedIn ? BasePage(userToken: userToken) : const LoginPage(),
     );
   }
 }
