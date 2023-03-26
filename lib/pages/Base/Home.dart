@@ -126,6 +126,8 @@ class _PrivacyState extends State<HomePrivacy> {
       _strPrivacyDisease = responseData["disease"] ?? "DISEASE";
       _strPrivacyMedicine = responseData["medicine"] ?? "MEDICINE";
     });
+
+    print(response.body.toString());
   }
 
   @override
