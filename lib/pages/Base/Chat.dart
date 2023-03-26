@@ -269,29 +269,30 @@ class _ChatInputState extends State<ChatInput> {
         child: Row(
           children: [
             Flexible(
-                flex: 8,
-                child: TextField(
-                  controller: inputController,
-                  style: const TextStyle(
-                      fontSize: 30
-                  ),
-                )
+              flex: 8,
+              child: TextField(
+                controller: inputController,
+                style: const TextStyle(
+                  fontSize: 30
+                ),
+              )
             ),
             Flexible(
-                flex: 2,
-                child: SizedBox(
-                  height: double.infinity,
-                  width: double.infinity,
-                  child: IconButton(
-                    onPressed: (){
-                      print(inputController.text);
-                    },
-                    icon: const Icon(Icons.send, size: 40.0),
-                  ),
-                )
+              flex: 2,
+              child: SizedBox(
+                height: double.infinity,
+                width: double.infinity,
+                child: IconButton(
+                  onPressed: (){
+                    print(inputController.text);
+                  },
+                  icon: const Icon(Icons.send, size: 40.0),
+                ),
+              )
             )
           ],
         )
-      ));
+      )
+    );
   }
 }
