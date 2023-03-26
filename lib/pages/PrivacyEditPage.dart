@@ -68,7 +68,7 @@ class PrivacyEditInput extends StatelessWidget {
 
   void sendData(BuildContext context) async {
     final response = await http.post(
-      Uri.parse(FlutterConfig.get("API_URL") + "/users/updateUserInfo"),
+      Uri.parse("${FlutterConfig.get("API_URL")}/users/updateUserInfo"),
       headers: {
         "Authorization": "Bearer $userToken",
         "Content-Type": "application/json"
