@@ -113,7 +113,7 @@ class _PrivacyState extends State<HomePrivacy> {
     final response = await http.get(
       Uri.parse(FlutterConfig.get("API_URL") + "/users/getUserInfo"),
       headers: {
-        'Authorization': 'Bearer $userToken'
+        "Authorization": "Bearer $userToken"
       }
     );
 
