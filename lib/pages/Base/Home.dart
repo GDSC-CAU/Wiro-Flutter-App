@@ -109,17 +109,16 @@ class _PrivacyState extends State<HomePrivacy> {
 
   void getData() async {
     BasePageState? baseState = context.findAncestorStateOfType<BasePageState>();
-    final userToken = baseState!.userToken;
+    _userToken = baseState!.userToken;
     final response = await http.get(
       Uri.parse(FlutterConfig.get("API_URL") + "/users/getUserInfo"),
       headers: {
-        "Authorization": "Bearer $userToken"
+        "Authorization": "Bearer $_userToken"
       }
     );
 
     var responseData = jsonDecode(response.body)["result"];
     setState(() {
-      _userToken = context.findAncestorStateOfType<BasePageState>()!.userToken;
       _strPrivacyName = responseData["nickname"] ?? "NAME";
       _strPrivacyID = responseData["id"] ?? "ID";
       _strPrivacyBlood = responseData["blood"] ?? "BLOOD";
