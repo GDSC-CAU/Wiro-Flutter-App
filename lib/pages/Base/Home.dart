@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_config/flutter_config.dart';
+import 'package:http/http.dart' as http;
+import 'package:solutionchallengetem2_app/pages/Base.dart';
 import 'package:solutionchallengetem2_app/pages/PrivacyEditPage.dart';
 
 class HomePage extends StatelessWidget {
@@ -101,8 +104,22 @@ class _PrivacyState extends State<HomePrivacy> {
     super.setState(fn);
   }
 
+  void getData() async {
+    BasePageState? baseState = context.findAncestorStateOfType<BasePageState>();
+    final userToken = baseState!.userToken;
+    final response = await http.get(
+      Uri.parse(FlutterConfig.get("API_URL") + "/user/getUserInfo/cau"),
+      headers: {
+        'Authorization': 'Bearer $userToken'
+      }
+    );
+
+    print("Result" + response.body);
+  }
+
   @override
   Widget build(BuildContext context) {
+    getData();
     setState(() {
       _strPrivacyName = "김XX";
       _strPrivacyID = "000000-1234567";
