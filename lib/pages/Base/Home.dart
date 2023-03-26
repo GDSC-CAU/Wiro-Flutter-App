@@ -95,6 +95,7 @@ class HomePrivacy extends StatefulWidget {
 }
 
 class _PrivacyState extends State<HomePrivacy> {
+  String _userToken = "";
   String _strPrivacyName = "";
   String _strPrivacyID = "";
   String _strPrivacyBlood = "";
@@ -118,6 +119,7 @@ class _PrivacyState extends State<HomePrivacy> {
 
     var responseData = jsonDecode(response.body)["result"];
     setState(() {
+      _userToken = context.findAncestorStateOfType<BasePageState>()!.userToken;
       _strPrivacyName = responseData["nickname"] ?? "NAME";
       _strPrivacyID = responseData["id"] ?? "ID";
       _strPrivacyBlood = responseData["blood"] ?? "BLOOD";
@@ -136,6 +138,7 @@ class _PrivacyState extends State<HomePrivacy> {
         Flexible(
           flex: 1,
           child: PrivacyCard(
+            userToken: _userToken,
             privacyName: _strPrivacyName,
             privacyID: _strPrivacyID,
             privacyBlood: _strPrivacyBlood,
@@ -150,11 +153,14 @@ class _PrivacyState extends State<HomePrivacy> {
 
 class PrivacyCard extends StatelessWidget {
   const PrivacyCard({Key? key,
+    required this.userToken,
     required this.privacyName,
     required this.privacyID,
     required this.privacyBlood,
     required this.privacyDisease,
     required this.privacyMedicine}): super(key: key);
+
+  final String userToken;
 
   final String privacyBlood;
   final String privacyDisease;
@@ -199,7 +205,7 @@ class PrivacyCard extends StatelessWidget {
                         ),
                         IconButton(
                           onPressed: (){
-                            Navigator.push((context), MaterialPageRoute(builder: (context) => const PrivacyEditPage()));
+                            Navigator.push((context), MaterialPageRoute(builder: (context) => PrivacyEditPage(userToken: userToken)));
                           },
                           icon: const Icon(Icons.settings)
                         )
