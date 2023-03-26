@@ -102,42 +102,44 @@ class _ChatHistoryState extends State<ChatHistory> {
   _ChatHistoryState({required this.userToken});
 
   final String userToken;
+  Map<String, String> chatData = {
+    'sender': '발신자',
+    'datetime': '202303191634',
+    'message': '테스트메시지'
+  };
+  List<Map<String, String>> chatList = [];
+
+  void getData() async {
+    final response = await http.get(
+        Uri.parse(FlutterConfig.get("API_URL") + "/chat/showChatMessages"),
+        headers: {
+          "Authorization": "Bearer $userToken"
+        }
+    );
+
+    var responseData = jsonDecode(response.body)["result"];
+
+    for(var item in responseData){
+      chatList.add({'sender': item["sourceNickname"], 'datetime': item["updateTime"], 'message': item["content"]});
+    }
+    setState(() {});
+
+    print(response.body.toString());
+  }
+
+  @override
+  void initState() {
+    getData();
+    super.initState();
+  }
+
+  @override
+  void setState(VoidCallback fn) {
+    super.setState(fn);
+  }
 
   @override
   Widget build(BuildContext context) {
-    Map<String, String> chatData = {
-      'sender': '발신자',
-      'datetime': '202303191634',
-      'message': '테스트메시지'
-    };
-    List<Map<String, String>> chatList = [];
-    chatList.add(chatData);
-    chatList.add(chatData);
-    chatList.add(chatData);
-    chatList.add(chatData);
-    chatList.add(chatData);
-    chatList.add(chatData);
-    chatList.add(chatData);
-    chatList.add(chatData);
-    chatList.add(chatData);
-    chatList.add(chatData);
-    chatList.add(chatData);
-    chatList.add(chatData);
-    chatList.add(chatData);
-    chatList.add(chatData);
-    chatList.add(chatData);
-    chatList.add(chatData);
-    chatList.add(chatData);
-    chatList.add(chatData);
-    chatList.add(chatData);
-    chatList.add(chatData);
-    chatList.add(chatData);
-    chatList.add(chatData);
-    chatList.add(chatData);
-    chatList.add(chatData);
-    chatList.add(chatData);
-    chatList.add(chatData);
-    chatList.add({'sender': '이름', 'datetime': '내용', 'message': '시간'});
     return SizedBox(
       height: double.infinity,
       child: SingleChildScrollView(
