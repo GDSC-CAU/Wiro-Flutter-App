@@ -1,4 +1,8 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_config/flutter_config.dart';
+import 'package:http/http.dart' as http;
 import 'package:solutionchallengetem2_app/pages/Base.dart';
 
 class MissionPage extends StatelessWidget {
@@ -90,6 +94,36 @@ class _MissionHistoryCardState extends State<MissionHistoryCard> {
   final String userToken;
   final List<String> _missionItemList = [];
 
+  void getData() async {
+    final response = await http.get(
+        Uri.parse(FlutterConfig.get("API_URL") + "/mission/getMissionHistory"),
+        headers: {
+          "Authorization": "Bearer $userToken"
+        }
+    );
+
+    var responseData = jsonDecode(response.body)["result"]["successMissions"];
+
+    for(var item in responseData){
+      final tmpResponse = await http.get(
+          Uri.parse(FlutterConfig.get("API_URL") + "/mission/getMissionInfo/1101"), //${item["code"]}"),
+          headers: {
+            "Authorization": "Bearer $userToken"
+          }
+      );
+      _missionItemList.add(jsonDecode(tmpResponse.body)["result"]["content"]);
+    }
+    setState(() {});
+
+    print(response.body.toString());
+  }
+
+  @override
+  void initState() {
+    getData();
+    super.initState();
+  }
+
   @override
   void setState(VoidCallback fn) {
     super.setState(fn);
@@ -97,11 +131,6 @@ class _MissionHistoryCardState extends State<MissionHistoryCard> {
 
   @override
   Widget build(BuildContext context) {
-    setState((){
-      for(int i = 0; i < 10; i++){
-        _missionItemList.add(i.toString());
-      }
-    });
 
     return Padding(
       padding: const EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
