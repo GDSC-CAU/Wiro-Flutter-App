@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:solutionchallengetem2_app/pages/Base.dart';
 
 class MissionPage extends StatelessWidget {
-  const MissionPage({super.key});
+  MissionPage({super.key});
+
+  String userToken = "";
 
   @override
   Widget build(BuildContext context) {
+    BasePageState? baseState = context.findAncestorStateOfType<BasePageState>();
+    userToken = baseState!.userToken;
+
     return Column(
       mainAxisSize: MainAxisSize.max,
       children: const [
