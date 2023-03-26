@@ -102,11 +102,6 @@ class _PrivacyState extends State<HomePrivacy> {
   String _strPrivacyDisease = "";
   String _strPrivacyMedicine = "";
 
-  @override
-  void setState(VoidCallback fn) {
-    super.setState(fn);
-  }
-
   void getData() async {
     BasePageState? baseState = context.findAncestorStateOfType<BasePageState>();
     _userToken = baseState!.userToken;
@@ -130,9 +125,18 @@ class _PrivacyState extends State<HomePrivacy> {
   }
 
   @override
-  Widget build(BuildContext context) {
+  void initState() {
     getData();
+    super.initState();
+  }
 
+  @override
+  void setState(VoidCallback fn) {
+    super.setState(fn);
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Column(
       mainAxisSize: MainAxisSize.max,
       children: [
