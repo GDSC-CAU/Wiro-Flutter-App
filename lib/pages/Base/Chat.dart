@@ -1,4 +1,8 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_config/flutter_config.dart';
+import 'package:http/http.dart' as http;
 import 'package:solutionchallengetem2_app/pages/Base.dart';
 
 class ChatPage extends StatelessWidget {
@@ -259,6 +263,24 @@ class _ChatInputState extends State<ChatInput> {
   final userToken;
   final inputController = TextEditingController();
 
+  void sendData(BuildContext context) async {
+    final response = await http.post(
+        Uri.parse(FlutterConfig.get("API_URL") + "/users/updateUserInfo"),
+        headers: {
+          "Authorization": "Bearer $userToken",
+          "Content-Type": "application/json"
+        },
+        body: jsonEncode({
+          "sourceNickname": "7eKBEziQnHXBeJlNpX8GltmggA13",
+          "content": inputController.text.toString(),
+          "destinationNickname": "noel",
+          "updateTime": "2023-03-27T02:49:12.871018000Z"
+        })
+    );
+
+    print(response.body.toString());
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -284,7 +306,7 @@ class _ChatInputState extends State<ChatInput> {
                 width: double.infinity,
                 child: IconButton(
                   onPressed: (){
-                    print(inputController.text);
+                    sendData(context);
                   },
                   icon: const Icon(Icons.send, size: 40.0),
                 ),
