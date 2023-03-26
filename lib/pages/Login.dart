@@ -61,8 +61,9 @@ class LoginPageState extends State<LoginPage> {
         .listen((User? user) {
       if(user != null && scApp != null){
         print(user.uid);
-        scApp!.setState(() {
+        scApp!.setState(() async {
           scApp!.isLoggedIn = true;
+          scApp!.userToken = await user.getIdToken(false);
         });
       }else{
         setState(() {

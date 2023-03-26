@@ -15,6 +15,7 @@ class SCApp extends StatefulWidget {
 
 class SCAppState extends State<SCApp> {
   bool isLoggedIn = false;
+  String userToken = "";
 
   @override
   void setState(VoidCallback fn) {
