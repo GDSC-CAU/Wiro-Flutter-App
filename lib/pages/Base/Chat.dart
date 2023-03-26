@@ -111,10 +111,10 @@ class _ChatHistoryState extends State<ChatHistory> {
 
   void getData() async {
     final response = await http.get(
-        Uri.parse(FlutterConfig.get("API_URL") + "/chat/showChatMessages"),
-        headers: {
-          "Authorization": "Bearer $userToken"
-        }
+      Uri.parse("${FlutterConfig.get("API_URL")}/chat/showChatMessages"),
+      headers: {
+        "Authorization": "Bearer $userToken"
+      }
     );
 
     var responseData = jsonDecode(response.body)["result"];
@@ -267,17 +267,17 @@ class _ChatInputState extends State<ChatInput> {
 
   void sendData(BuildContext context) async {
     final response = await http.post(
-        Uri.parse(FlutterConfig.get("API_URL") + "/users/updateUserInfo"),
-        headers: {
-          "Authorization": "Bearer $userToken",
-          "Content-Type": "application/json"
-        },
-        body: jsonEncode({
-          "sourceNickname": "7eKBEziQnHXBeJlNpX8GltmggA13",
-          "content": inputController.text.toString(),
-          "destinationNickname": "noel",
-          "updateTime": "2023-03-27T02:49:12.871018000Z"
-        })
+      Uri.parse("${FlutterConfig.get("API_URL")}/users/updateUserInfo"),
+      headers: {
+        "Authorization": "Bearer $userToken",
+        "Content-Type": "application/json"
+      },
+      body: jsonEncode({
+        "sourceNickname": "7eKBEziQnHXBeJlNpX8GltmggA13",
+        "content": inputController.text.toString(),
+        "destinationNickname": "noel",
+        "updateTime": "2023-03-27T02:49:12.871018000Z"
+      })
     );
 
     print(response.body.toString());
