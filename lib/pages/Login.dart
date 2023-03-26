@@ -22,17 +22,20 @@ class LoginPageState extends State<LoginPage> {
     scApp = context.findAncestorStateOfType<SCAppState>();
 
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: _isBtnEnabled ? [
-            ElevatedButton(
-              onPressed: tryGoogleLogin,
-              child: const Text("Login with Google")
-            )
-          ] : []
+      body: SafeArea(
+        top: true,
+        child: Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: _isBtnEnabled ? [
+              ElevatedButton(
+                onPressed: tryGoogleLogin,
+                child: const Text("Login with Google")
+              )
+            ] : []
+          )
         )
       )
     );

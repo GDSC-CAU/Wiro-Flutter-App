@@ -28,31 +28,97 @@ class _BasePageState extends State<BasePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Wiro"),
+      backgroundColor: Colors.white,
+      body: SafeArea(
+        top: true,
+        child: Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Center(
+            child: _pageOptions.elementAt(_curIndex),
+          )
+        )
       ),
-      body: Center(
-        child: _pageOptions.elementAt(_curIndex),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.list),
-            label: "Missions",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: "Home",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.chat),
-            label: "Chat",
-          ),
-        ],
-        currentIndex: _curIndex,
-        selectedItemColor: Colors.blue,
-        onTap: _onNavItemTapped,
-      ),
+      bottomNavigationBar: SizedBox(
+        height: 120,
+        child: BottomNavigationBar(
+          showSelectedLabels: false,
+          showUnselectedLabels: false,
+          items: <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+              icon: SizedBox(
+                height: 75,
+                width: 85,
+                child: DecoratedBox(
+                  decoration: BoxDecoration(
+                    color: _curIndex == 0 ? const Color(0xFF001E99) : const Color(0xFFF5F5F5),
+                    borderRadius: BorderRadius.circular(15.0)
+                  ),
+                  child: Center(
+                    child: Text("목록",
+                      style: TextStyle(
+                        color: _curIndex == 0 ? Colors.white : Colors.black,
+                        fontSize: 35,
+                        fontWeight: FontWeight.bold,
+                        height: 1
+                      )
+                    )
+                  )
+                )
+              ),
+              label: "Mission"
+            ),
+            BottomNavigationBarItem(
+              icon: SizedBox(
+                height: 75,
+                width: 85,
+                child: DecoratedBox(
+                  decoration: BoxDecoration(
+                    color: _curIndex == 1 ? const Color(0xFF001E99) : const Color(0xFFF5F5F5),
+                    borderRadius: BorderRadius.circular(15.0)
+                  ),
+                  child: Center(
+                    child: Text("알림",
+                      style: TextStyle(
+                        color: _curIndex == 1 ? Colors.white : Colors.black,
+                        fontSize: 35,
+                        fontWeight: FontWeight.bold,
+                        height: 1
+                      )
+                    )
+                  )
+                )
+              ),
+              label: "Home",
+            ),
+            BottomNavigationBarItem(
+              icon: SizedBox(
+                height: 75,
+                width: 85,
+                child: DecoratedBox(
+                  decoration: BoxDecoration(
+                    color: _curIndex == 2 ? const Color(0xFF001E99) : const Color(0xFFF5F5F5),
+                    borderRadius: BorderRadius.circular(15.0)
+                  ),
+                  child: Center(
+                    child: Text("대화",
+                      style: TextStyle(
+                        color: _curIndex == 2 ? Colors.white : Colors.black,
+                        fontSize: 35,
+                        fontWeight: FontWeight.bold,
+                        height: 1
+                      )
+                    )
+                  )
+                )
+              ),
+              label: "Chat",
+            ),
+          ],
+          currentIndex: _curIndex,
+          selectedItemColor: Colors.blue,
+          onTap: _onNavItemTapped,
+        )
+      )
     );
   }
 

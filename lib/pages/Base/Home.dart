@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:solutionchallengetem2_app/pages/PrivacyEditPage.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -6,10 +7,9 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      mainAxisSize: MainAxisSize.max,
-      children: const [
-        Flexible(flex: 1, child: HomeTimeSetting()),
-        Flexible(flex: 1, child: HomePrivacy())
+      mainAxisSize: MainAxisSize.max, children: const [
+        Flexible(flex: 2, child: HomeTimeSetting()),
+        Flexible(flex: 3, child: HomePrivacy())
       ]
     );
   }
@@ -23,13 +23,26 @@ class HomeTimeSetting extends StatefulWidget {
 }
 
 class _TimeState extends State<HomeTimeSetting> {
+  String _strNotiTimeAM = "";
+  String _strNotiTimePM = "";
+
+  @override
+  void setState(VoidCallback fn) {
+    super.setState(fn);
+  }
+
   @override
   Widget build(BuildContext context) {
+    setState(() {
+      _strNotiTimeAM = "10:00";
+      _strNotiTimePM = "18:00";
+    });
+
     return Column(
       mainAxisSize: MainAxisSize.max,
-      children: const [
-        Flexible(flex: 1, child: TimeCard(timeData: "오전 10:00", timeType: "M")),
-        Flexible(flex: 1, child: TimeCard(timeData: "오후 18:00", timeType: "A")),
+      children: [
+        Flexible(flex: 1, child: TimeCard(timeData: _strNotiTimeAM, timeType: "AM")),
+        Flexible(flex: 1, child: TimeCard(timeData: _strNotiTimePM, timeType: "PM")),
       ],
     );
   }
@@ -43,22 +56,28 @@ class TimeCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-        padding: const EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
-        child: Card(
-            child: Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: SizedBox(
-                  height: double.infinity,
-                  width: double.infinity,
-                  child: Text(timeData,
-                      textAlign: TextAlign.center,
-                      style: const TextStyle(
-                          fontSize: 50,
-                          height: 2.25
-                      )),
-                )
-            )
+      padding: const EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
+      child: Card(
+        color: const Color(0xFFF5F5F5),
+        elevation: 0.0,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(30.0)
+        ),
+        child: SizedBox(
+          height: double.infinity,
+          width: double.infinity,
+          child: Center(
+            child: Text("${timeType == "AM" ? "오전" : "오후"} 알림 $timeData",
+              textAlign: TextAlign.center,
+              style: const TextStyle(
+                fontSize: 50,
+                fontWeight: FontWeight.bold,
+                height: 1
+              )
+            ),
+          ),
         )
+      )
     );
   }
 }
@@ -71,18 +90,40 @@ class HomePrivacy extends StatefulWidget {
 }
 
 class _PrivacyState extends State<HomePrivacy> {
+  String _strPrivacyName = "";
+  String _strPrivacyID = "";
+  String _strPrivacyBlood = "";
+  String _strPrivacyDisease = "";
+  String _strPrivacyMedicine = "";
+
+  @override
+  void setState(VoidCallback fn) {
+    super.setState(fn);
+  }
+
   @override
   Widget build(BuildContext context) {
+    setState(() {
+      _strPrivacyName = "김XX";
+      _strPrivacyID = "000000-1234567";
+      _strPrivacyBlood = "A형";
+      _strPrivacyDisease = "없음";
+      _strPrivacyMedicine = "없음";
+    });
+
     return Column(
       mainAxisSize: MainAxisSize.max,
-      children: const [
-        Flexible(flex: 1, child: PrivacyCard(
-          privacyName: "김XX",
-          privacyID: "000000-1234567",
-          privacyBlood: "A형",
-          privacyDisease: "없음",
-          privacyMedicine: "없음"
-        ))
+      children: [
+        Flexible(
+          flex: 1,
+          child: PrivacyCard(
+            privacyName: _strPrivacyName,
+            privacyID: _strPrivacyID,
+            privacyBlood: _strPrivacyBlood,
+            privacyDisease: _strPrivacyDisease,
+            privacyMedicine: _strPrivacyMedicine
+          )
+        )
       ],
     );
   }
@@ -105,46 +146,72 @@ class PrivacyCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-        padding: const EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
-        child: Card(
-            child: Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: SizedBox(
-                  height: double.infinity,
-                  width: double.infinity,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      SizedBox(
-                        child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              const Text("Privacy View",
-                                  style: TextStyle(
-                                      fontSize: 50
-                                  )
-                              ),
-                              IconButton(onPressed: (){}, icon: const Icon(Icons.settings))
-                            ]
+      padding: const EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
+      child: Card(
+        color: const Color(0xFFF5F5F5),
+        elevation: 0.0,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(30.0)
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: SizedBox(
+            height: double.infinity,
+            width: double.infinity,
+            child:
+            SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        const Padding(
+                          padding: EdgeInsets.only(top: 10.0, bottom: 10.0),
+                          child: Text("개인정보",
+                            style: TextStyle(
+                              fontSize: 50,
+                              fontWeight: FontWeight.bold,
+                              height: 1
+                            )
+                          )
+                        ),
+                        IconButton(
+                          onPressed: (){
+                            Navigator.push((context), MaterialPageRoute(builder: (context) => const PrivacyEditPage()));
+                          },
+                          icon: const Icon(Icons.settings)
                         )
-                      ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          PrivacyCardText(textStr: "성함 : $privacyName"),
-                          PrivacyCardText(textStr: "주민등록번호 : $privacyID"),
-                          PrivacyCardText(textStr: "혈액형 : $privacyBlood"),
-                          PrivacyCardText(textStr: "지병 : $privacyDisease"),
-                          PrivacyCardText(textStr: "복용약 : $privacyMedicine")
-                        ],
-                      )
-                    ]
+                      ]
+                    )
                   ),
-                )
+                  Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        const PrivacyCardTextTitle(textStr: "성함"),
+                        PrivacyCardText(textStr: privacyName),
+                        const PrivacyCardTextTitle(textStr: "주민등록번호"),
+                        PrivacyCardText(textStr: privacyID),
+                        const PrivacyCardTextTitle(textStr: "혈액형"),
+                        PrivacyCardText(textStr: privacyBlood),
+                        const PrivacyCardTextTitle(textStr: "지병"),
+                        PrivacyCardText(textStr: privacyDisease),
+                        const PrivacyCardTextTitle(textStr: "복용약"),
+                        PrivacyCardText(textStr: privacyMedicine)
+                      ],
+                    )
+                  )
+                ]
+              ),
             )
+          )
         )
+      )
     );
   }
 }
@@ -159,10 +226,35 @@ class PrivacyCardText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(10.0),
+      child: Text(
+        textStr,
+        style: const TextStyle(
+          fontSize: 30,
+          height: 1
+        )
+      )
+    );
+  }
+}
+
+class PrivacyCardTextTitle extends StatelessWidget {
+  const PrivacyCardTextTitle({
+    Key? key,
+    required this.textStr
+  }): super(key: key);
+
+  final String textStr;
+
+  @override
+  Widget build(BuildContext context) {
     return Text(
       textStr,
       style: const TextStyle(
-        fontSize: 20
+        fontSize: 20,
+        fontWeight: FontWeight.bold,
+        height: 1
       )
     );
   }
