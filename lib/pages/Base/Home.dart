@@ -106,7 +106,7 @@ class _PrivacyState extends State<HomePrivacy> {
     BasePageState? baseState = context.findAncestorStateOfType<BasePageState>();
     _userToken = baseState!.userToken;
     final response = await http.get(
-      Uri.parse(FlutterConfig.get("API_URL") + "/users/getUserInfo"),
+      Uri.parse("${FlutterConfig.get("API_URL")}/users/getUserInfo"),
       headers: {
         "Authorization": "Bearer $_userToken"
       }
