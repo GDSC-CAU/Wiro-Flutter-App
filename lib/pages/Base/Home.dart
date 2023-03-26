@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_config/flutter_config.dart';
 import 'package:http/http.dart' as http;
@@ -108,25 +110,25 @@ class _PrivacyState extends State<HomePrivacy> {
     BasePageState? baseState = context.findAncestorStateOfType<BasePageState>();
     final userToken = baseState!.userToken;
     final response = await http.get(
-      Uri.parse(FlutterConfig.get("API_URL") + "/user/getUserInfo/cau"),
+      Uri.parse(FlutterConfig.get("API_URL") + "/users/getUserInfo"),
       headers: {
         'Authorization': 'Bearer $userToken'
       }
     );
 
-    print("Result" + response.body);
+    var responseData = jsonDecode(response.body)["result"];
+    setState(() {
+      _strPrivacyName = responseData["nickname"] ?? "NAME";
+      _strPrivacyID = responseData["id"] ?? "ID";
+      _strPrivacyBlood = responseData["blood"] ?? "BLOOD";
+      _strPrivacyDisease = responseData["disease"] ?? "DISEASE";
+      _strPrivacyMedicine = responseData["medicine"] ?? "MEDICINE";
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     getData();
-    setState(() {
-      _strPrivacyName = "김XX";
-      _strPrivacyID = "000000-1234567";
-      _strPrivacyBlood = "A형";
-      _strPrivacyDisease = "없음";
-      _strPrivacyMedicine = "없음";
-    });
 
     return Column(
       mainAxisSize: MainAxisSize.max,
