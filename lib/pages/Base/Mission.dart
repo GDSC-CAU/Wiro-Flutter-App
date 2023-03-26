@@ -209,6 +209,36 @@ class _CheckHistoryCardState extends State<CheckHistoryCard> {
   final String userToken;
   final List<String> _chkItemList = [];
 
+  void getData() async {
+    final response = await http.get(
+        Uri.parse(FlutterConfig.get("API_URL") + "/mission/getCheckListHistory"),
+        headers: {
+          "Authorization": "Bearer $userToken"
+        }
+    );
+
+    var responseData = jsonDecode(response.body)["result"]["successCheckLists"];
+
+    for(var item in responseData){
+      final tmpResponse = await http.get(
+          Uri.parse(FlutterConfig.get("API_URL") + "/mission/getMissionInfo/2101"), //${item["code"]}"),
+          headers: {
+            "Authorization": "Bearer $userToken"
+          }
+      );
+      _chkItemList.add(jsonDecode(tmpResponse.body)["result"]["content"]);
+    }
+    setState(() {});
+
+    print(response.body.toString());
+  }
+
+  @override
+  void initState() {
+    getData();
+    super.initState();
+  }
+
   @override
   void setState(VoidCallback fn) {
     super.setState(fn);
@@ -216,12 +246,6 @@ class _CheckHistoryCardState extends State<CheckHistoryCard> {
 
   @override
   Widget build(BuildContext context) {
-    setState((){
-      for(int i = 0; i < 10; i++){
-        _chkItemList.add(i.toString());
-      }
-    });
-
     return Padding(
       padding: const EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
       child: Card(
