@@ -18,7 +18,7 @@ class BasePageState extends State<BasePage> {
   final String userToken;
   int _curIndex = 1;
 
-  static const List<Widget> _pageOptions = <Widget>[
+  static List<Widget> _pageOptions = <Widget>[
     MissionPage(),
     HomePage(),
     ChatPage(),

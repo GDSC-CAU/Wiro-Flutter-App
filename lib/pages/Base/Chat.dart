@@ -1,15 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:solutionchallengetem2_app/pages/Base.dart';
 
 class ChatPage extends StatelessWidget {
-  const ChatPage({super.key});
+  ChatPage({super.key});
+
+  String userToken = "";
 
   @override
   Widget build(BuildContext context) {
+    BasePageState? baseState = context.findAncestorStateOfType<BasePageState>();
+    userToken = baseState!.userToken;
+
     return Column(
-      children: const [
-        Flexible(flex: 1, child: ChatInfo()),
-        Flexible(flex: 4, child: ChatHistory()),
-        Flexible(flex: 1, child: ChatInput()),
+      children: [
+        const Flexible(flex: 1, child: ChatInfo()),
+        Flexible(flex: 4, child: ChatHistory(userToken: userToken)),
+        Flexible(flex: 1, child: ChatInput(userToken: userToken)),
       ]
     );
   }
@@ -80,7 +86,9 @@ class _ChatInfoState extends State<ChatInfo> {
 }
 
 class ChatHistory extends StatefulWidget {
-  const ChatHistory({super.key});
+  const ChatHistory({super.key, required this.userToken});
+
+  final String userToken;
 
   @override
   State<StatefulWidget> createState() => _ChatHistoryState();
@@ -233,7 +241,9 @@ class ChatHistoryItem extends StatelessWidget {
 }
 
 class ChatInput extends StatefulWidget {
-  const ChatInput({super.key});
+  const ChatInput({super.key, required this.userToken});
+
+  final String userToken;
 
   @override
   State<StatefulWidget> createState() => _ChatInputState();
