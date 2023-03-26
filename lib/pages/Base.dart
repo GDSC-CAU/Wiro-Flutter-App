@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import 'package:flutter_config/flutter_config.dart';
 import 'Base/Chat.dart';
 import 'Base/Home.dart';
 import 'Base/Mission.dart';
@@ -32,6 +33,7 @@ class _BasePageState extends State<BasePage> {
 
   @override
   Widget build(BuildContext context) {
+    print(FlutterConfig.get("API_URL"));
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
