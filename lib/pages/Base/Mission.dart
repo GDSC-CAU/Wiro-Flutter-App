@@ -96,20 +96,20 @@ class _MissionHistoryCardState extends State<MissionHistoryCard> {
 
   void getData() async {
     final response = await http.get(
-        Uri.parse(FlutterConfig.get("API_URL") + "/mission/getMissionHistory"),
-        headers: {
-          "Authorization": "Bearer $userToken"
-        }
+      Uri.parse("${FlutterConfig.get("API_URL")}/mission/getMissionHistory"),
+      headers: {
+        "Authorization": "Bearer $userToken"
+      }
     );
 
     var responseData = jsonDecode(response.body)["result"]["successMissions"];
 
     for(var item in responseData){
       final tmpResponse = await http.get(
-          Uri.parse(FlutterConfig.get("API_URL") + "/mission/getMissionInfo/1101"), //${item["code"]}"),
-          headers: {
-            "Authorization": "Bearer $userToken"
-          }
+        Uri.parse("${FlutterConfig.get("API_URL")}/mission/getMissionInfo/1101"), //${item["code"]}"),
+        headers: {
+          "Authorization": "Bearer $userToken"
+        }
       );
       _missionItemList.add(jsonDecode(tmpResponse.body)["result"]["content"]);
     }
@@ -170,7 +170,7 @@ class _MissionHistoryCardState extends State<MissionHistoryCard> {
                             itemWidgetList.add(
                               Padding(
                                 padding: const EdgeInsets.all(5.0),
-                                child: Text("Mission Item $item",
+                                child: Text(item,
                                   style: const TextStyle(
                                     fontSize: 25,
                                     height: 1
@@ -211,20 +211,20 @@ class _CheckHistoryCardState extends State<CheckHistoryCard> {
 
   void getData() async {
     final response = await http.get(
-        Uri.parse(FlutterConfig.get("API_URL") + "/mission/getCheckListHistory"),
-        headers: {
-          "Authorization": "Bearer $userToken"
-        }
+      Uri.parse("${FlutterConfig.get("API_URL")}/mission/getCheckListHistory"),
+      headers: {
+        "Authorization": "Bearer $userToken"
+      }
     );
 
     var responseData = jsonDecode(response.body)["result"]["successCheckLists"];
 
     for(var item in responseData){
       final tmpResponse = await http.get(
-          Uri.parse(FlutterConfig.get("API_URL") + "/mission/getMissionInfo/2101"), //${item["code"]}"),
-          headers: {
-            "Authorization": "Bearer $userToken"
-          }
+        Uri.parse("${FlutterConfig.get("API_URL")}/mission/getMissionInfo/2101"), //${item["code"]}"),
+        headers: {
+          "Authorization": "Bearer $userToken"
+        }
       );
       _chkItemList.add(jsonDecode(tmpResponse.body)["result"]["content"]);
     }
@@ -283,7 +283,7 @@ class _CheckHistoryCardState extends State<CheckHistoryCard> {
                             itemWidgetList.add(
                               Padding(
                                 padding: const EdgeInsets.all(5.0),
-                                child: Text("ChkList Item $item",
+                                child: Text(item,
                                   style: const TextStyle(
                                     fontSize: 25,
                                     height: 1
