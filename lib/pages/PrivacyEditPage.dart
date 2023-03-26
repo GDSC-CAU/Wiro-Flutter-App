@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_config/flutter_config.dart';
 import 'package:http/http.dart' as http;
@@ -67,15 +68,22 @@ class PrivacyEditInput extends StatelessWidget {
   final inputNameController = TextEditingController();
 
   void sendData(BuildContext context) async {
-    final response = await http.get(
-        Uri.parse(FlutterConfig.get("API_URL") + "/users/getUserInfo"),
-        headers: {
-          'Authorization': 'Bearer $userToken'
-        }
+    final response = await http.post(
+      Uri.parse(FlutterConfig.get("API_URL") + "/users/updateUserInfo"),
+      headers: {
+        "Authorization": "Bearer $userToken",
+        "Content-Type": "application/json"
+      },
+      body: jsonEncode({
+        "blood": inputBloodController.text.toString(),
+        "disease": inputDiseaseController.text.toString(),
+        "id": inputIDController.text.toString(),
+        "medicine": inputMedicineController.text.toString(),
+        "nickname": inputNameController.text.toString()
+      })
     );
 
-    var responseData = jsonDecode(response.body)["result"];
-    print(responseData.toString());
+    print(response.body.toString());
   }
 
   @override
