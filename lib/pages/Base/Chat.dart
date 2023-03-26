@@ -91,10 +91,14 @@ class ChatHistory extends StatefulWidget {
   final String userToken;
 
   @override
-  State<StatefulWidget> createState() => _ChatHistoryState();
+  State<StatefulWidget> createState() => _ChatHistoryState(userToken: userToken);
 }
 
 class _ChatHistoryState extends State<ChatHistory> {
+  _ChatHistoryState({required this.userToken});
+
+  final String userToken;
+
   @override
   Widget build(BuildContext context) {
     Map<String, String> chatData = {
@@ -246,10 +250,13 @@ class ChatInput extends StatefulWidget {
   final String userToken;
 
   @override
-  State<StatefulWidget> createState() => _ChatInputState();
+  State<StatefulWidget> createState() => _ChatInputState(userToken: userToken);
 }
 
 class _ChatInputState extends State<ChatInput> {
+  _ChatInputState({required this.userToken});
+
+  final userToken;
   final inputController = TextEditingController();
 
   @override
