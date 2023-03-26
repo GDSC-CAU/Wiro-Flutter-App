@@ -13,23 +13,28 @@ class MissionPage extends StatelessWidget {
 
     return Column(
       mainAxisSize: MainAxisSize.max,
-      children: const [
-        Flexible(flex: 1, child: MissionRecommendCard()),
-        Flexible(flex: 2, child: MissionHistoryCard()),
-        Flexible(flex: 2, child: CheckHistoryCard())
+      children: [
+        Flexible(flex: 1, child: MissionRecommendCard(userToken: userToken)),
+        Flexible(flex: 2, child: MissionHistoryCard(userToken: userToken)),
+        Flexible(flex: 2, child: CheckHistoryCard(userToken: userToken))
       ]
     );
   }
 }
 
 class MissionRecommendCard extends StatefulWidget {
-  const MissionRecommendCard({super.key});
+  const MissionRecommendCard({super.key, required this.userToken});
+
+  final String userToken;
 
   @override
-  State<StatefulWidget> createState() => _MissionRecommendCardState();
+  State<StatefulWidget> createState() => _MissionRecommendCardState(userToken: userToken);
 }
 
 class _MissionRecommendCardState extends State<MissionRecommendCard> {
+  _MissionRecommendCardState({required this.userToken});
+
+  final String userToken;
   String _strRecommendMission = "";
 
   @override
@@ -71,13 +76,18 @@ class _MissionRecommendCardState extends State<MissionRecommendCard> {
 }
 
 class MissionHistoryCard extends StatefulWidget {
-  const MissionHistoryCard({super.key});
+  const MissionHistoryCard({super.key, required this.userToken});
+
+  final String userToken;
 
   @override
-  State<StatefulWidget> createState() => _MissionHistoryCardState();
+  State<StatefulWidget> createState() => _MissionHistoryCardState(userToken: userToken);
 }
 
 class _MissionHistoryCardState extends State<MissionHistoryCard> {
+  _MissionHistoryCardState({required this.userToken});
+
+  final String userToken;
   final List<String> _missionItemList = [];
 
   @override
@@ -156,13 +166,18 @@ class _MissionHistoryCardState extends State<MissionHistoryCard> {
 }
 
 class CheckHistoryCard extends StatefulWidget {
-  const CheckHistoryCard({super.key});
+  const CheckHistoryCard({super.key, required this.userToken});
+
+  final String userToken;
 
   @override
-  State<StatefulWidget> createState() => _CheckHistoryCardState();
+  State<StatefulWidget> createState() => _CheckHistoryCardState(userToken: userToken);
 }
 
 class _CheckHistoryCardState extends State<CheckHistoryCard> {
+  _CheckHistoryCardState({required this.userToken});
+
+  final String userToken;
   final List<String> _chkItemList = [];
 
   @override
