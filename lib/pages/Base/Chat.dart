@@ -102,10 +102,11 @@ class _ChatHistoryState extends State<ChatHistory> {
   _ChatHistoryState({required this.userToken});
 
   final String userToken;
-  Map<String, String> chatData = {
-    'sender': '발신자',
-    'datetime': '202303191634',
-    'message': '테스트메시지'
+  Map<String, dynamic> chatData = {
+    "sender": "발신자",
+    "datetime": "202303191634",
+    "message": "테스트메시지",
+    "isFromMe": false
   };
   List<Map<String, String>> chatList = [];
 
