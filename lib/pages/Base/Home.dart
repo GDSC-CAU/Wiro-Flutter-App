@@ -114,7 +114,7 @@ class _PrivacyState extends State<HomePrivacy> {
 
     var responseData = jsonDecode(response.body)["result"];
     setState(() {
-      _strPrivacyName = responseData["nickname"] ?? "NAME";
+      _strPrivacyName = responseData["username"] ?? "NAME";
       _strPrivacyID = responseData["id"] ?? "ID";
       _strPrivacyBlood = responseData["blood"] ?? "BLOOD";
       _strPrivacyDisease = responseData["disease"] ?? "DISEASE";
