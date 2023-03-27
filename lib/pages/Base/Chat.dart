@@ -121,7 +121,12 @@ class _ChatHistoryState extends State<ChatHistory> {
     var responseData = jsonDecode(response.body)["result"];
 
     for(var item in responseData){
-      chatList.add({"sender": item["sourceNickname"], "datetime": item["updateTime"], "message": item["content"]});
+      chatList.add({
+        "sender": item["sourceNickname"],
+        "datetime": item["updateTime"],
+        "message": item["content"],
+        "isFromMe": item["isFromMe"] ?? false
+      });
     }
     setState(() {});
 
