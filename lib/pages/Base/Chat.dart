@@ -108,7 +108,7 @@ class _ChatHistoryState extends State<ChatHistory> {
     "message": "테스트메시지",
     "isFromMe": true
   };
-  List<Map<String, String>> chatList = [];
+  List<Map<String, dynamic>> chatList = [];
 
   void getData() async {
     final response = await http.get(
@@ -130,6 +130,7 @@ class _ChatHistoryState extends State<ChatHistory> {
     }
     setState(() {});
 
+    chatList.add(chatData);
     print(response.body.toString());
   }
 
@@ -160,11 +161,7 @@ class _ChatHistoryState extends State<ChatHistory> {
               int i = 0;
               final List<Widget> chatItemList = [];
               for (var chatItem in chatList) {
-                if (i % 2 == 0) {
-                  chatItemList.add(ChatHistoryItem(chatData: chatItem, isFromMe: true));
-                } else {
-                  chatItemList.add(ChatHistoryItem(chatData: chatItem, isFromMe: false));
-                }
+                chatItemList.add(ChatHistoryItem(chatData: chatItem));
                 i++;
               }
               return chatItemList;
@@ -179,12 +176,10 @@ class _ChatHistoryState extends State<ChatHistory> {
 class ChatHistoryItem extends StatelessWidget {
   const ChatHistoryItem({
     Key? key,
-    required this.chatData,
-    required this.isFromMe
+    required this.chatData
   }): super(key: key);
 
-  final bool isFromMe;
-  final Map<String, String> chatData;
+  final Map<String, dynamic> chatData;
 
   @override
   Widget build(BuildContext context) {
@@ -198,7 +193,7 @@ class ChatHistoryItem extends StatelessWidget {
               padding: const EdgeInsets.fromLTRB(30.0, 20.0, 30.0, 10.0),
               child: Text(
                 chatData["sender"]!,
-                textAlign: isFromMe ? TextAlign.end : TextAlign.start,
+                textAlign: chatData["isFromMe"]! ? TextAlign.end : TextAlign.start,
                 style: const TextStyle(
                   color: Color(0xFF000000),
                   fontSize: 20,
@@ -210,7 +205,7 @@ class ChatHistoryItem extends StatelessWidget {
           DecoratedBox(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(50),
-              color: isFromMe ? const Color(0xFF001E99) : const Color(0xFFF5F5F5)
+              color: chatData["isFromMe"] ? const Color(0xFF001E99) : const Color(0xFFF5F5F5)
             ),
             child: Padding(
               padding: const EdgeInsets.fromLTRB(30.0, 20.0, 30.0, 20.0),
@@ -222,9 +217,9 @@ class ChatHistoryItem extends StatelessWidget {
                       padding: const EdgeInsets.only(bottom: 5.0, top: 5.0),
                       child: Text(
                         chatData["message"]!,
-                        textAlign: isFromMe ? TextAlign.end : TextAlign.start,
+                        textAlign: chatData["isFromMe"] ? TextAlign.end : TextAlign.start,
                         style: TextStyle(
-                          color: isFromMe ? const Color(0xFFFFFFFF) : const Color(0xFF000000),
+                          color: chatData["isFromMe"] ? const Color(0xFFFFFFFF) : const Color(0xFF000000),
                           fontSize: 30,
                           height: 1
                         )
@@ -237,9 +232,9 @@ class ChatHistoryItem extends StatelessWidget {
                       padding: const EdgeInsets.only(bottom: 5.0, top: 5.0),
                       child: Text(
                         chatData["datetime"]!,
-                        textAlign: isFromMe ? TextAlign.end : TextAlign.start,
+                        textAlign: chatData["isFromMe"] ? TextAlign.end : TextAlign.start,
                         style: TextStyle(
-                          color: isFromMe ? const Color(0xFFFFFFFF) : const Color(0xFF000000),
+                          color: chatData["isFromMe"] ? const Color(0xFFFFFFFF) : const Color(0xFF000000),
                           fontSize: 20,
                           height: 1
                         )
