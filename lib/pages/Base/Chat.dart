@@ -1,9 +1,9 @@
-import 'dart:convert';
+import "dart:convert";
 
-import 'package:flutter/material.dart';
-import 'package:flutter_config/flutter_config.dart';
-import 'package:http/http.dart' as http;
-import 'package:solutionchallengetem2_app/pages/Base.dart';
+import "package:flutter/material.dart";
+import "package:flutter_config/flutter_config.dart";
+import "package:http/http.dart" as http;
+import "package:solutionchallengetem2_app/pages/Base.dart";
 
 class ChatPage extends StatelessWidget {
   ChatPage({super.key});
@@ -121,7 +121,7 @@ class _ChatHistoryState extends State<ChatHistory> {
     var responseData = jsonDecode(response.body)["result"];
 
     for(var item in responseData){
-      chatList.add({'sender': item["sourceNickname"], 'datetime': item["updateTime"], 'message': item["content"]});
+      chatList.add({"sender": item["sourceNickname"], "datetime": item["updateTime"], "message": item["content"]});
     }
     setState(() {});
 
@@ -192,7 +192,7 @@ class ChatHistoryItem extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.fromLTRB(30.0, 20.0, 30.0, 10.0),
               child: Text(
-                chatData['sender']!,
+                chatData["sender"]!,
                 textAlign: isFromMe ? TextAlign.end : TextAlign.start,
                 style: const TextStyle(
                   color: Color(0xFF000000),
@@ -216,7 +216,7 @@ class ChatHistoryItem extends StatelessWidget {
                     child: Padding(
                       padding: const EdgeInsets.only(bottom: 5.0, top: 5.0),
                       child: Text(
-                        chatData['message']!,
+                        chatData["message"]!,
                         textAlign: isFromMe ? TextAlign.end : TextAlign.start,
                         style: TextStyle(
                           color: isFromMe ? const Color(0xFFFFFFFF) : const Color(0xFF000000),
@@ -231,7 +231,7 @@ class ChatHistoryItem extends StatelessWidget {
                     child: Padding(
                       padding: const EdgeInsets.only(bottom: 5.0, top: 5.0),
                       child: Text(
-                        chatData['datetime']!,
+                        chatData["datetime"]!,
                         textAlign: isFromMe ? TextAlign.end : TextAlign.start,
                         style: TextStyle(
                           color: isFromMe ? const Color(0xFFFFFFFF) : const Color(0xFF000000),
