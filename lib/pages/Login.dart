@@ -58,11 +58,12 @@ class LoginPageState extends State<LoginPage> {
     );
     FirebaseAuth.instance
         .authStateChanges()
-        .listen((User? user) {
+        .listen((User? user) async {
       if(user != null && scApp != null){
-        scApp!.setState(() async {
+        String userToken = await user.getIdToken(false);
+        scApp!.setState(() {
           scApp!.isLoggedIn = true;
-          scApp!.userToken = await user.getIdToken(false);
+          scApp!.userToken = userToken;
         });
       }else{
         setState(() {
