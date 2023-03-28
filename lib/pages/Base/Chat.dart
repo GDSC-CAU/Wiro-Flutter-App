@@ -267,9 +267,8 @@ class _ChatInputState extends State<ChatInput> {
         "Content-Type": "application/json"
       },
       body: jsonEncode({
-        "sourceNickname": "7eKBEziQnHXBeJlNpX8GltmggA13",
         "content": inputController.text.toString(),
-        "destinationNickname": "noel",
+        "destinationNickname": "ADMIN",
         "updateTime": "2023-03-27T02:49:12.871018000Z"
       })
     );
