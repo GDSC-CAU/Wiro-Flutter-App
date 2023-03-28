@@ -41,6 +41,27 @@ class _MissionRecommendCardState extends State<MissionRecommendCard> {
   final String userToken;
   String _strRecommendMission = "";
 
+  void getData() async {
+    final response = await http.get(
+        Uri.parse("${FlutterConfig.get("API_URL")}/mission/getRecommendMission"),
+        headers: {
+          "Authorization": "Bearer $userToken"
+        }
+    );
+
+    var responseData = (jsonDecode(response.body))["result"];
+    _strRecommendMission = responseData[0]["content"];
+    setState(() {});
+
+    print(response.body.toString());
+  }
+
+  @override
+  void initState() {
+    getData();
+    super.initState();
+  }
+
   @override
   void setState(VoidCallback fn) {
     super.setState(fn);
@@ -48,10 +69,6 @@ class _MissionRecommendCardState extends State<MissionRecommendCard> {
 
   @override
   Widget build(BuildContext context) {
-    setState(() {
-      _strRecommendMission = "공원 산책";
-    });
-
     return Padding(
       padding: const EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
       child: Card(
