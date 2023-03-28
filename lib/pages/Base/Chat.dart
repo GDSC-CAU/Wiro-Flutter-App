@@ -131,7 +131,7 @@ class _ChatHistoryState extends State<ChatHistory> {
     setState(() {});
 
     chatList.add(chatData);
-    print(response.body.toString());
+    print(responseData);
   }
 
   @override
