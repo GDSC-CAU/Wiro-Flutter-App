@@ -102,12 +102,6 @@ class _ChatHistoryState extends State<ChatHistory> {
   _ChatHistoryState({required this.userToken});
 
   final String userToken;
-  Map<String, dynamic> chatData = {
-    "sender": "발신자",
-    "datetime": "202303191634",
-    "message": "테스트메시지",
-    "isFromMe": true
-  };
   List<Map<String, dynamic>> chatList = [];
 
   void getData() async {
@@ -130,8 +124,7 @@ class _ChatHistoryState extends State<ChatHistory> {
     }
     setState(() {});
 
-    chatList.add(chatData);
-    print(responseData);
+    print(response.body.toString());
   }
 
   @override
