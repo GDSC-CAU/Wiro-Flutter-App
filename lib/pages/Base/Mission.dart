@@ -18,9 +18,9 @@ class MissionPage extends StatelessWidget {
     return Column(
       mainAxisSize: MainAxisSize.max,
       children: [
-        Flexible(flex: 1, child: MissionRecommendCard(userToken: userToken)),
-        Flexible(flex: 2, child: MissionHistoryCard(userToken: userToken)),
-        Flexible(flex: 2, child: CheckHistoryCard(userToken: userToken))
+        Flexible(flex: 2, child: MissionRecommendCard(userToken: userToken)),
+        Flexible(flex: 3, child: MissionHistoryCard(userToken: userToken)),
+        Flexible(flex: 3, child: CheckHistoryCard(userToken: userToken))
       ]
     );
   }
@@ -77,19 +77,38 @@ class _MissionRecommendCardState extends State<MissionRecommendCard> {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(30.0)
         ),
-        child: SizedBox(
-          height: double.infinity,
-          width: double.infinity,
-          child: Center(
-            child: Text("추천 : $_strRecommendMission",
-              textAlign: TextAlign.center,
-              style: const TextStyle(
-                fontSize: 50,
-                fontWeight: FontWeight.bold,
-                height: 1
-              )
-            ),
-          ),
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: SizedBox(
+            height: double.infinity,
+            width: double.infinity,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Padding(
+                  padding: EdgeInsets.only(top: 10.0, bottom: 10.0),
+                  child: Text("추천 미션",
+                    style: TextStyle(
+                      fontSize: 30,
+                      fontWeight: FontWeight.bold,
+                      height: 1
+                    )
+                  )
+                ),
+                Center(
+                  child: Text(_strRecommendMission,
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(
+                      fontSize: 50,
+                      fontWeight: FontWeight.bold,
+                      height: 1
+                    )
+                  )
+                )
+              ]
+            )
+          )
         )
       )
     );
@@ -170,7 +189,7 @@ class _MissionHistoryCardState extends State<MissionHistoryCard> {
                   child:
                   Text("미션 기록",
                     style: TextStyle(
-                      fontSize: 40,
+                      fontSize: 30,
                       fontWeight: FontWeight.bold,
                       height: 1
                     )
@@ -283,7 +302,7 @@ class _CheckHistoryCardState extends State<CheckHistoryCard> {
                   padding: EdgeInsets.only(top: 10.0, bottom: 10.0),
                   child: Text("체크리스트 기록",
                     style: TextStyle(
-                      fontSize: 40,
+                      fontSize: 30,
                       fontWeight: FontWeight.bold,
                       height: 1
                     )
