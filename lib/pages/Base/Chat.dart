@@ -3,6 +3,7 @@ import "dart:convert";
 import "package:flutter/material.dart";
 import "package:flutter_config/flutter_config.dart";
 import "package:http/http.dart" as http;
+import 'package:intl/intl.dart';
 import "package:solutionchallengetem2_app/pages/Base.dart";
 
 class ChatPage extends StatelessWidget {
@@ -269,7 +270,7 @@ class _ChatInputState extends State<ChatInput> {
       body: jsonEncode({
         "content": inputController.text.toString(),
         "destinationNickname": "ADMIN",
-        "updateTime": "2023-03-27T02:49:12.871018000Z"
+        "updateTime": DateFormat("yyyyMMdd-HHmmss").format(DateTime.now())
       })
     );
     inputController.clear();
