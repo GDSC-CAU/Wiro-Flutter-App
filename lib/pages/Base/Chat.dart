@@ -272,6 +272,7 @@ class _ChatInputState extends State<ChatInput> {
         "updateTime": "2023-03-27T02:49:12.871018000Z"
       })
     );
+    inputController.clear();
 
     print(response.body.toString());
   }
