@@ -261,7 +261,7 @@ class _ChatInputState extends State<ChatInput> {
 
   void sendData(BuildContext context) async {
     final response = await http.post(
-      Uri.parse("${FlutterConfig.get("API_URL")}/users/updateUserInfo"),
+      Uri.parse("${FlutterConfig.get("API_URL")}/chat/sendMessage"),
       headers: {
         "Authorization": "Bearer $userToken",
         "Content-Type": "application/json"
