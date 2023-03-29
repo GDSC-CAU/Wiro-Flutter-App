@@ -1,3 +1,4 @@
+import "dart:async";
 import "dart:convert";
 
 import "package:flutter/material.dart";
@@ -104,6 +105,7 @@ class _ChatHistoryState extends State<ChatHistory> {
 
   final String userToken;
   List<Map<String, dynamic>> chatList = [];
+  late Timer _chatLoadTimer;
 
   void getData() async {
     final response = await http.get(
@@ -131,12 +133,23 @@ class _ChatHistoryState extends State<ChatHistory> {
   @override
   void initState() {
     getData();
+    _chatLoadTimer = Timer.periodic(
+      const Duration(seconds: 2), (timer) {
+        getData();
+      }
+    );
     super.initState();
   }
 
   @override
   void setState(VoidCallback fn) {
     super.setState(fn);
+  }
+
+  @override
+  void deactivate() {
+    _chatLoadTimer.cancel();
+    super.deactivate();
   }
 
   @override
