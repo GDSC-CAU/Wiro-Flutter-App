@@ -123,7 +123,7 @@ class _ChatHistoryState extends State<ChatHistory> {
         "sender": item["sourceNickname"],
         "datetime": item["updateTime"],
         "message": item["content"],
-        "isFromMe": item["isFromMe"] ?? false
+        "isFromMe": item["isFromMe"] == 1 ? 1 : 0
       });
     }
     setState(() {});
@@ -199,7 +199,7 @@ class ChatHistoryItem extends StatelessWidget {
               padding: const EdgeInsets.fromLTRB(30.0, 20.0, 30.0, 10.0),
               child: Text(
                 chatData["sender"]!,
-                textAlign: chatData["isFromMe"]! ? TextAlign.end : TextAlign.start,
+                textAlign: chatData["isFromMe"] == 1 ? TextAlign.end : TextAlign.start,
                 style: const TextStyle(
                   color: Color(0xFF000000),
                   fontSize: 20,
@@ -211,7 +211,7 @@ class ChatHistoryItem extends StatelessWidget {
           DecoratedBox(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(50),
-              color: chatData["isFromMe"] ? const Color(0xFF001E99) : const Color(0xFFF5F5F5)
+              color: chatData["isFromMe"] == 1 ? const Color(0xFF001E99) : const Color(0xFFF5F5F5)
             ),
             child: Padding(
               padding: const EdgeInsets.fromLTRB(30.0, 20.0, 30.0, 20.0),
@@ -223,9 +223,9 @@ class ChatHistoryItem extends StatelessWidget {
                       padding: const EdgeInsets.only(bottom: 5.0, top: 5.0),
                       child: Text(
                         chatData["message"]!,
-                        textAlign: chatData["isFromMe"] ? TextAlign.end : TextAlign.start,
+                        textAlign: chatData["isFromMe"] == 1 ? TextAlign.end : TextAlign.start,
                         style: TextStyle(
-                          color: chatData["isFromMe"] ? const Color(0xFFFFFFFF) : const Color(0xFF000000),
+                          color: chatData["isFromMe"] == 1 ? const Color(0xFFFFFFFF) : const Color(0xFF000000),
                           fontSize: 30,
                           height: 1
                         )
@@ -238,9 +238,9 @@ class ChatHistoryItem extends StatelessWidget {
                       padding: const EdgeInsets.only(bottom: 5.0, top: 5.0),
                       child: Text(
                         chatData["datetime"]!,
-                        textAlign: chatData["isFromMe"] ? TextAlign.end : TextAlign.start,
+                        textAlign: chatData["isFromMe"] == 1 ? TextAlign.end : TextAlign.start,
                         style: TextStyle(
-                          color: chatData["isFromMe"] ? const Color(0xFFFFFFFF) : const Color(0xFF000000),
+                          color: chatData["isFromMe"] == 1 ? const Color(0xFFFFFFFF) : const Color(0xFF000000),
                           fontSize: 20,
                           height: 1
                         )
@@ -281,8 +281,7 @@ class _ChatInputState extends State<ChatInput> {
       },
       body: jsonEncode({
         "content": inputController.text.toString(),
-        "destinationNickname": "ADMIN",
-        "updateTime": DateFormat("yyyyMMdd-HHmmss").format(DateTime.now())
+        "destinationNickname": "ADMIN"
       })
     );
     inputController.clear();
