@@ -65,7 +65,12 @@ class MissionCompletePageDataState extends State<MissionCompletePageData> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: const [
-                  Text("Mission Complete Page Data")
+                  Text("Mission Complete Page Data",
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 30
+                    )
+                  )
                 ]
               )
             )
