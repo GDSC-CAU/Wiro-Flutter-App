@@ -30,11 +30,14 @@ class LoginPageState extends State<LoginPage> {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: _isBtnEnabled ? [
+              LoginPageLogo(),
               ElevatedButton(
                 onPressed: tryGoogleLogin,
                 child: const Text("Login with Google")
               )
-            ] : []
+            ] : [
+              LoginPageLogo()
+            ]
           )
         )
       )
@@ -81,5 +84,16 @@ class LoginPageState extends State<LoginPage> {
       idToken: googleAuth?.idToken,
     );
     await FirebaseAuth.instance.signInWithCredential(credential);
+  }
+}
+
+class LoginPageLogo extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return const Center(
+      child: Image(
+        image: AssetImage("assets/Wiro_Logo.png")
+      )
+    );
   }
 }
