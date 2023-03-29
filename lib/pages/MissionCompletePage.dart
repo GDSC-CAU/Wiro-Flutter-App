@@ -16,7 +16,7 @@ class MissionCompletePage extends StatelessWidget {
           child: Column(
             children: [
               Flexible(flex: 1, child: MissionCompletePageTitle()),
-              Flexible(flex: 5, child: MissionCompletePageData(missionCode: missionCode)),
+              Flexible(flex: 3, child: MissionCompletePageData(missionCode: missionCode)),
               Flexible(flex: 2, child: MissionCompletePageInput(missionCode: missionCode))
             ]
           )
@@ -96,11 +96,23 @@ class MissionCompletePageInput extends StatefulWidget {
 }
 
 class MissionCompletePageInputState extends State<MissionCompletePageInput> {
+  int _selButton = 1;
+
+  @override
+  void setState(VoidCallback fn) {
+    super.setState(fn);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Flexible(flex: 1,
+        Flexible(
+          flex: 1,
+          child: Text("ASDF"),
+        ),
+        Flexible(
+          flex: 2,
           child: Card(
             color: const Color(0xFFF5F5F5),
             elevation: 0.0,
@@ -110,21 +122,105 @@ class MissionCompletePageInputState extends State<MissionCompletePageInput> {
             child: Padding(
               padding: const EdgeInsets.only(top: 20, bottom: 20),
               child: Row(
-                children: const [
-                  Center(
-                    child: Text("MISSION RESULT",
-                      style: TextStyle(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Container(
+                    width: 50.0,
+                    height: 50.0,
+                    decoration: BoxDecoration(
+                      border: Border.all(
                         color: Colors.black,
-                        fontSize: 30
-                      )
-                    )
-                  )
+                        width: 5
+                      ),
+                      color: _selButton == 1 ? const Color(0xFF001E99) : Colors.white,
+                      shape: BoxShape.circle,
+                    ),
+                    child: InkWell(
+                      onTap: (){
+                        _selButton = 1;
+                        setState(() {});
+                      },
+                    ),
+                  ),
+                  Container(
+                    width: 50.0,
+                    height: 50.0,
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                          color: Colors.black,
+                          width: 5
+                      ),
+                      color: _selButton == 2 ? const Color(0xFF001E99) : Colors.white,
+                      shape: BoxShape.circle,
+                    ),
+                    child: InkWell(
+                      onTap: (){
+                        _selButton = 2;
+                        setState(() {});
+                      },
+                    ),
+                  ),
+                  Container(
+                    width: 50.0,
+                    height: 50.0,
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                          color: Colors.black,
+                          width: 5
+                      ),
+                      color: _selButton == 3 ? const Color(0xFF001E99) : Colors.white,
+                      shape: BoxShape.circle,
+                    ),
+                    child: InkWell(
+                      onTap: (){
+                        _selButton = 3;
+                        setState(() {});
+                      },
+                    ),
+                  ),
+                  Container(
+                    width: 50.0,
+                    height: 50.0,
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                          color: Colors.black,
+                          width: 5
+                      ),
+                      color: _selButton == 4 ? const Color(0xFF001E99) : Colors.white,
+                      shape: BoxShape.circle,
+                    ),
+                    child: InkWell(
+                      onTap: (){
+                        _selButton = 4;
+                        setState(() {});
+                      },
+                    ),
+                  ),
+                  Container(
+                    width: 50.0,
+                    height: 50.0,
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                          color: Colors.black,
+                          width: 5
+                      ),
+                      color: _selButton == 5 ? const Color(0xFF001E99) : Colors.white,
+                      shape: BoxShape.circle,
+                    ),
+                    child: InkWell(
+                      onTap: (){
+                        _selButton = 5;
+                        setState(() {});
+                      },
+                    ),
+                  ),
                 ],
               )
             )
           )
         ),
-        Flexible(flex: 1,
+        Flexible(
+          flex: 2,
           child: Card(
             color: const Color(0xFF001E99),
             elevation: 0.0,
