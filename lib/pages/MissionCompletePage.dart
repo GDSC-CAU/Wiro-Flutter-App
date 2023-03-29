@@ -139,7 +139,7 @@ class MissionCompletePageInputState extends State<MissionCompletePageInput> {
         },
         body: jsonEncode({
           "code": widget.missionCode,
-          "score": double.parse((_selButton * 0.25).toDouble().toStringAsFixed(1))
+          "score": double.parse((_selButton * 0.25).toDouble().toStringAsFixed(2))
         })
     );
 
