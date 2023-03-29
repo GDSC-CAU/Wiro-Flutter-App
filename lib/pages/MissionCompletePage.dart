@@ -128,7 +128,23 @@ class MissionCompletePageInput extends StatefulWidget {
 }
 
 class MissionCompletePageInputState extends State<MissionCompletePageInput> {
-  int _selButton = 1;
+  int _selButton = 3;
+
+  void sendData() async {
+    final response = await http.post(
+        Uri.parse("${FlutterConfig.get("API_URL")}/mission/missionComplete"),
+        headers: {
+          "Authorization": "Bearer ${widget.userToken}",
+          "Content-Type": "application/json"
+        },
+        body: jsonEncode({
+          "code": widget.missionCode,
+          "score": (_selButton * 0.2).toDouble()
+        })
+    );
+
+    print(response.body.toString());
+  }
 
   @override
   void setState(VoidCallback fn) {
@@ -283,6 +299,7 @@ class MissionCompletePageInputState extends State<MissionCompletePageInput> {
               child: Center(
                 child: TextButton(
                   onPressed: (){
+                    sendData();
                     Navigator.pop(context);
                   },
                   child: const Text("완료",
