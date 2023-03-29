@@ -98,6 +98,59 @@ class MissionCompletePageInput extends StatefulWidget {
 class MissionCompletePageInputState extends State<MissionCompletePageInput> {
   @override
   Widget build(BuildContext context) {
-    return Text("Mission Complete Page Input");
+    return Column(
+      children: [
+        Flexible(flex: 1,
+          child: Card(
+            color: const Color(0xFFF5F5F5),
+            elevation: 0.0,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(30.0)
+            ),
+            child: Padding(
+              padding: const EdgeInsets.only(top: 20, bottom: 20),
+              child: Row(
+                children: const [
+                  Center(
+                    child: Text("MISSION RESULT",
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 30
+                      )
+                    )
+                  )
+                ],
+              )
+            )
+          )
+        ),
+        Flexible(flex: 1,
+          child: Card(
+            color: const Color(0xFF001E99),
+            elevation: 0.0,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(30.0)
+            ),
+            child: Padding(
+              padding: const EdgeInsets.only(top: 20, bottom: 20),
+              child: Center(
+                child: TextButton(
+                  onPressed: (){
+                    Navigator.pop(context);
+                  },
+                  child: const Text("완료",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 30,
+                      height: 1
+                    ),
+                  )
+                )
+              )
+            )
+          )
+        )
+      ],
+    );
   }
 }
