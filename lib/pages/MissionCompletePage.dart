@@ -1,4 +1,7 @@
+import "dart:convert";
 import 'package:flutter/material.dart';
+import 'package:flutter_config/flutter_config.dart';
+import "package:http/http.dart" as http;
 
 class MissionCompletePage extends StatelessWidget {
   const MissionCompletePage({super.key, required this.userToken, required this.missionCode});
@@ -16,8 +19,8 @@ class MissionCompletePage extends StatelessWidget {
           child: Column(
             children: [
               Flexible(flex: 1, child: MissionCompletePageTitle()),
-              Flexible(flex: 3, child: MissionCompletePageData(missionCode: missionCode)),
-              Flexible(flex: 2, child: MissionCompletePageInput(missionCode: missionCode))
+              Flexible(flex: 3, child: MissionCompletePageData(userToken: userToken, missionCode: missionCode)),
+              Flexible(flex: 2, child: MissionCompletePageInput(userToken: userToken, missionCode: missionCode))
             ]
           )
         )
@@ -42,8 +45,9 @@ class MissionCompletePageTitle extends StatelessWidget {
 }
 
 class MissionCompletePageData extends StatefulWidget {
-  const MissionCompletePageData({super.key, required this.missionCode});
+  const MissionCompletePageData({super.key, required this.userToken, required this.missionCode});
 
+  final String userToken;
   final String missionCode;
 
   @override
@@ -51,6 +55,33 @@ class MissionCompletePageData extends StatefulWidget {
 }
 
 class MissionCompletePageDataState extends State<MissionCompletePageData> {
+  String missionData = "";
+
+  void getData() async {
+    final response = await http.get(
+      Uri.parse("${FlutterConfig.get("API_URL")}/mission/getMissionInfo/${widget.missionCode}"),
+      headers: {
+        "Authorization": "Bearer ${widget.userToken}"
+      }
+    );
+    missionData = jsonDecode(response.body)["result"]["content"];
+
+    setState(() {});
+
+    print(response.body.toString());
+  }
+
+  @override
+  void initState() {
+    getData();
+    super.initState();
+  }
+
+  @override
+  void setState(VoidCallback fn) {
+    super.setState(fn);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -69,9 +100,9 @@ class MissionCompletePageDataState extends State<MissionCompletePageData> {
             child: SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: const [
-                  Text("Mission Complete Page Data",
-                    style: TextStyle(
+                children: [
+                  Text(missionData,
+                    style: const TextStyle(
                       color: Colors.black,
                       fontSize: 30
                     )
@@ -87,8 +118,9 @@ class MissionCompletePageDataState extends State<MissionCompletePageData> {
 }
 
 class MissionCompletePageInput extends StatefulWidget {
-  const MissionCompletePageInput({super.key, required this.missionCode});
+  const MissionCompletePageInput({super.key, required this.userToken, required this.missionCode});
 
+  final String userToken;
   final String missionCode;
 
   @override
@@ -115,16 +147,16 @@ class MissionCompletePageInputState extends State<MissionCompletePageInput> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: const [
                 Text("◀ 부정",
-                    style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 30
-                    )
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 30
+                  )
                 ),
                 Text("긍정 ▶",
-                    style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 30
-                    )
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 30
+                  )
                 )
               ]
             )
