@@ -1,15 +1,27 @@
-import 'package:flutter/material.dart';
+import "dart:async";
+import "dart:convert";
+
+import "package:flutter/material.dart";
+import "package:flutter_config/flutter_config.dart";
+import "package:http/http.dart" as http;
+import 'package:intl/intl.dart';
+import "package:solutionchallengetem2_app/pages/Base.dart";
 
 class ChatPage extends StatelessWidget {
-  const ChatPage({super.key});
+  ChatPage({super.key});
+
+  String userToken = "";
 
   @override
   Widget build(BuildContext context) {
+    BasePageState? baseState = context.findAncestorStateOfType<BasePageState>();
+    userToken = baseState!.userToken;
+
     return Column(
-      children: const [
-        Flexible(flex: 1, child: ChatInfo()),
-        Flexible(flex: 4, child: ChatHistory()),
-        Flexible(flex: 1, child: ChatInput()),
+      children: [
+        const Flexible(flex: 1, child: ChatInfo()),
+        Flexible(flex: 4, child: ChatHistory(userToken: userToken)),
+        Flexible(flex: 1, child: ChatInput(userToken: userToken)),
       ]
     );
   }
@@ -80,48 +92,68 @@ class _ChatInfoState extends State<ChatInfo> {
 }
 
 class ChatHistory extends StatefulWidget {
-  const ChatHistory({super.key});
+  const ChatHistory({super.key, required this.userToken});
+
+  final String userToken;
 
   @override
-  State<StatefulWidget> createState() => _ChatHistoryState();
+  State<StatefulWidget> createState() => _ChatHistoryState(userToken: userToken);
 }
 
 class _ChatHistoryState extends State<ChatHistory> {
+  _ChatHistoryState({required this.userToken});
+
+  final String userToken;
+  List<Map<String, dynamic>> chatList = [];
+  late Timer _chatLoadTimer;
+
+  void getData() async {
+    final response = await http.get(
+      Uri.parse("${FlutterConfig.get("API_URL")}/chat/showChatMessages"),
+      headers: {
+        "Authorization": "Bearer $userToken"
+      }
+    );
+
+    var responseData = jsonDecode(response.body)["result"];
+
+    for(var item in responseData){
+      chatList.add({
+        "sender": item["sourceNickname"],
+        "datetime": item["updateTime"],
+        "message": item["content"],
+        "isFromMe": item["isFromMe"] ?? false
+      });
+    }
+    setState(() {});
+
+    print(response.body.toString());
+  }
+
+  @override
+  void initState() {
+    getData();
+    _chatLoadTimer = Timer.periodic(
+      const Duration(seconds: 2), (timer) {
+        getData();
+      }
+    );
+    super.initState();
+  }
+
+  @override
+  void setState(VoidCallback fn) {
+    super.setState(fn);
+  }
+
+  @override
+  void deactivate() {
+    _chatLoadTimer.cancel();
+    super.deactivate();
+  }
+
   @override
   Widget build(BuildContext context) {
-    Map<String, String> chatData = {
-      'sender': '발신자',
-      'datetime': '202303191634',
-      'message': '테스트메시지'
-    };
-    List<Map<String, String>> chatList = [];
-    chatList.add(chatData);
-    chatList.add(chatData);
-    chatList.add(chatData);
-    chatList.add(chatData);
-    chatList.add(chatData);
-    chatList.add(chatData);
-    chatList.add(chatData);
-    chatList.add(chatData);
-    chatList.add(chatData);
-    chatList.add(chatData);
-    chatList.add(chatData);
-    chatList.add(chatData);
-    chatList.add(chatData);
-    chatList.add(chatData);
-    chatList.add(chatData);
-    chatList.add(chatData);
-    chatList.add(chatData);
-    chatList.add(chatData);
-    chatList.add(chatData);
-    chatList.add(chatData);
-    chatList.add(chatData);
-    chatList.add(chatData);
-    chatList.add(chatData);
-    chatList.add(chatData);
-    chatList.add(chatData);
-    chatList.add(chatData);
-    chatList.add({'sender': '이름', 'datetime': '내용', 'message': '시간'});
     return SizedBox(
       height: double.infinity,
       child: SingleChildScrollView(
@@ -136,11 +168,7 @@ class _ChatHistoryState extends State<ChatHistory> {
               int i = 0;
               final List<Widget> chatItemList = [];
               for (var chatItem in chatList) {
-                if (i % 2 == 0) {
-                  chatItemList.add(ChatHistoryItem(chatData: chatItem, isFromMe: true));
-                } else {
-                  chatItemList.add(ChatHistoryItem(chatData: chatItem, isFromMe: false));
-                }
+                chatItemList.add(ChatHistoryItem(chatData: chatItem));
                 i++;
               }
               return chatItemList;
@@ -155,12 +183,10 @@ class _ChatHistoryState extends State<ChatHistory> {
 class ChatHistoryItem extends StatelessWidget {
   const ChatHistoryItem({
     Key? key,
-    required this.chatData,
-    required this.isFromMe
+    required this.chatData
   }): super(key: key);
 
-  final bool isFromMe;
-  final Map<String, String> chatData;
+  final Map<String, dynamic> chatData;
 
   @override
   Widget build(BuildContext context) {
@@ -173,8 +199,8 @@ class ChatHistoryItem extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.fromLTRB(30.0, 20.0, 30.0, 10.0),
               child: Text(
-                chatData['sender']!,
-                textAlign: isFromMe ? TextAlign.end : TextAlign.start,
+                chatData["sender"]!,
+                textAlign: chatData["isFromMe"]! ? TextAlign.end : TextAlign.start,
                 style: const TextStyle(
                   color: Color(0xFF000000),
                   fontSize: 20,
@@ -186,7 +212,7 @@ class ChatHistoryItem extends StatelessWidget {
           DecoratedBox(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(50),
-              color: isFromMe ? const Color(0xFF001E99) : const Color(0xFFF5F5F5)
+              color: chatData["isFromMe"] ? const Color(0xFF001E99) : const Color(0xFFF5F5F5)
             ),
             child: Padding(
               padding: const EdgeInsets.fromLTRB(30.0, 20.0, 30.0, 20.0),
@@ -197,10 +223,10 @@ class ChatHistoryItem extends StatelessWidget {
                     child: Padding(
                       padding: const EdgeInsets.only(bottom: 5.0, top: 5.0),
                       child: Text(
-                        chatData['message']!,
-                        textAlign: isFromMe ? TextAlign.end : TextAlign.start,
+                        chatData["message"]!,
+                        textAlign: chatData["isFromMe"] ? TextAlign.end : TextAlign.start,
                         style: TextStyle(
-                          color: isFromMe ? const Color(0xFFFFFFFF) : const Color(0xFF000000),
+                          color: chatData["isFromMe"] ? const Color(0xFFFFFFFF) : const Color(0xFF000000),
                           fontSize: 30,
                           height: 1
                         )
@@ -212,10 +238,10 @@ class ChatHistoryItem extends StatelessWidget {
                     child: Padding(
                       padding: const EdgeInsets.only(bottom: 5.0, top: 5.0),
                       child: Text(
-                        chatData['datetime']!,
-                        textAlign: isFromMe ? TextAlign.end : TextAlign.start,
+                        chatData["datetime"]!,
+                        textAlign: chatData["isFromMe"] ? TextAlign.end : TextAlign.start,
                         style: TextStyle(
-                          color: isFromMe ? const Color(0xFFFFFFFF) : const Color(0xFF000000),
+                          color: chatData["isFromMe"] ? const Color(0xFFFFFFFF) : const Color(0xFF000000),
                           fontSize: 20,
                           height: 1
                         )
@@ -233,14 +259,37 @@ class ChatHistoryItem extends StatelessWidget {
 }
 
 class ChatInput extends StatefulWidget {
-  const ChatInput({super.key});
+  const ChatInput({super.key, required this.userToken});
+
+  final String userToken;
 
   @override
-  State<StatefulWidget> createState() => _ChatInputState();
+  State<StatefulWidget> createState() => _ChatInputState(userToken: userToken);
 }
 
 class _ChatInputState extends State<ChatInput> {
+  _ChatInputState({required this.userToken});
+
+  final userToken;
   final inputController = TextEditingController();
+
+  void sendData(BuildContext context) async {
+    final response = await http.post(
+      Uri.parse("${FlutterConfig.get("API_URL")}/chat/sendMessage"),
+      headers: {
+        "Authorization": "Bearer $userToken",
+        "Content-Type": "application/json"
+      },
+      body: jsonEncode({
+        "content": inputController.text.toString(),
+        "destinationNickname": "ADMIN",
+        "updateTime": DateFormat("yyyyMMdd-HHmmss").format(DateTime.now())
+      })
+    );
+    inputController.clear();
+
+    print(response.body.toString());
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -252,29 +301,30 @@ class _ChatInputState extends State<ChatInput> {
         child: Row(
           children: [
             Flexible(
-                flex: 8,
-                child: TextField(
-                  controller: inputController,
-                  style: const TextStyle(
-                      fontSize: 30
-                  ),
-                )
+              flex: 8,
+              child: TextField(
+                controller: inputController,
+                style: const TextStyle(
+                  fontSize: 30
+                ),
+              )
             ),
             Flexible(
-                flex: 2,
-                child: SizedBox(
-                  height: double.infinity,
-                  width: double.infinity,
-                  child: IconButton(
-                    onPressed: (){
-                      print(inputController.text);
-                    },
-                    icon: const Icon(Icons.send, size: 40.0),
-                  ),
-                )
+              flex: 2,
+              child: SizedBox(
+                height: double.infinity,
+                width: double.infinity,
+                child: IconButton(
+                  onPressed: (){
+                    sendData(context);
+                  },
+                  icon: const Icon(Icons.send, size: 40.0),
+                ),
+              )
             )
           ],
         )
-      ));
+      )
+    );
   }
 }

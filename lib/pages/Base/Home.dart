@@ -1,4 +1,9 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_config/flutter_config.dart';
+import 'package:http/http.dart' as http;
+import 'package:solutionchallengetem2_app/pages/Base.dart';
 import 'package:solutionchallengetem2_app/pages/PrivacyEditPage.dart';
 
 class HomePage extends StatelessWidget {
@@ -90,11 +95,40 @@ class HomePrivacy extends StatefulWidget {
 }
 
 class _PrivacyState extends State<HomePrivacy> {
+  String _userToken = "";
   String _strPrivacyName = "";
   String _strPrivacyID = "";
   String _strPrivacyBlood = "";
   String _strPrivacyDisease = "";
   String _strPrivacyMedicine = "";
+
+  void getData() async {
+    BasePageState? baseState = context.findAncestorStateOfType<BasePageState>();
+    _userToken = baseState!.userToken;
+    final response = await http.get(
+      Uri.parse("${FlutterConfig.get("API_URL")}/users/getUserInfo"),
+      headers: {
+        "Authorization": "Bearer $_userToken"
+      }
+    );
+
+    var responseData = jsonDecode(response.body)["result"];
+    setState(() {
+      _strPrivacyName = responseData["username"] ?? "NAME";
+      _strPrivacyID = responseData["id"] ?? "ID";
+      _strPrivacyBlood = responseData["blood"] ?? "BLOOD";
+      _strPrivacyDisease = responseData["disease"] ?? "DISEASE";
+      _strPrivacyMedicine = responseData["medicine"] ?? "MEDICINE";
+    });
+
+    print(response.body.toString());
+  }
+
+  @override
+  void initState() {
+    getData();
+    super.initState();
+  }
 
   @override
   void setState(VoidCallback fn) {
@@ -103,20 +137,13 @@ class _PrivacyState extends State<HomePrivacy> {
 
   @override
   Widget build(BuildContext context) {
-    setState(() {
-      _strPrivacyName = "김XX";
-      _strPrivacyID = "000000-1234567";
-      _strPrivacyBlood = "A형";
-      _strPrivacyDisease = "없음";
-      _strPrivacyMedicine = "없음";
-    });
-
     return Column(
       mainAxisSize: MainAxisSize.max,
       children: [
         Flexible(
           flex: 1,
           child: PrivacyCard(
+            userToken: _userToken,
             privacyName: _strPrivacyName,
             privacyID: _strPrivacyID,
             privacyBlood: _strPrivacyBlood,
@@ -131,11 +158,14 @@ class _PrivacyState extends State<HomePrivacy> {
 
 class PrivacyCard extends StatelessWidget {
   const PrivacyCard({Key? key,
+    required this.userToken,
     required this.privacyName,
     required this.privacyID,
     required this.privacyBlood,
     required this.privacyDisease,
     required this.privacyMedicine}): super(key: key);
+
+  final String userToken;
 
   final String privacyBlood;
   final String privacyDisease;
@@ -180,7 +210,7 @@ class PrivacyCard extends StatelessWidget {
                         ),
                         IconButton(
                           onPressed: (){
-                            Navigator.push((context), MaterialPageRoute(builder: (context) => const PrivacyEditPage()));
+                            Navigator.push((context), MaterialPageRoute(builder: (context) => PrivacyEditPage(userToken: userToken)));
                           },
                           icon: const Icon(Icons.settings)
                         )

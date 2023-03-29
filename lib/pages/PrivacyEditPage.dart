@@ -1,7 +1,13 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_config/flutter_config.dart';
+import 'package:http/http.dart' as http;
 
 class PrivacyEditPage extends StatelessWidget {
-  const PrivacyEditPage({super.key});
+  const PrivacyEditPage({super.key, required this.userToken});
+
+  final String userToken;
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +20,7 @@ class PrivacyEditPage extends StatelessWidget {
             child: Column(
               children: [
                 const PrivacyEditBack(),
-                PrivacyEditInput()
+                PrivacyEditInput(userToken: userToken)
               ]
             )
           )
@@ -50,13 +56,34 @@ class PrivacyEditBack extends StatelessWidget {
 }
 
 class PrivacyEditInput extends StatelessWidget {
-  PrivacyEditInput({super.key});
+  PrivacyEditInput({super.key, required this.userToken});
+
+  final String userToken;
 
   final inputBloodController = TextEditingController();
   final inputDiseaseController = TextEditingController();
   final inputIDController = TextEditingController();
   final inputMedicineController = TextEditingController();
   final inputNameController = TextEditingController();
+
+  void sendData(BuildContext context) async {
+    final response = await http.post(
+      Uri.parse("${FlutterConfig.get("API_URL")}/users/updateUserInfo"),
+      headers: {
+        "Authorization": "Bearer $userToken",
+        "Content-Type": "application/json"
+      },
+      body: jsonEncode({
+        "blood": inputBloodController.text.toString(),
+        "disease": inputDiseaseController.text.toString(),
+        "id": inputIDController.text.toString(),
+        "medicine": inputMedicineController.text.toString(),
+        "username": inputNameController.text.toString()
+      })
+    );
+
+    print(response.body.toString());
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -223,6 +250,7 @@ class PrivacyEditInput extends StatelessWidget {
             child: Center(
               child: TextButton(
                 onPressed: (){
+                  sendData(context);
                   Navigator.pop(context);
                 },
                 child: const Text("완료",

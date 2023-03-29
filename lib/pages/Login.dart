@@ -1,8 +1,13 @@
+import 'dart:convert';
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter_config/flutter_config.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:http/http.dart' as http;
 import 'package:solutionchallengetem2_app/main.dart';
 import '../firebase_options.dart';
 
@@ -30,11 +35,14 @@ class LoginPageState extends State<LoginPage> {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: _isBtnEnabled ? [
+              LoginPageLogo(),
               ElevatedButton(
                 onPressed: tryGoogleLogin,
                 child: const Text("Login with Google")
               )
-            ] : []
+            ] : [
+              LoginPageLogo()
+            ]
           )
         )
       )
@@ -58,11 +66,14 @@ class LoginPageState extends State<LoginPage> {
     );
     FirebaseAuth.instance
         .authStateChanges()
-        .listen((User? user) {
+        .listen((User? user) async {
       if(user != null && scApp != null){
-        print(user.uid);
+        String userName = user.displayName.toString();
+        String userToken = await user.getIdToken(false);
+        registerUser(userName, userToken);
         scApp!.setState(() {
           scApp!.isLoggedIn = true;
+          scApp!.userToken = userToken;
         });
       }else{
         setState(() {
@@ -72,7 +83,7 @@ class LoginPageState extends State<LoginPage> {
     });
   }
 
-  void tryGoogleLogin() async {
+  Future<void> tryGoogleLogin() async {
     final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
     final GoogleSignInAuthentication? googleAuth = await googleUser?.authentication;
     final credential = GoogleAuthProvider.credential(
@@ -80,5 +91,31 @@ class LoginPageState extends State<LoginPage> {
       idToken: googleAuth?.idToken,
     );
     await FirebaseAuth.instance.signInWithCredential(credential);
+  }
+
+  void registerUser(String? userName, String userToken) async {
+    final response = await http.post(
+      Uri.parse("${FlutterConfig.get("API_URL")}/users/login"),
+      headers: {
+        "Authorization": "Bearer $userToken",
+        "Content-Type": "application/json"
+      },
+      body: jsonEncode({
+        "nickname": userName
+      })
+    );
+
+    print(response.body.toString());
+  }
+}
+
+class LoginPageLogo extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return const Center(
+      child: Image(
+        image: AssetImage("assets/Wiro_Logo.png")
+      )
+    );
   }
 }

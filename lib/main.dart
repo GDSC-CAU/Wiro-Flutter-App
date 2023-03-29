@@ -1,8 +1,12 @@
 import "package:flutter/material.dart";
+import "package:flutter_config/flutter_config.dart";
 import "pages/Base.dart";
 import "pages/Login.dart";
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await FlutterConfig.loadEnvVariables();
+
   runApp(const SCApp());
 }
 
@@ -15,6 +19,7 @@ class SCApp extends StatefulWidget {
 
 class SCAppState extends State<SCApp> {
   bool isLoggedIn = false;
+  String userToken = "";
 
   @override
   void setState(VoidCallback fn) {
@@ -28,7 +33,7 @@ class SCAppState extends State<SCApp> {
       theme: ThemeData(
         primarySwatch: Colors.indigo,
       ),
-      home: isLoggedIn ? const BasePage() : const LoginPage(),
+      home: isLoggedIn ? BasePage(userToken: userToken) : const LoginPage(),
     );
   }
 }

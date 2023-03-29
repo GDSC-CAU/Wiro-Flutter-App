@@ -4,16 +4,21 @@ import 'Base/Home.dart';
 import 'Base/Mission.dart';
 
 class BasePage extends StatefulWidget {
-  const BasePage({super.key});
+  const BasePage({super.key, required this.userToken});
+
+  final String userToken;
 
   @override
-  State<BasePage> createState() => _BasePageState();
+  State<BasePage> createState() => BasePageState(userToken: userToken);
 }
 
-class _BasePageState extends State<BasePage> {
+class BasePageState extends State<BasePage> {
+  BasePageState({required this.userToken});
+
+  final String userToken;
   int _curIndex = 1;
 
-  static const List<Widget> _pageOptions = <Widget>[
+  static List<Widget> _pageOptions = <Widget>[
     MissionPage(),
     HomePage(),
     ChatPage(),
