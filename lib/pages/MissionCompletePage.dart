@@ -16,8 +16,8 @@ class MissionCompletePage extends StatelessWidget {
           child: Column(
             children: [
               Flexible(flex: 1, child: MissionCompletePageTitle()),
-              Flexible(flex: 4, child: MissionCompletePageData(missionCode: missionCode)),
-              Flexible(flex: 1, child: MissionCompletePageInput(missionCode: missionCode))
+              Flexible(flex: 5, child: MissionCompletePageData(missionCode: missionCode)),
+              Flexible(flex: 2, child: MissionCompletePageInput(missionCode: missionCode))
             ]
           )
         )
