@@ -18,7 +18,7 @@ class MissionCompletePage extends StatelessWidget {
           padding: const EdgeInsets.all(10.0),
           child: Column(
             children: [
-              Flexible(flex: 1, child: MissionCompletePageTitle()),
+              const Flexible(flex: 1, child: MissionCompletePageTitle()),
               Flexible(flex: 3, child: MissionCompletePageData(userToken: userToken, missionCode: missionCode)),
               Flexible(flex: 2, child: MissionCompletePageInput(userToken: userToken, missionCode: missionCode))
             ]
@@ -30,6 +30,8 @@ class MissionCompletePage extends StatelessWidget {
 }
 
 class MissionCompletePageTitle extends StatelessWidget {
+  const MissionCompletePageTitle({super.key});
+
   @override
   Widget build(BuildContext context) {
     return const Center(
@@ -214,8 +216,8 @@ class MissionCompletePageInputState extends State<MissionCompletePageInput> {
                     height: 50.0,
                     decoration: BoxDecoration(
                       border: Border.all(
-                          color: Colors.black,
-                          width: 5
+                        color: Colors.black,
+                        width: 5
                       ),
                       color: _selButton == 1 ? const Color(0xFF001E99) : Colors.white,
                       shape: BoxShape.circle,
@@ -232,8 +234,8 @@ class MissionCompletePageInputState extends State<MissionCompletePageInput> {
                     height: 50.0,
                     decoration: BoxDecoration(
                       border: Border.all(
-                          color: Colors.black,
-                          width: 5
+                        color: Colors.black,
+                        width: 5
                       ),
                       color: _selButton == 2 ? const Color(0xFF001E99) : Colors.white,
                       shape: BoxShape.circle,
@@ -250,8 +252,8 @@ class MissionCompletePageInputState extends State<MissionCompletePageInput> {
                     height: 50.0,
                     decoration: BoxDecoration(
                       border: Border.all(
-                          color: Colors.black,
-                          width: 5
+                        color: Colors.black,
+                        width: 5
                       ),
                       color: _selButton == 3 ? const Color(0xFF001E99) : Colors.white,
                       shape: BoxShape.circle,
@@ -268,8 +270,8 @@ class MissionCompletePageInputState extends State<MissionCompletePageInput> {
                     height: 50.0,
                     decoration: BoxDecoration(
                       border: Border.all(
-                          color: Colors.black,
-                          width: 5
+                        color: Colors.black,
+                        width: 5
                       ),
                       color: _selButton == 4 ? const Color(0xFF001E99) : Colors.white,
                       shape: BoxShape.circle,
