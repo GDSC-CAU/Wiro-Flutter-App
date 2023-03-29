@@ -21,7 +21,7 @@ void main() async {
   );
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
 
-  var initialzationSettingsAndroid = AndroidInitializationSettings("@mipmap/ic_launcher");
+  var initialzationSettingsAndroid = const AndroidInitializationSettings("@mipmap/ic_launcher");
   channel = const AndroidNotificationChannel(
     "high_importance_channel",
     "Wiro Default Notification",
@@ -64,7 +64,6 @@ class SCAppState extends State<SCApp> {
   void initState() {
     FirebaseMessaging.onMessage.listen((RemoteMessage message) async {
       RemoteNotification? notification = message.notification;
-      AndroidNotification? android = message.notification?.android;
       var androidNotiDetails = AndroidNotificationDetails(
         channel.id,
         channel.name,
