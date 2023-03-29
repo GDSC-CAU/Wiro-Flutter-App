@@ -15,7 +15,7 @@ class MissionCompletePage extends StatelessWidget {
           child: Column(
             children: [
               Flexible(flex: 1, child: MissionCompletePageTitle()),
-              Flexible(flex: 4, child: MissionCompletePageData()),
+              Flexible(flex: 5, child: MissionCompletePageData()),
               Flexible(flex: 1, child: MissionCompletePageInput())
             ]
           )
@@ -28,7 +28,15 @@ class MissionCompletePage extends StatelessWidget {
 class MissionCompletePageTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Text("Mission Complete Page Title");
+    return const Center(
+      child: Text("오늘의 미션 / 체크",
+        style: TextStyle(
+          color: Colors.black,
+          fontSize: 40,
+          fontWeight: FontWeight.bold
+        )
+      )
+    );
   }
 }
 
