@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_config/flutter_config.dart';
 import 'package:http/http.dart' as http;
 import 'package:solutionchallengetem2_app/pages/Base.dart';
+import 'package:solutionchallengetem2_app/pages/MissionCompletePage.dart';
 
 class MissionPage extends StatelessWidget {
   MissionPage({super.key});
@@ -77,36 +78,42 @@ class _MissionRecommendCardState extends State<MissionRecommendCard> {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(30.0)
         ),
-        child: Padding(
-          padding: const EdgeInsets.all(20.0),
-          child: SizedBox(
-            height: double.infinity,
-            width: double.infinity,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Padding(
-                  padding: EdgeInsets.only(top: 10.0, bottom: 10.0),
-                  child: Text("추천 미션",
-                    style: TextStyle(
-                      fontSize: 30,
-                      fontWeight: FontWeight.bold,
-                      height: 1
+        child: InkWell(
+          onTap: (){
+            Navigator.push(context, MaterialPageRoute(builder: (context) => MissionCompletePage(userToken: userToken)));
+          },
+          borderRadius: BorderRadius.circular(30.0),
+          child: Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: SizedBox(
+              height: double.infinity,
+              width: double.infinity,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Padding(
+                    padding: EdgeInsets.only(top: 10.0, bottom: 10.0),
+                    child: Text("추천 미션",
+                      style: TextStyle(
+                        fontSize: 30,
+                        fontWeight: FontWeight.bold,
+                        height: 1
+                      )
+                    )
+                  ),
+                  Center(
+                    child: Text(_strRecommendMission,
+                      textAlign: TextAlign.center,
+                      style: const TextStyle(
+                        fontSize: 50,
+                        fontWeight: FontWeight.bold,
+                        height: 1
+                      )
                     )
                   )
-                ),
-                Center(
-                  child: Text(_strRecommendMission,
-                    textAlign: TextAlign.center,
-                    style: const TextStyle(
-                      fontSize: 50,
-                      fontWeight: FontWeight.bold,
-                      height: 1
-                    )
-                  )
-                )
-              ]
+                ]
+              )
             )
           )
         )
