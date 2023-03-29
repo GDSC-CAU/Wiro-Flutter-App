@@ -109,7 +109,26 @@ class MissionCompletePageInputState extends State<MissionCompletePageInput> {
       children: [
         Flexible(
           flex: 1,
-          child: Text("ASDF"),
+          child: Padding(
+            padding: const EdgeInsets.only(left: 20.0, right: 20.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: const [
+                Text("◀ 부정",
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 30
+                    )
+                ),
+                Text("긍정 ▶",
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 30
+                    )
+                )
+              ]
+            )
+          )
         ),
         Flexible(
           flex: 2,
