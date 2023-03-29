@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 
 class MissionCompletePage extends StatelessWidget {
-  const MissionCompletePage({super.key, required this.userToken});
+  const MissionCompletePage({super.key, required this.userToken, required this.missionCode});
 
+  final String missionCode;
   final String userToken;
 
   @override
@@ -15,8 +16,8 @@ class MissionCompletePage extends StatelessWidget {
           child: Column(
             children: [
               Flexible(flex: 1, child: MissionCompletePageTitle()),
-              Flexible(flex: 5, child: MissionCompletePageData()),
-              Flexible(flex: 1, child: MissionCompletePageInput())
+              Flexible(flex: 4, child: MissionCompletePageData(missionCode: missionCode)),
+              Flexible(flex: 1, child: MissionCompletePageInput(missionCode: missionCode))
             ]
           )
         )
@@ -41,6 +42,10 @@ class MissionCompletePageTitle extends StatelessWidget {
 }
 
 class MissionCompletePageData extends StatefulWidget {
+  const MissionCompletePageData({super.key, required this.missionCode});
+
+  final String missionCode;
+
   @override
   State<StatefulWidget> createState() => MissionCompletePageDataState();
 }
@@ -82,6 +87,10 @@ class MissionCompletePageDataState extends State<MissionCompletePageData> {
 }
 
 class MissionCompletePageInput extends StatefulWidget {
+  const MissionCompletePageInput({super.key, required this.missionCode});
+
+  final String missionCode;
+
   @override
   State<StatefulWidget> createState() => MissionCompletePageInputState();
 }

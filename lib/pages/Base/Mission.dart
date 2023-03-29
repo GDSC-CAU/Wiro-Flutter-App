@@ -41,6 +41,7 @@ class _MissionRecommendCardState extends State<MissionRecommendCard> {
 
   final String userToken;
   String _strRecommendMission = "";
+  String _strRecommendMissionCode = "";
 
   void getData() async {
     final response = await http.get(
@@ -52,6 +53,7 @@ class _MissionRecommendCardState extends State<MissionRecommendCard> {
 
     var responseData = (jsonDecode(response.body))["result"];
     _strRecommendMission = responseData[0]["content"];
+    _strRecommendMissionCode = responseData[0]["code"];
     setState(() {});
 
     print(response.body.toString());
@@ -80,7 +82,7 @@ class _MissionRecommendCardState extends State<MissionRecommendCard> {
         ),
         child: InkWell(
           onTap: (){
-            Navigator.push(context, MaterialPageRoute(builder: (context) => MissionCompletePage(userToken: userToken)));
+            Navigator.push(context, MaterialPageRoute(builder: (context) => MissionCompletePage(userToken: userToken, missionCode: _strRecommendMissionCode)));
           },
           borderRadius: BorderRadius.circular(30.0),
           child: Padding(
