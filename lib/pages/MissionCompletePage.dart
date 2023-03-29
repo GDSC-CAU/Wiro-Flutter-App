@@ -294,15 +294,12 @@ class MissionCompletePageInputState extends State<MissionCompletePageInput> {
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(30.0)
             ),
-            child: Padding(
-              padding: const EdgeInsets.only(top: 20, bottom: 20),
-              child: Center(
-                child: TextButton(
-                  onPressed: (){
-                    sendData();
-                    Navigator.pop(context);
-                  },
-                  child: const Text("완료",
+            child: InkWell(
+              onTap: sendData,
+              child: const Padding(
+                padding: EdgeInsets.only(top: 20, bottom: 20),
+                child: Center(
+                  child: Text("완료",
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 30,
