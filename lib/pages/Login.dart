@@ -1,11 +1,12 @@
 import 'dart:convert';
-import 'dart:ffi';
 
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_config/flutter_config.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:http/http.dart' as http;
 import 'package:solutionchallengetem2_app/main.dart';
@@ -70,6 +71,31 @@ class LoginPageState extends State<LoginPage> {
       if(user != null && scApp != null){
         String userName = user.displayName.toString();
         String userToken = await user.getIdToken(false);
+        String userUID = user.uid.toString();
+
+        FirebaseMessaging.onMessage.listen((RemoteMessage message) async {
+          RemoteNotification? notification = message.notification;
+          var androidNotiDetails = AndroidNotificationDetails(
+            channel.id,
+            channel.name,
+            channelDescription: channel.description,
+          );
+          var details = NotificationDetails(android: androidNotiDetails);
+          if (notification != null) {
+            flutterLocalNotificationsPlugin.show(
+              notification.hashCode,
+              notification.title,
+              notification.body,
+              details,
+            );
+          }
+        });
+
+        await FirebaseMessaging.instance.subscribeToTopic(userUID);
+        FirebaseMessaging.onMessageOpenedApp.listen((message) async {
+          print(message);
+        });
+
         registerUser(userName, userToken);
         scApp!.setState(() {
           scApp!.isLoggedIn = true;

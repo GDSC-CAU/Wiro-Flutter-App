@@ -78,7 +78,7 @@ class PrivacyEditInput extends StatelessWidget {
         "disease": inputDiseaseController.text.toString(),
         "id": inputIDController.text.toString(),
         "medicine": inputMedicineController.text.toString(),
-        "username": inputNameController.text.toString()
+        "nickname": inputNameController.text.toString()
       })
     );
 
