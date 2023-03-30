@@ -130,7 +130,7 @@ class MissionCompletePageInput extends StatefulWidget {
 }
 
 class MissionCompletePageInputState extends State<MissionCompletePageInput> {
-  int _selButton = 2;
+  double _selButton = 0.0;
 
   void sendData() async {
     final response = await http.post(
@@ -141,7 +141,7 @@ class MissionCompletePageInputState extends State<MissionCompletePageInput> {
         },
         body: jsonEncode({
           "code": widget.missionCode,
-          "score": double.parse((_selButton * 0.25).toDouble().toStringAsFixed(2))
+          "score": double.parse(_selButton.toStringAsFixed(2))
         })
     );
 
@@ -201,6 +201,42 @@ class MissionCompletePageInputState extends State<MissionCompletePageInput> {
                         color: Colors.black,
                         width: 5
                       ),
+                      color: _selButton == -1.0 ? const Color(0xFF001E99) : Colors.white,
+                      shape: BoxShape.circle,
+                    ),
+                    child: InkWell(
+                      onTap: (){
+                        _selButton = -1.0;
+                        setState(() {});
+                      },
+                    ),
+                  ),
+                  Container(
+                    width: 50.0,
+                    height: 50.0,
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: Colors.black,
+                        width: 5
+                      ),
+                      color: _selButton == -0.5 ? const Color(0xFF001E99) : Colors.white,
+                      shape: BoxShape.circle,
+                    ),
+                    child: InkWell(
+                      onTap: (){
+                        _selButton = -0.5;
+                        setState(() {});
+                      },
+                    ),
+                  ),
+                  Container(
+                    width: 50.0,
+                    height: 50.0,
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: Colors.black,
+                        width: 5
+                      ),
                       color: _selButton == 0 ? const Color(0xFF001E99) : Colors.white,
                       shape: BoxShape.circle,
                     ),
@@ -219,12 +255,12 @@ class MissionCompletePageInputState extends State<MissionCompletePageInput> {
                         color: Colors.black,
                         width: 5
                       ),
-                      color: _selButton == 1 ? const Color(0xFF001E99) : Colors.white,
+                      color: _selButton == 0.5 ? const Color(0xFF001E99) : Colors.white,
                       shape: BoxShape.circle,
                     ),
                     child: InkWell(
                       onTap: (){
-                        _selButton = 1;
+                        _selButton = 0.5;
                         setState(() {});
                       },
                     ),
@@ -237,48 +273,12 @@ class MissionCompletePageInputState extends State<MissionCompletePageInput> {
                         color: Colors.black,
                         width: 5
                       ),
-                      color: _selButton == 2 ? const Color(0xFF001E99) : Colors.white,
+                      color: _selButton == 1.0 ? const Color(0xFF001E99) : Colors.white,
                       shape: BoxShape.circle,
                     ),
                     child: InkWell(
                       onTap: (){
-                        _selButton = 2;
-                        setState(() {});
-                      },
-                    ),
-                  ),
-                  Container(
-                    width: 50.0,
-                    height: 50.0,
-                    decoration: BoxDecoration(
-                      border: Border.all(
-                        color: Colors.black,
-                        width: 5
-                      ),
-                      color: _selButton == 3 ? const Color(0xFF001E99) : Colors.white,
-                      shape: BoxShape.circle,
-                    ),
-                    child: InkWell(
-                      onTap: (){
-                        _selButton = 3;
-                        setState(() {});
-                      },
-                    ),
-                  ),
-                  Container(
-                    width: 50.0,
-                    height: 50.0,
-                    decoration: BoxDecoration(
-                      border: Border.all(
-                        color: Colors.black,
-                        width: 5
-                      ),
-                      color: _selButton == 4 ? const Color(0xFF001E99) : Colors.white,
-                      shape: BoxShape.circle,
-                    ),
-                    child: InkWell(
-                      onTap: (){
-                        _selButton = 4;
+                        _selButton = 1.0;
                         setState(() {});
                       },
                     ),
