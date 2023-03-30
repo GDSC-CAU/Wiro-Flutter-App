@@ -297,7 +297,10 @@ class MissionCompletePageInputState extends State<MissionCompletePageInput> {
               borderRadius: BorderRadius.circular(30.0)
             ),
             child: InkWell(
-              onTap: sendData,
+              onTap: (){
+                sendData();
+                Navigator.pop(context);
+              },
               child: const Padding(
                 padding: EdgeInsets.only(top: 20, bottom: 20),
                 child: Center(
