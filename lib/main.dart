@@ -1,14 +1,19 @@
-import "package:firebase_messaging/firebase_messaging.dart";
-import "package:firebase_core/firebase_core.dart";
+import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
+
 import "package:flutter_config/flutter_config.dart";
 import "package:flutter_local_notifications/flutter_local_notifications.dart";
+import "package:firebase_core/firebase_core.dart";
+import "package:firebase_messaging/firebase_messaging.dart";
+
 import 'package:solutionchallengetem2_app/firebase_options.dart';
 import "pages/Base.dart";
 import "pages/Login.dart";
 
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
-  print("Handling a background message ${message.messageId}");
+  if (kDebugMode) {
+    print("Handling a background message ${message.messageId}");
+  }
 }
 
 late AndroidNotificationChannel channel;
