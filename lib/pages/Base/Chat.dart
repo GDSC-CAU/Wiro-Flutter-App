@@ -4,24 +4,21 @@ import "dart:convert";
 import "package:flutter/material.dart";
 import "package:flutter_config/flutter_config.dart";
 import "package:http/http.dart" as http;
-import 'package:intl/intl.dart';
+
 import "package:solutionchallengetem2_app/pages/Base.dart";
 
 class ChatPage extends StatelessWidget {
-  ChatPage({super.key});
-
-  String userToken = "";
+  const ChatPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     BasePageState? baseState = context.findAncestorStateOfType<BasePageState>();
-    userToken = baseState!.userToken;
 
     return Column(
       children: [
         const Flexible(flex: 1, child: ChatInfo()),
-        Flexible(flex: 4, child: ChatHistory(userToken: userToken)),
-        Flexible(flex: 1, child: ChatInput(userToken: userToken)),
+        Flexible(flex: 4, child: ChatHistory(userToken: baseState!.userToken)),
+        Flexible(flex: 1, child: ChatInput(userToken: baseState.userToken)),
       ]
     );
   }
@@ -97,13 +94,10 @@ class ChatHistory extends StatefulWidget {
   final String userToken;
 
   @override
-  State<StatefulWidget> createState() => _ChatHistoryState(userToken: userToken);
+  State<StatefulWidget> createState() => _ChatHistoryState();
 }
 
 class _ChatHistoryState extends State<ChatHistory> {
-  _ChatHistoryState({required this.userToken});
-
-  final String userToken;
   List<Map<String, dynamic>> chatList = [];
   late Timer _chatLoadTimer;
 
@@ -111,7 +105,7 @@ class _ChatHistoryState extends State<ChatHistory> {
     final response = await http.get(
       Uri.parse("${FlutterConfig.get("API_URL")}/chat/showChatMessages"),
       headers: {
-        "Authorization": "Bearer $userToken"
+        "Authorization": "Bearer ${widget.userToken}"
       }
     );
 
@@ -127,8 +121,6 @@ class _ChatHistoryState extends State<ChatHistory> {
       });
     }
     setState(() {});
-
-    print(response.body.toString());
   }
 
   @override
@@ -263,20 +255,17 @@ class ChatInput extends StatefulWidget {
   final String userToken;
 
   @override
-  State<StatefulWidget> createState() => _ChatInputState(userToken: userToken);
+  State<StatefulWidget> createState() => _ChatInputState();
 }
 
 class _ChatInputState extends State<ChatInput> {
-  _ChatInputState({required this.userToken});
-
-  final userToken;
   final inputController = TextEditingController();
 
   void sendData(BuildContext context) async {
-    final response = await http.post(
+    await http.post(
       Uri.parse("${FlutterConfig.get("API_URL")}/chat/sendMessage"),
       headers: {
-        "Authorization": "Bearer $userToken",
+        "Authorization": "Bearer ${widget.userToken}",
         "Content-Type": "application/json"
       },
       body: jsonEncode({
@@ -285,14 +274,12 @@ class _ChatInputState extends State<ChatInput> {
       })
     );
     inputController.clear();
-
-    print(response.body.toString());
   }
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(left: 20),
+      padding: const EdgeInsets.only(left: 20),
       child: SizedBox(
         height: double.infinity,
         width: double.infinity,
