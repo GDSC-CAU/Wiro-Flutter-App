@@ -1,27 +1,25 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
+
 import 'package:flutter_config/flutter_config.dart';
 import 'package:http/http.dart' as http;
+
 import 'package:solutionchallengetem2_app/pages/Base.dart';
 import 'package:solutionchallengetem2_app/pages/MissionCompletePage.dart';
 
 class MissionPage extends StatelessWidget {
-  MissionPage({super.key});
-
-  String userToken = "";
+  const MissionPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     BasePageState? baseState = context.findAncestorStateOfType<BasePageState>();
-    userToken = baseState!.userToken;
 
     return Column(
       mainAxisSize: MainAxisSize.max,
       children: [
-        Flexible(flex: 2, child: MissionRecommendCard(userToken: userToken)),
-        Flexible(flex: 3, child: MissionHistoryCard(userToken: userToken)),
-        Flexible(flex: 3, child: CheckHistoryCard(userToken: userToken))
+        Flexible(flex: 2, child: MissionRecommendCard(userToken: baseState!.widget.userToken)),
+        Flexible(flex: 3, child: MissionHistoryCard(userToken: baseState.widget.userToken)),
+        Flexible(flex: 3, child: CheckHistoryCard(userToken: baseState.widget.userToken))
       ]
     );
   }
@@ -33,13 +31,10 @@ class MissionRecommendCard extends StatefulWidget {
   final String userToken;
 
   @override
-  State<StatefulWidget> createState() => _MissionRecommendCardState(userToken: userToken);
+  State<StatefulWidget> createState() => _MissionRecommendCardState();
 }
 
 class _MissionRecommendCardState extends State<MissionRecommendCard> {
-  _MissionRecommendCardState({required this.userToken});
-
-  final String userToken;
   String _strRecommendMission = "";
   String _strRecommendMissionCode = "";
 
@@ -47,7 +42,7 @@ class _MissionRecommendCardState extends State<MissionRecommendCard> {
     final response = await http.get(
         Uri.parse("${FlutterConfig.get("API_URL")}/mission/getRecommendMission"),
         headers: {
-          "Authorization": "Bearer $userToken"
+          "Authorization": "Bearer ${widget.userToken}"
         }
     );
 
@@ -55,8 +50,6 @@ class _MissionRecommendCardState extends State<MissionRecommendCard> {
     _strRecommendMission = responseData[0]["content"];
     _strRecommendMissionCode = responseData[0]["code"];
     setState(() {});
-
-    print(response.body.toString());
   }
 
   @override
@@ -82,7 +75,7 @@ class _MissionRecommendCardState extends State<MissionRecommendCard> {
         ),
         child: InkWell(
           onTap: (){
-            Navigator.push(context, MaterialPageRoute(builder: (context) => MissionCompletePage(userToken: userToken, missionCode: _strRecommendMissionCode)));
+            Navigator.push(context, MaterialPageRoute(builder: (context) => MissionCompletePage(userToken: widget.userToken, missionCode: _strRecommendMissionCode)));
           },
           borderRadius: BorderRadius.circular(30.0),
           child: Padding(
@@ -96,7 +89,7 @@ class _MissionRecommendCardState extends State<MissionRecommendCard> {
                 children: [
                   const Padding(
                     padding: EdgeInsets.only(top: 10.0, bottom: 10.0),
-                    child: Text("추천 미션",
+                    child: Text("Recommended",
                       style: TextStyle(
                         fontSize: 30,
                         fontWeight: FontWeight.bold,
@@ -130,20 +123,17 @@ class MissionHistoryCard extends StatefulWidget {
   final String userToken;
 
   @override
-  State<StatefulWidget> createState() => _MissionHistoryCardState(userToken: userToken);
+  State<StatefulWidget> createState() => _MissionHistoryCardState();
 }
 
 class _MissionHistoryCardState extends State<MissionHistoryCard> {
-  _MissionHistoryCardState({required this.userToken});
-
-  final String userToken;
   final List<String> _missionItemList = [];
 
   void getData() async {
     final response = await http.get(
       Uri.parse("${FlutterConfig.get("API_URL")}/mission/getMissionHistory"),
       headers: {
-        "Authorization": "Bearer $userToken"
+        "Authorization": "Bearer ${widget.userToken}"
       }
     );
 
@@ -151,16 +141,14 @@ class _MissionHistoryCardState extends State<MissionHistoryCard> {
 
     for(var item in responseData){
       final tmpResponse = await http.get(
-        Uri.parse("${FlutterConfig.get("API_URL")}/mission/getMissionInfo/1101"), //${item["code"]}"),
+        Uri.parse("${FlutterConfig.get("API_URL")}/mission/getMissionInfo/${item["code"]}"),
         headers: {
-          "Authorization": "Bearer $userToken"
+          "Authorization": "Bearer ${widget.userToken}"
         }
       );
       _missionItemList.add(jsonDecode(tmpResponse.body)["result"]["content"]);
     }
     setState(() {});
-
-    print(response.body.toString());
   }
 
   @override
@@ -196,7 +184,7 @@ class _MissionHistoryCardState extends State<MissionHistoryCard> {
                 const Padding(
                   padding: EdgeInsets.only(top: 10.0, bottom: 10.0),
                   child:
-                  Text("미션 기록",
+                  Text("Mission History",
                     style: TextStyle(
                       fontSize: 30,
                       fontWeight: FontWeight.bold,
@@ -245,20 +233,17 @@ class CheckHistoryCard extends StatefulWidget {
   final String userToken;
 
   @override
-  State<StatefulWidget> createState() => _CheckHistoryCardState(userToken: userToken);
+  State<StatefulWidget> createState() => _CheckHistoryCardState();
 }
 
 class _CheckHistoryCardState extends State<CheckHistoryCard> {
-  _CheckHistoryCardState({required this.userToken});
-
-  final String userToken;
   final List<String> _chkItemList = [];
 
   void getData() async {
     final response = await http.get(
       Uri.parse("${FlutterConfig.get("API_URL")}/mission/getCheckListHistory"),
       headers: {
-        "Authorization": "Bearer $userToken"
+        "Authorization": "Bearer ${widget.userToken}"
       }
     );
 
@@ -266,16 +251,14 @@ class _CheckHistoryCardState extends State<CheckHistoryCard> {
 
     for(var item in responseData){
       final tmpResponse = await http.get(
-        Uri.parse("${FlutterConfig.get("API_URL")}/mission/getMissionInfo/2101"), //${item["code"]}"),
+        Uri.parse("${FlutterConfig.get("API_URL")}/mission/getMissionInfo/${item["code"]}"),
         headers: {
-          "Authorization": "Bearer $userToken"
+          "Authorization": "Bearer ${widget.userToken}"
         }
       );
       _chkItemList.add(jsonDecode(tmpResponse.body)["result"]["content"]);
     }
     setState(() {});
-
-    print(response.body.toString());
   }
 
   @override
@@ -309,7 +292,7 @@ class _CheckHistoryCardState extends State<CheckHistoryCard> {
               children: [
                 const Padding(
                   padding: EdgeInsets.only(top: 10.0, bottom: 10.0),
-                  child: Text("체크리스트 기록",
+                  child: Text("Checklist History",
                     style: TextStyle(
                       fontSize: 30,
                       fontWeight: FontWeight.bold,

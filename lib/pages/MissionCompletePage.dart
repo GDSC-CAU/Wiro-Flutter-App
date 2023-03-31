@@ -1,5 +1,6 @@
 import "dart:convert";
 import 'package:flutter/material.dart';
+
 import 'package:flutter_config/flutter_config.dart';
 import "package:http/http.dart" as http;
 
@@ -35,7 +36,7 @@ class MissionCompletePageTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Center(
-      child: Text("오늘의 미션 / 체크",
+      child: Text("Today's Recommend",
         style: TextStyle(
           color: Colors.black,
           fontSize: 40,
@@ -69,8 +70,6 @@ class MissionCompletePageDataState extends State<MissionCompletePageData> {
     missionData = jsonDecode(response.body)["result"]["content"];
 
     setState(() {});
-
-    print(response.body.toString());
   }
 
   @override
@@ -133,7 +132,7 @@ class MissionCompletePageInputState extends State<MissionCompletePageInput> {
   double _selButton = 0.0;
 
   void sendData() async {
-    final response = await http.post(
+    await http.post(
         Uri.parse("${FlutterConfig.get("API_URL")}/mission/missionComplete"),
         headers: {
           "Authorization": "Bearer ${widget.userToken}",
@@ -144,8 +143,6 @@ class MissionCompletePageInputState extends State<MissionCompletePageInput> {
           "score": double.parse(_selButton.toStringAsFixed(2))
         })
     );
-
-    print(response.body.toString());
   }
 
   @override
@@ -164,13 +161,13 @@ class MissionCompletePageInputState extends State<MissionCompletePageInput> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: const [
-                Text("◀ 부정",
+                Text("◀ Negative",
                   style: TextStyle(
                     color: Colors.black,
                     fontSize: 30
                   )
                 ),
-                Text("긍정 ▶",
+                Text("Positive ▶",
                   style: TextStyle(
                     color: Colors.black,
                     fontSize: 30
@@ -297,11 +294,14 @@ class MissionCompletePageInputState extends State<MissionCompletePageInput> {
               borderRadius: BorderRadius.circular(30.0)
             ),
             child: InkWell(
-              onTap: sendData,
+              onTap: (){
+                sendData();
+                Navigator.pop(context);
+              },
               child: const Padding(
                 padding: EdgeInsets.only(top: 20, bottom: 20),
                 child: Center(
-                  child: Text("완료",
+                  child: Text("Done",
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 30,

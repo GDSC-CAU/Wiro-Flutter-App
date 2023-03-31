@@ -1,8 +1,9 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
+
 import 'package:flutter_config/flutter_config.dart';
 import 'package:http/http.dart' as http;
+
 import 'package:solutionchallengetem2_app/pages/Base.dart';
 import 'package:solutionchallengetem2_app/pages/PrivacyEditPage.dart';
 
@@ -54,7 +55,7 @@ class _TimeState extends State<HomeTimeSetting> {
 }
 
 class TimeCard extends StatelessWidget {
-  const TimeCard({Key? key, required this.timeData, required this.timeType}): super(key: key);
+  const TimeCard({super.key, required this.timeData, required this.timeType});
   final String timeData;
   final String timeType;
 
@@ -72,7 +73,7 @@ class TimeCard extends StatelessWidget {
           height: double.infinity,
           width: double.infinity,
           child: Center(
-            child: Text("${timeType == "AM" ? "오전" : "오후"} 알림 $timeData",
+            child: Text("${timeType == "AM" ? "AM" : "PM"} Noti $timeData",
               textAlign: TextAlign.center,
               style: const TextStyle(
                 fontSize: 50,
@@ -104,7 +105,7 @@ class _PrivacyState extends State<HomePrivacy> {
 
   void getData() async {
     BasePageState? baseState = context.findAncestorStateOfType<BasePageState>();
-    _userToken = baseState!.userToken;
+    _userToken = baseState!.widget.userToken;
     final response = await http.get(
       Uri.parse("${FlutterConfig.get("API_URL")}/users/getUserInfo"),
       headers: {
@@ -120,8 +121,6 @@ class _PrivacyState extends State<HomePrivacy> {
       _strPrivacyDisease = responseData["disease"] ?? "DISEASE";
       _strPrivacyMedicine = responseData["medicine"] ?? "MEDICINE";
     });
-
-    print(response.body.toString());
   }
 
   @override
@@ -157,13 +156,13 @@ class _PrivacyState extends State<HomePrivacy> {
 }
 
 class PrivacyCard extends StatelessWidget {
-  const PrivacyCard({Key? key,
+  const PrivacyCard({super.key,
     required this.userToken,
     required this.privacyName,
     required this.privacyID,
     required this.privacyBlood,
     required this.privacyDisease,
-    required this.privacyMedicine}): super(key: key);
+    required this.privacyMedicine});
 
   final String userToken;
 
@@ -200,7 +199,7 @@ class PrivacyCard extends StatelessWidget {
                       children: [
                         const Padding(
                           padding: EdgeInsets.only(top: 10.0, bottom: 10.0),
-                          child: Text("개인정보",
+                          child: Text("Personal Info",
                             style: TextStyle(
                               fontSize: 50,
                               fontWeight: FontWeight.bold,
@@ -223,15 +222,15 @@ class PrivacyCard extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        const PrivacyCardTextTitle(textStr: "성함"),
+                        const PrivacyCardTextTitle(textStr: "Name"),
                         PrivacyCardText(textStr: privacyName),
-                        const PrivacyCardTextTitle(textStr: "주민등록번호"),
+                        const PrivacyCardTextTitle(textStr: "Personal Identifier Number"),
                         PrivacyCardText(textStr: privacyID),
-                        const PrivacyCardTextTitle(textStr: "혈액형"),
+                        const PrivacyCardTextTitle(textStr: "Blood Type"),
                         PrivacyCardText(textStr: privacyBlood),
-                        const PrivacyCardTextTitle(textStr: "지병"),
+                        const PrivacyCardTextTitle(textStr: "Chronic Disease"),
                         PrivacyCardText(textStr: privacyDisease),
-                        const PrivacyCardTextTitle(textStr: "복용약"),
+                        const PrivacyCardTextTitle(textStr: "Medicine"),
                         PrivacyCardText(textStr: privacyMedicine)
                       ],
                     )
@@ -247,10 +246,7 @@ class PrivacyCard extends StatelessWidget {
 }
 
 class PrivacyCardText extends StatelessWidget {
-  const PrivacyCardText({
-    Key? key,
-    required this.textStr
-  }): super(key: key);
+  const PrivacyCardText({super.key, required this.textStr});
 
   final String textStr;
 
@@ -270,10 +266,7 @@ class PrivacyCardText extends StatelessWidget {
 }
 
 class PrivacyCardTextTitle extends StatelessWidget {
-  const PrivacyCardTextTitle({
-    Key? key,
-    required this.textStr
-  }): super(key: key);
+  const PrivacyCardTextTitle({super.key, required this.textStr});
 
   final String textStr;
 
