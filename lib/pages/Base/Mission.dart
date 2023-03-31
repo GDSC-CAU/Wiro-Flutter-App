@@ -89,7 +89,7 @@ class _MissionRecommendCardState extends State<MissionRecommendCard> {
                 children: [
                   const Padding(
                     padding: EdgeInsets.only(top: 10.0, bottom: 10.0),
-                    child: Text("추천 미션",
+                    child: Text("Recommended",
                       style: TextStyle(
                         fontSize: 30,
                         fontWeight: FontWeight.bold,
@@ -184,7 +184,7 @@ class _MissionHistoryCardState extends State<MissionHistoryCard> {
                 const Padding(
                   padding: EdgeInsets.only(top: 10.0, bottom: 10.0),
                   child:
-                  Text("미션 기록",
+                  Text("Mission History",
                     style: TextStyle(
                       fontSize: 30,
                       fontWeight: FontWeight.bold,
@@ -292,7 +292,7 @@ class _CheckHistoryCardState extends State<CheckHistoryCard> {
               children: [
                 const Padding(
                   padding: EdgeInsets.only(top: 10.0, bottom: 10.0),
-                  child: Text("체크리스트 기록",
+                  child: Text("Checklist History",
                     style: TextStyle(
                       fontSize: 30,
                       fontWeight: FontWeight.bold,
