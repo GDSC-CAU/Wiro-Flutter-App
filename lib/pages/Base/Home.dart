@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_config/flutter_config.dart';
 import 'package:http/http.dart' as http;
+
 import 'package:solutionchallengetem2_app/pages/Base.dart';
 import 'package:solutionchallengetem2_app/pages/PrivacyEditPage.dart';
 
@@ -120,8 +121,6 @@ class _PrivacyState extends State<HomePrivacy> {
       _strPrivacyDisease = responseData["disease"] ?? "DISEASE";
       _strPrivacyMedicine = responseData["medicine"] ?? "MEDICINE";
     });
-
-    print(response.body.toString());
   }
 
   @override
