@@ -45,7 +45,7 @@ class _ChatInfoState extends State<ChatInfo> {
             const Flexible(
               flex: 7,
               child: Text(
-                "사회복지사",
+                "Caregiver",
                 style: TextStyle(
                   fontSize: 30
                 )
@@ -71,7 +71,7 @@ class _ChatInfoState extends State<ChatInfo> {
                     }
                   )
                 ),
-                child: const Text("전화 걸기",
+                child: const Text("Make call",
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Colors.black,
