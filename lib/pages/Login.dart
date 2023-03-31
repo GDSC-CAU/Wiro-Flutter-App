@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import 'package:firebase_auth/firebase_auth.dart';
@@ -93,7 +94,9 @@ class LoginPageState extends State<LoginPage> {
 
         await FirebaseMessaging.instance.subscribeToTopic(userUID);
         FirebaseMessaging.onMessageOpenedApp.listen((message) async {
-          print(message);
+          if (kDebugMode) {
+            print(message);
+          }
         });
 
         registerUser(userName, userToken);
@@ -120,7 +123,7 @@ class LoginPageState extends State<LoginPage> {
   }
 
   void registerUser(String? userName, String userToken) async {
-    final response = await http.post(
+    await http.post(
       Uri.parse("${FlutterConfig.get("API_URL")}/users/login"),
       headers: {
         "Authorization": "Bearer $userToken",
@@ -130,12 +133,12 @@ class LoginPageState extends State<LoginPage> {
         "nickname": userName
       })
     );
-
-    print(response.body.toString());
   }
 }
 
 class LoginPageLogo extends StatelessWidget {
+  const LoginPageLogo({super.key});
+
   @override
   Widget build(BuildContext context) {
     return const Center(
