@@ -1,17 +1,17 @@
-# GDSC CAU 22-23 Solution Challenge Team 2
+## GDSC CAU 22-23 Solution Challenge Team 2
 
-## Project Wiro
+### Project Wiro
 
 A App-based Platform to reduce the incidence of lonely deaths
 
-## High-Level Architecture Diagram
+### High-Level Architecture Diagram
 
 > Diagram Image will be Uploaded soon
 
 [Flutter Application Repository](https://github.com/GDSC-CAU/Solution-Challenge-Team-2-Flutter-App)
 [Back-End Repository](https://github.com/GDSC-CAU/Solution-Challenge-Team-2-Spring-BE)
 
-## Team Info
+### Team Info
 
 - Yongmin Yoo (유용민)
   - GDSC CAU 22-23 Core Member
