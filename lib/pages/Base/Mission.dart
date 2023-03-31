@@ -141,7 +141,7 @@ class _MissionHistoryCardState extends State<MissionHistoryCard> {
 
     for(var item in responseData){
       final tmpResponse = await http.get(
-        Uri.parse("${FlutterConfig.get("API_URL")}/mission/getMissionInfo/1101"), //${item["code"]}"),
+        Uri.parse("${FlutterConfig.get("API_URL")}/mission/getMissionInfo/${item["code"]}"),
         headers: {
           "Authorization": "Bearer ${widget.userToken}"
         }
@@ -251,7 +251,7 @@ class _CheckHistoryCardState extends State<CheckHistoryCard> {
 
     for(var item in responseData){
       final tmpResponse = await http.get(
-        Uri.parse("${FlutterConfig.get("API_URL")}/mission/getMissionInfo/2101"), //${item["code"]}"),
+        Uri.parse("${FlutterConfig.get("API_URL")}/mission/getMissionInfo/${item["code"]}"),
         headers: {
           "Authorization": "Bearer ${widget.userToken}"
         }
