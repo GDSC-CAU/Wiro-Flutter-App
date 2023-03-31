@@ -1,16 +1,28 @@
-# solutionchallengetem2_app
+# GDSC CAU 22-23 Solution Challenge Team 2
 
-A new Flutter project.
+## Project Wiro
 
-## Getting Started
+A App-based Platform to reduce the incidence of lonely deaths
 
-This project is a starting point for a Flutter application.
+## High-Level Architecture Diagram
 
-A few resources to get you started if this is your first Flutter project:
+> Diagram Image will be Uploaded soon
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Team Info
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- Yongmin Yoo (유용민)
+  - GDSC CAU 22-23 Core Member
+  - Team Leader
+  - Flutter Application / Firebase Firestore
+
+---
+
+- Sangwoo Shin (신상우)
+  - GDSC CAU 22-23 Member
+  - Back-End / GCP Hosting / Firebase Firestore
+
+---
+
+- Seunghoon Lee (이승훈)
+  - GDSC CAU 22-23 Member
+  - DeepLearning / GCP Cloud Functions / Firebase Cloud Messaging
