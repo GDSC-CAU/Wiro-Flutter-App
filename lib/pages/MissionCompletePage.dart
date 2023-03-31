@@ -36,7 +36,7 @@ class MissionCompletePageTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Center(
-      child: Text("오늘의 미션 / 체크",
+      child: Text("Today's Recommend",
         style: TextStyle(
           color: Colors.black,
           fontSize: 40,
@@ -161,13 +161,13 @@ class MissionCompletePageInputState extends State<MissionCompletePageInput> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: const [
-                Text("◀ 부정",
+                Text("◀ Negative",
                   style: TextStyle(
                     color: Colors.black,
                     fontSize: 30
                   )
                 ),
-                Text("긍정 ▶",
+                Text("Positive ▶",
                   style: TextStyle(
                     color: Colors.black,
                     fontSize: 30
@@ -301,7 +301,7 @@ class MissionCompletePageInputState extends State<MissionCompletePageInput> {
               child: const Padding(
                 padding: EdgeInsets.only(top: 20, bottom: 20),
                 child: Center(
-                  child: Text("완료",
+                  child: Text("Done",
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 30,
