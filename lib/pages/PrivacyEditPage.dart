@@ -67,7 +67,7 @@ class PrivacyEditInput extends StatelessWidget {
   final inputNameController = TextEditingController();
 
   void sendData(BuildContext context) async {
-    final response = await http.post(
+    await http.post(
       Uri.parse("${FlutterConfig.get("API_URL")}/users/updateUserInfo"),
       headers: {
         "Authorization": "Bearer $userToken",
@@ -81,8 +81,6 @@ class PrivacyEditInput extends StatelessWidget {
         "nickname": inputNameController.text.toString()
       })
     );
-
-    print(response.body.toString());
   }
 
   @override
