@@ -6,7 +6,7 @@ App-based Platform to reduce the incidence of lonely deaths
 
 ### High-Level Architecture Diagram
 
-[High-Level Architecture](assets/README_Architecture.png)
+<img src="assets/README_Architecture.png" style="width: 75%;"></img>
 
 [Flutter Application Repository](https://github.com/GDSC-CAU/Solution-Challenge-Team-2-Flutter-App)
 
