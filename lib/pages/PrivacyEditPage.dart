@@ -42,7 +42,7 @@ class PrivacyEditBack extends StatelessWidget {
           onPressed: (){
             Navigator.pop(context);
           },
-          child: const Text("뒤로 가기",
+          child: const Text("Go Back",
             style: TextStyle(
               color: Colors.black,
               fontSize: 40,
@@ -100,7 +100,7 @@ class PrivacyEditInput extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text("성함",
+                  const Text("Name",
                     style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold
@@ -130,7 +130,7 @@ class PrivacyEditInput extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text("주민등록번호",
+                  const Text("Personal Identifier Number",
                     style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold
@@ -160,7 +160,7 @@ class PrivacyEditInput extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text("혈액형",
+                  const Text("Blood Type",
                     style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold
@@ -190,7 +190,7 @@ class PrivacyEditInput extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text("지병",
+                  const Text("Chronic Disease",
                     style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold
@@ -220,7 +220,7 @@ class PrivacyEditInput extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text("복용중인 약",
+                  const Text("Medicine",
                     style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold
@@ -251,7 +251,7 @@ class PrivacyEditInput extends StatelessWidget {
                   sendData(context);
                   Navigator.pop(context);
                 },
-                child: const Text("완료",
+                child: const Text("Done",
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 30,
