@@ -73,7 +73,7 @@ class TimeCard extends StatelessWidget {
           height: double.infinity,
           width: double.infinity,
           child: Center(
-            child: Text("${timeType == "AM" ? "오전" : "오후"} 알림 $timeData",
+            child: Text("${timeType == "AM" ? "AM" : "PM"} Noti $timeData",
               textAlign: TextAlign.center,
               style: const TextStyle(
                 fontSize: 50,
@@ -199,7 +199,7 @@ class PrivacyCard extends StatelessWidget {
                       children: [
                         const Padding(
                           padding: EdgeInsets.only(top: 10.0, bottom: 10.0),
-                          child: Text("개인정보",
+                          child: Text("Personal Info",
                             style: TextStyle(
                               fontSize: 50,
                               fontWeight: FontWeight.bold,
@@ -222,15 +222,15 @@ class PrivacyCard extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        const PrivacyCardTextTitle(textStr: "성함"),
+                        const PrivacyCardTextTitle(textStr: "Name"),
                         PrivacyCardText(textStr: privacyName),
-                        const PrivacyCardTextTitle(textStr: "주민등록번호"),
+                        const PrivacyCardTextTitle(textStr: "Personal Identifier Number"),
                         PrivacyCardText(textStr: privacyID),
-                        const PrivacyCardTextTitle(textStr: "혈액형"),
+                        const PrivacyCardTextTitle(textStr: "Blood Type"),
                         PrivacyCardText(textStr: privacyBlood),
-                        const PrivacyCardTextTitle(textStr: "지병"),
+                        const PrivacyCardTextTitle(textStr: "Chronic Disease"),
                         PrivacyCardText(textStr: privacyDisease),
-                        const PrivacyCardTextTitle(textStr: "복용약"),
+                        const PrivacyCardTextTitle(textStr: "Medicine"),
                         PrivacyCardText(textStr: privacyMedicine)
                       ],
                     )
