@@ -18,9 +18,9 @@ class BasePageState extends State<BasePage> {
   final String userToken;
   int _curIndex = 1;
 
-  static List<Widget> _pageOptions = <Widget>[
+  final List<Widget> _pageOptions = <Widget>[
     MissionPage(),
-    HomePage(),
+    const HomePage(),
     ChatPage(),
   ];
 
@@ -125,12 +125,5 @@ class BasePageState extends State<BasePage> {
         )
       )
     );
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    // Future.delayed(Duration.zero, () =>
-    // Navigator.push((context), MaterialPageRoute(builder: (context) => LoginPage())));
   }
 }
