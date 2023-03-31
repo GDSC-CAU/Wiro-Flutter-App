@@ -55,7 +55,7 @@ class _TimeState extends State<HomeTimeSetting> {
 }
 
 class TimeCard extends StatelessWidget {
-  const TimeCard({Key? key, required this.timeData, required this.timeType}): super(key: key);
+  const TimeCard({super.key, required this.timeData, required this.timeType});
   final String timeData;
   final String timeType;
 
@@ -156,13 +156,13 @@ class _PrivacyState extends State<HomePrivacy> {
 }
 
 class PrivacyCard extends StatelessWidget {
-  const PrivacyCard({Key? key,
+  const PrivacyCard({super.key,
     required this.userToken,
     required this.privacyName,
     required this.privacyID,
     required this.privacyBlood,
     required this.privacyDisease,
-    required this.privacyMedicine}): super(key: key);
+    required this.privacyMedicine});
 
   final String userToken;
 
@@ -246,10 +246,7 @@ class PrivacyCard extends StatelessWidget {
 }
 
 class PrivacyCardText extends StatelessWidget {
-  const PrivacyCardText({
-    Key? key,
-    required this.textStr
-  }): super(key: key);
+  const PrivacyCardText({super.key, required this.textStr});
 
   final String textStr;
 
@@ -269,10 +266,7 @@ class PrivacyCardText extends StatelessWidget {
 }
 
 class PrivacyCardTextTitle extends StatelessWidget {
-  const PrivacyCardTextTitle({
-    Key? key,
-    required this.textStr
-  }): super(key: key);
+  const PrivacyCardTextTitle({super.key, required this.textStr});
 
   final String textStr;
 
