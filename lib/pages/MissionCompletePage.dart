@@ -70,8 +70,6 @@ class MissionCompletePageDataState extends State<MissionCompletePageData> {
     missionData = jsonDecode(response.body)["result"]["content"];
 
     setState(() {});
-
-    print(response.body.toString());
   }
 
   @override
@@ -134,7 +132,7 @@ class MissionCompletePageInputState extends State<MissionCompletePageInput> {
   double _selButton = 0.0;
 
   void sendData() async {
-    final response = await http.post(
+    await http.post(
         Uri.parse("${FlutterConfig.get("API_URL")}/mission/missionComplete"),
         headers: {
           "Authorization": "Bearer ${widget.userToken}",
@@ -145,8 +143,6 @@ class MissionCompletePageInputState extends State<MissionCompletePageInput> {
           "score": double.parse(_selButton.toStringAsFixed(2))
         })
     );
-
-    print(response.body.toString());
   }
 
   @override
