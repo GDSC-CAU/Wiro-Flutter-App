@@ -57,7 +57,7 @@ class BasePageState extends State<BasePage> {
                     borderRadius: BorderRadius.circular(15.0)
                   ),
                   child: Center(
-                    child: Text("목록",
+                    child: Text("LIST",
                       style: TextStyle(
                         color: _curIndex == 0 ? Colors.white : Colors.black,
                         fontSize: 35,
@@ -80,7 +80,7 @@ class BasePageState extends State<BasePage> {
                     borderRadius: BorderRadius.circular(15.0)
                   ),
                   child: Center(
-                    child: Text("알림",
+                    child: Text("HOME",
                       style: TextStyle(
                         color: _curIndex == 1 ? Colors.white : Colors.black,
                         fontSize: 35,
@@ -103,7 +103,7 @@ class BasePageState extends State<BasePage> {
                     borderRadius: BorderRadius.circular(15.0)
                   ),
                   child: Center(
-                    child: Text("대화",
+                    child: Text("CHAT",
                       style: TextStyle(
                         color: _curIndex == 2 ? Colors.white : Colors.black,
                         fontSize: 35,
