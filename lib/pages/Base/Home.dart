@@ -105,7 +105,7 @@ class _PrivacyState extends State<HomePrivacy> {
 
   void getData() async {
     BasePageState? baseState = context.findAncestorStateOfType<BasePageState>();
-    _userToken = baseState!.userToken;
+    _userToken = baseState!.widget.userToken;
     final response = await http.get(
       Uri.parse("${FlutterConfig.get("API_URL")}/users/getUserInfo"),
       headers: {

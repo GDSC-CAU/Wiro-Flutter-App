@@ -9,19 +9,16 @@ class BasePage extends StatefulWidget {
   final String userToken;
 
   @override
-  State<BasePage> createState() => BasePageState(userToken: userToken);
+  State<BasePage> createState() => BasePageState();
 }
 
 class BasePageState extends State<BasePage> {
-  BasePageState({required this.userToken});
-
-  final String userToken;
   int _curIndex = 1;
 
   final List<Widget> _pageOptions = <Widget>[
-    MissionPage(),
+    const MissionPage(),
     const HomePage(),
-    ChatPage(),
+    const ChatPage(),
   ];
 
   void _onNavItemTapped(int index) {

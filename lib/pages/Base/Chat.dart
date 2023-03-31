@@ -17,8 +17,8 @@ class ChatPage extends StatelessWidget {
     return Column(
       children: [
         const Flexible(flex: 1, child: ChatInfo()),
-        Flexible(flex: 4, child: ChatHistory(userToken: baseState!.userToken)),
-        Flexible(flex: 1, child: ChatInput(userToken: baseState.userToken)),
+        Flexible(flex: 4, child: ChatHistory(userToken: baseState!.widget.userToken)),
+        Flexible(flex: 1, child: ChatInput(userToken: baseState.widget.userToken)),
       ]
     );
   }

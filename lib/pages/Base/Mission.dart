@@ -17,9 +17,9 @@ class MissionPage extends StatelessWidget {
     return Column(
       mainAxisSize: MainAxisSize.max,
       children: [
-        Flexible(flex: 2, child: MissionRecommendCard(userToken: baseState!.userToken)),
-        Flexible(flex: 3, child: MissionHistoryCard(userToken: baseState.userToken)),
-        Flexible(flex: 3, child: CheckHistoryCard(userToken: baseState.userToken))
+        Flexible(flex: 2, child: MissionRecommendCard(userToken: baseState!.widget.userToken)),
+        Flexible(flex: 3, child: MissionHistoryCard(userToken: baseState.widget.userToken)),
+        Flexible(flex: 3, child: CheckHistoryCard(userToken: baseState.widget.userToken))
       ]
     );
   }
