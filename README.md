@@ -1,8 +1,24 @@
-# GDSC CAU 22-23 Solution Challenge Team 2
+# Project Wiro
 
-## Project Wiro
+App-based Platform to reduce the incidence of lonely deaths.
 
-App-based Platform to reduce the incidence of lonely deaths
+---
+
+## Problem Statement
+
+South Korea is confronting a significant problem of lonely death among seniors live alone,
+which is expected to worsen due to issues like aging society.
+
+Through Our in-depth research we found that elderly individuals
+who live alone are dealing with several issues in their daily lives.
+
+We took 3rd and 11th SDGs to deal with this society problem.
+
+The Wiro App sends two notifications with Mission or CheckList each day, tracking the user's responses to ensure
+they are staying in touch with.
+If a user fails to communicate with app for certain amount of time,
+an SOS message is automatically sent to their family, caregivers, or hospital,
+thus preventing potential tragedies.
 
 ---
 
