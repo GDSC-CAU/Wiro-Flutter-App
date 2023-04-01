@@ -1,0 +1,1 @@
+-keep class com.gdsc_cau.team2.client.solutionchallengetem2_app.BuildConfig { *; }

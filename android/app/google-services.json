@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "561844247669",
+    "project_id": "solution-challenge-team2",
+    "storage_bucket": "solution-challenge-team2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:561844247669:android:945e0ee44279c75938ec3c",
+        "android_client_info": {
+          "package_name": "com.gdsc_cau.team2.client.solutionchallengetem2_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "561844247669-r98njs8tta0bpjc98ksahlcsjn45eke1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.gdsc_cau.team2.client.solutionchallengetem2_app",
+            "certificate_hash": "8473c8028e9293aba9f1b2dff012f244a5b1fc8e"
+          }
+        },
+        {
+          "client_id": "561844247669-o2cbb7o2tr1ft7kdn428vs6d92f5f0a1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCjyNL8noBGVeWz_l7Ct_rn8092AIHBwKc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "561844247669-o2cbb7o2tr1ft7kdn428vs6d92f5f0a1.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "561844247669-qgpuse4gqgohc7ks5dp4kufmr8uid8pb.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.gdsccau.team2.client.solutionchallengetem2App"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
