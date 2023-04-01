@@ -1,16 +1,40 @@
-## GDSC CAU 22-23 Solution Challenge Team 2
+# GDSC CAU 22-23 Solution Challenge Team 2
 
-### Project Wiro
+## Project Wiro
 
 App-based Platform to reduce the incidence of lonely deaths
 
-### High-Level Architecture Diagram
+## High-Level Architecture Diagram
 
 <img src="assets/README_Architecture.png" style="width: 75%;"></img>
 
 [Flutter Application Repository](https://github.com/GDSC-CAU/Solution-Challenge-Team-2-Flutter-App)
 
 [Back-End Repository](https://github.com/GDSC-CAU/Solution-Challenge-Team-2-Spring-BE)
+
+## Get Started
+
+#### Required
+
+- Android SDK
+- Android Studio
+- Flutter SDK
+
+1. Clone this Project
+
+```shell
+git clone git@github.com:GDSC-CAU/Solution-Challenge-Team-2-Flutter-App.git
+```
+
+2. Open Project with Android Studio
+
+3. Flutter Pub Get
+
+```shell
+flutter pub get
+```
+
+4. Buil with Android Studio & Enjoy!
 
 ### Team Info
 
