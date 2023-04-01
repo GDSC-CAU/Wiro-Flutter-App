@@ -20,6 +20,11 @@ If a user fails to communicate with app for certain amount of time,
 an SOS message is automatically sent to their family, caregivers, or hospital,
 thus preventing potential tragedies.
 
+### Target SDGs
+
+- Goal 3. Good Health and Well-Being
+- Goal 11. Sustainable Cities and Communities
+
 ---
 
 ## High-Level Architecture Diagram
