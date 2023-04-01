@@ -39,17 +39,17 @@ Overall process of our solution is as follows.
 
 ## Get Started
 
-#### Download
+### Download
 
 You can get Debug APK from [Release Page](https://github.com/GDSC-CAU/Solution-Challenge-Team-2-Flutter-App/releases/tag/release1) of this Repository.
 
-#### Required for Self-Build
+### Required for Self-Build
 
 - Android SDK
 - Android Studio
 - Flutter SDK
 
-#### Steps for Self-Build
+### Steps for Self-Build
 
 1. Clone this Project
 
