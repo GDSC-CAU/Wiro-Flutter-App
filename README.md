@@ -14,11 +14,11 @@ who live alone are dealing with several issues in their daily lives.
 
 We took 3rd and 11th SDGs to deal with this society problem.
 
-The Wiro App sends two notifications with Mission or CheckList each day, tracking the user's responses to ensure
-they are staying in touch with.
-If a user fails to communicate with app for certain amount of time,
-an SOS message is automatically sent to their family, caregivers, or hospital,
-thus preventing potential tragedies.
+Overall process of our solution is as follows.
+
+  1. Each user get two notifications each day. One is a Mission, another one is a Checklist.
+  2. Users completes the missions or reply to the checklists they received.
+  3. If there is no complete/reply sign, or out Deep Learning Algorithm decided that a user is in danger, it automatically sends SOS sign to ther family, caregivers, thus preventing potential tragedies.
 
 ### Target SDGs
 
