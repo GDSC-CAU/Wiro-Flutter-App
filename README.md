@@ -1,6 +1,6 @@
 # Project Wiro
 
-App-based Platform to reduce the incidence of lonely deaths.
+## An App-based Platform to reduce the incidence of lonely deaths.
 
 ---
 
