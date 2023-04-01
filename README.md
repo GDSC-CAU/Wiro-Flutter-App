@@ -29,7 +29,7 @@ Overall process of our solution is as follows.
 
 ## High-Level Architecture Diagram
 
-<img src="assets/README_Architecture.png" style="width: 75%;"></img>
+<img src="assets/README_Architecture.png"></img>
 
 [Flutter Application Repository](https://github.com/GDSC-CAU/Solution-Challenge-Team-2-Flutter-App)
 
