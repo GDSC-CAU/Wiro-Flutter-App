@@ -4,6 +4,8 @@
 
 App-based Platform to reduce the incidence of lonely deaths
 
+---
+
 ## High-Level Architecture Diagram
 
 <img src="assets/README_Architecture.png" style="width: 75%;"></img>
@@ -11,6 +13,8 @@ App-based Platform to reduce the incidence of lonely deaths
 [Flutter Application Repository](https://github.com/GDSC-CAU/Solution-Challenge-Team-2-Flutter-App)
 
 [Back-End Repository](https://github.com/GDSC-CAU/Solution-Challenge-Team-2-Spring-BE)
+
+---
 
 ## Get Started
 
@@ -36,7 +40,9 @@ flutter pub get
 
 4. Buil with Android Studio & Enjoy!
 
-### Team Info
+---
+
+## Team Info
 
 - Yongmin Yoo (유용민)
   - GDSC CAU 22-23 Core Member
