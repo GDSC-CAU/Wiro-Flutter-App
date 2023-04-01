@@ -18,7 +18,7 @@ Overall process of our solution is as follows.
 
   1. Each user get two notifications each day. One is a Mission, another one is a Checklist.
   2. Users completes the missions or reply to the checklists they received.
-  3. If there is no complete/reply sign, or out Deep Learning Algorithm decided that a user is in danger, it automatically sends SOS sign to ther family, caregivers, thus preventing potential tragedies.
+  3. If there is no complete/reply sign, or our Deep Learning Algorithm decided that a user is in danger, it automatically sends SOS sign to their family, caregivers, thus preventing potential tragedies.
 
 ### Target SDGs
 
