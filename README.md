@@ -72,7 +72,7 @@ git clone git@github.com:GDSC-CAU/Solution-Challenge-Team-2-Flutter-App.git
 flutter pub get
 ```
 
-4. Buil with Android Studio & Enjoy!
+4. Build with Android Studio & Enjoy!
 
 ---
 
