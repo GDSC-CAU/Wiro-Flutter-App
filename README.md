@@ -36,7 +36,7 @@ Overall process of our solution is as follows.
 - **Cloud Function** decides Mission / CheckList based on our Algorithm for each user, and sends it to user via **Firebase Cloud Messaging**
 - Personal Data or Mission / CheckList History, and all of necessary data of each user is saved to **Firebase Firestore**
 
-[Flutter Application Repository](https://github.com/GDSC-CAU/Solution-Challenge-Team-2-Flutter-App)
+[Flutter Application Repository (Currently Watching)](https://github.com/GDSC-CAU/Solution-Challenge-Team-2-Flutter-App)
 
 [Back-End Repository](https://github.com/GDSC-CAU/Solution-Challenge-Team-2-Spring-BE)
 
